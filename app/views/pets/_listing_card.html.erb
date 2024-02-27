@@ -1,0 +1,12 @@
+<!-- _listing_card.html.erb -->
+<div class="listing-card">
+  <h2><%= @pet.name %>'s Appointments:</h2>
+  <% @pet.appointments.each do |appointment| %>
+    <div class="appointment">
+      <p>Start Date: <%= appointment.start_date %></p>
+      <p>End Date: <%= appointment.end_date %></p>
+      <p>Location: <%= appointment.location %></p>
+      <p>Looking For: <%= appointment.looking_for %></p>
+    </div>
+  <% end %>
+</div>
