@@ -4,6 +4,17 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%# In the below, given-name, family-name, and postal-code are used to specify to the browser that it can autocomplete for saved names %>
+    <%= f.input :first_name,
+                required: true,
+                input_html: { autocomplete: "given-name" } %>
+    <%= f.input :last_name,
+                required: true,
+                input_html: { autocomplete: "family-name" } %>
+    <%= f.input :postcode,
+                required: true,
+                input_html: { autocomplete: "postal-code" } %>
+                
     <%= f.input :email,
                 required: true,
                 autofocus: true,
