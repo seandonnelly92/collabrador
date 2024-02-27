@@ -22,8 +22,6 @@ Pet.destroy_all
 puts "destroying all users..."
 User.destroy_all
 
-
-
 ## Randomly generated Users
 
 users = {
@@ -112,36 +110,48 @@ end
 
 puts "User data seeded successfully."
 
-
 # Defining common dog breeds
 COMMON_BREEDS = [
-  "Labrador Retriever",
-  "German Shepherd",
-  "Golden Retriever",
-  "Bulldog",
-  "Beagle",
-  "Poodle",
-  "Boxer",
+  "Labrador",
+  "Newfoundland",
+  "Pomeranian",
+  "Pyrenees",
+  "Vizsla",
+  "Whippet",
+  "Doberman",
   "Dachshund",
-  "Siberian Husky",
-  "Great Dane",
   "Chihuahua",
-  "Shih Tzu",
-  "Yorkshire Terrier",
-  "Pug",
-  "Border Collie"
+  "Boxer",
+  "Beagle",
 ]
+
 
 # Define common male and female names for dogs
 MALE_NAMES = ["Max", "Buddy", "Charlie", "Jack", "Cooper", "Rocky", "Bear", "Duke", "Tucker", "Oliver"]
 FEMALE_NAMES = ["Bella", "Lucy", "Daisy", "Molly", "Sadie", "Lola", "Sophie", "Bailey", "Luna", "Zoe"]
 
+
+#Fetching dog images from dog API
+def get_random_dog_image_by_breed(breed)
+  url = "https://dog.ceo/api/breed/#{breed}/images/random"
+  uri = URI(url)
+  response = Net::HTTP.get(uri)
+  data = JSON.parse(response)
+  if data["status"] == "success"
+    return data["message"]
+  else
+    return nil
+  end
+end
 # Seed Pet data
 
 User.all.each do |user|
   name = [MALE_NAMES.sample, FEMALE_NAMES.sample].sample
   age = rand(2..15)
   breed = COMMON_BREEDS.sample
+  puts breed
+  breed_img_title = breed.downcase
+  puts breed_img_title
   sex = ["male", "female"].sample
   activity_needs = ["high", "medium", "low"].sample
   neutered = [true, false].sample
@@ -151,13 +161,15 @@ User.all.each do |user|
   hypoallergenic = [true, false].sample
 
   size = case breed
-         when "Chihuahua", "Shih Tzu", "Yorkshire Terrier", "Pomeranian"
-           "small"
-         when "Beagle", "Cocker Spaniel", "Dachshund", "French Bulldog", "Pug"
-           "medium"
-         else
-           "large"
-         end
+  when "Chihuahua", "Shih Tzu", "Yorkshire Terrier", "Pomeranian"
+    "small"
+  when "Beagle", "Cocker Spaniel", "Dachshund", "French Bulldog", "Pug"
+    "medium"
+  else
+    "large"
+  end
+
+  dog_image = get_random_dog_image_by_breed(breed_img_title)
 
   Pet.create!(
     name: name,
@@ -172,7 +184,8 @@ User.all.each do |user|
     neutered_spayed: neutered,
     hypoallergenic: hypoallergenic,
     size: size,
-    user: user
+    user: user,
+    dog_image: dog_image
   )
 end
 
