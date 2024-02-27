@@ -12,17 +12,24 @@
 
   <body>
 
-    <div class="navbar navbar-light bg-light justify-content-between sticky-top m-2">
-      <div class="mr-auto">
-        <h3 class="navbar-brand mr-auto">Collabrador</h3>
+    <div data-controller="modals"> <!-- Note: modals-controller sits in seperate div to cover the navbar and the modals itself -->
+      <div class="navbar navbar-light bg-light justify-content-between sticky-top m-2">
+        <div class="mr-auto">
+          <h3 class="navbar-brand mr-auto">Collabrador</h3>
+        </div>
+        <div class="">
+          <ul class="list-text">
+            <li class="btn btn-primary list-item">Login</li>
+            <li class="btn btn-light list-item"  data-action="click->modals#openSignup">Signup</li>
+          </ul>
+        </div>
       </div>
-      <div class="">
-        <ul class="list-text">
-          <li class="btn btn-primary list-item">Login</li>
-          <li class="btn btn-light list-item">Signup</li>
-        </ul>
+
+
+      <!-- Modal -->
+      <div class="modal-custom" data-modals-target="signup">
+        <div class="inner">inner</div>
       </div>
-    </div>
 
     <%= yield %>
   </body>

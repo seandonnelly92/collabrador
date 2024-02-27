@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
 
-
   # Defines the root path route ("/")
   # root "posts#index"
+
+  
+  get "temp", to: "pets#temp"
 end
