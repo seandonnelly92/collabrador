@@ -161,9 +161,9 @@ User.all.each do |user|
   hypoallergenic = [true, false].sample
 
   size = case breed
-  when "Chihuahua", "Shih Tzu", "Yorkshire Terrier", "Pomeranian"
+  when "Chihuahua","Pomeranian", "Dachsund", "Beagle"
     "small"
-  when "Beagle", "Cocker Spaniel", "Dachshund", "French Bulldog", "Pug"
+  when "Vizsla", "Whippet", "Boxer"
     "medium"
   else
     "large"
