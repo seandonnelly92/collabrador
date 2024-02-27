@@ -10,7 +10,11 @@ export default class extends Controller {
     console.log("Hello from the modals controller");
   }
 
-  openSignup(e) {
-    this.signupTarget.classList.add('show')
+  openSignup() {
+    this.signupTarget.classList.add('show');
+  }
+
+  closeSignup() {
+    this.signupTarget.classList.remove('show');
   }
 }
