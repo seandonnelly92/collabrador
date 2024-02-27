@@ -12,7 +12,7 @@
 require 'date'
 
 
-puts "destroying all appointments"
+puts "destroying all appointments..."
 Appointment.destroy_all
 
 puts "destroying all pets..."
@@ -23,7 +23,7 @@ puts "destroying all users..."
 User.destroy_all
 
 ## Randomly generated Users
-
+puts "Seeding users..."
 users = {
   user_1: {
     first_name: "Alex",
@@ -110,6 +110,7 @@ end
 
 puts "User data seeded successfully."
 
+puts "Seeding pets (dogs)..."
 # Defining common dog breeds
 COMMON_BREEDS = [
   "Labrador",
@@ -143,15 +144,14 @@ def get_random_dog_image_by_breed(breed)
     return nil
   end
 end
+
 # Seed Pet data
 
 User.all.each do |user|
   name = [MALE_NAMES.sample, FEMALE_NAMES.sample].sample
   age = rand(2..15)
   breed = COMMON_BREEDS.sample
-  puts breed
   breed_img_title = breed.downcase
-  puts breed_img_title
   sex = ["male", "female"].sample
   activity_needs = ["high", "medium", "low"].sample
   neutered = [true, false].sample
@@ -190,6 +190,7 @@ User.all.each do |user|
 end
 
 puts "Pet seeded successfully."
+puts "Seeding appointments.."
 
 # Function to generate a random time between 08:00 and 21:00
 def generate_random_time
@@ -239,9 +240,6 @@ User.all.each do |user|
     appointment_key = "appointment #{available_appointments.delete_at(0)}"
     appointment_info = appointments[appointment_key]
     appointment = Appointment.new
-    # puts "CHECKING HERE"
-    # puts "Appointment key is: #{appointment_key}"
-    # puts "Appointment info is: #{appointment_info}"
     appointment.start_date = appointment_info['start_date']
     appointment.end_date = appointment_info['end_date']
     appointment.location = appointment_info['location']
