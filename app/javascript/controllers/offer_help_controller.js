@@ -8,6 +8,12 @@ export default class extends Controller {
 
   offerHelp() {
     console.log("Button clicked!");
+    const listingContainer = this.element.closest('.appointment-border');
+
+    // Change the background color of the listing container
+    listingContainer.style.backgroundColor = 'green';
+    const listingButton = this.element.closest('.offer-help-button')
+    listingButton.innerText = 'Offered!';
   }
 
 }
