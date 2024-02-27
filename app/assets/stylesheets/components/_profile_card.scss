@@ -1,0 +1,97 @@
+// <div class="pet-profile-card">
+// <img class="pet-img" src="..." alt="Your pet!">
+// <div class="pet-card-content">
+//   <div class="pet-content-titles">
+//     <h5 class="pc-title">Owner & Pet</h5>
+//     <p class="pc-title">Location</p>
+//   </div>
+//     <p class="pet-card-text">DOG description</p>
+//     <a href="#" class="card-btnn btn btn-primary">Go somewhere</a>
+//   </div>
+
+// </div>
+
+// ==========================
+// $red: #FD1015;
+// $blue: #0D6EFD;
+// $yellow: #FFC65A;
+// $orange: #E67E22;
+// $green: #1EDD88;
+// $gray: #0E0000;
+// $light-gray: #F4F4F4;
+
+
+.pet-profile-card {
+  background: white;
+  border-radius: 5px;
+}
+
+.pet-img {
+  align-self: flex-start;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 5px 20px;
+  height: 150px;
+}
+
+.pet-profile-card {
+  display: block;
+  width: 300px;
+  height: 360px;
+  border-radius: 5px 20px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.pet-content-titles > h2 {
+  font-size: 16px;
+  margin: 0px;
+}
+
+.pet-content-titles > p {
+  font-size: 12px;
+}
+
+.pet-content-titles {
+  align-self: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.pet-card-btn {
+  background-color: $blue;
+  display: flex-end;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+
+.pet-card-content {
+  // display: flex;
+  // align-items: flex-end;
+  // justify-content: space-between;
+  margin-top: 10px;
+  padding: 16px;
+  text-overflow: ellipsis;
+	width: 100%;
+  height: 200px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* Avatar */
+.avatar {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+  // box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 2px solid;
+
+  position: absolute;
+  bottom: 190px;
+  right: 75px;
+}
