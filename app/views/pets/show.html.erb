@@ -19,66 +19,78 @@
     </div>
   </div>
 
-  <%# <p><%= current_user.id = 12 ? 'owner' : 'helper'></p> %>
-
-  <%# Bio %>
-  <div id="bio" class="py-4">
-    <h4>Introduction</h4>
-    <p>Cleo has a fantastic nature and loves nothing more than running through the woods and cuddling up to people. She's great and well-mannered around other dogs.</p>
-  </div>
-
-  <%# Attributes %>
-  <div id="attributes" class="py-4">
-    <h4>About Cleo</h4>
-    <%# SD: I think we might need an if statement for every attribute.
-    If present, show X icon and then the attribute's value. %>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-    <p><i class="fa-solid fa-paw"></i> List icons</p>
-  </div>
-
-  <%# Reviews %>
-
-  <div id="reviews" class="py-4">
-    <h4>Reviews</h4>
-    <div id="reviews-container" class="d-flex justify-content-around">
-      <div id="review-card" class="col-3 p-3">
-        <h6>“Sean took great care of our Bruce! Cleo was lovely when we had her too, loads of cuddles!”</h6>
-        <div class="d-flex align-items-center justify-content-end">
-        <p class="pl-3">... from <a href="">Victoria & Albert</a></p>
-        <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large pr-3">
-        </div>
+    <%# <p><%= current_user.id = 12 ? 'owner' : 'helper'></p> %>
+  <div id="panels-container" class="d-flex m-0">
+    <div id="left-panel" class="col-7">
+    <%# Bio %>
+      <div id="bio" class="py-4">
+        <h4>Introduction</h4>
+        <p>Cleo has a fantastic nature and loves nothing more than running through the woods and cuddling up to people. She's great and well-mannered around other dogs.</p>
       </div>
 
-      <div id="review-card" class="col-3 p-3">
-        <h6>“Sean took great care of our Bruce! Cleo was lovely when we had her too, loads of cuddles!”</h6>
-        <div class="d-flex align-items-center justify-content-end">
-        <p class="pl-3">... from <a href="">Victoria & Albert</a></p>
-        <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large pr-3">
-        </div>
+      <%# Attributes %>
+      <div id="attributes" class="py-4">
+        <h4>About Cleo</h4>
+        <%# SD: I think we might need an if statement for every attribute.
+        If present, show X icon and then the attribute's value. %>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
+        <p><i class="fa-solid fa-paw"></i> List icons</p>
       </div>
 
-      <div id="review-card" class="col-3 p-3">
-        <h6>“Sean took great care of our Bruce! Cleo was lovely when we had her too, loads of cuddles!”</h6>
-        <div class="d-flex align-items-center justify-content-end">
-        <p class="pl-3">... from <a href="">Victoria & Albert</a></p>
-        <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large pr-3">
+      <%# Reviews %>
+
+      <div id="reviews" class="py-4">
+        <h4>Reviews</h4>
+        <div id="reviews-container" class="d-flex flex-column gap-3 justify-content-around">
+          <div id="review-card" class="col-3 p-3">
+            <h6>“Sean took great care of our Bruce! Cleo was lovely when we had her too, loads of cuddles!”</h6>
+            <div class="d-flex align-items-center justify-content-end">
+            <p class="pl-3">... from <a href="">Victoria & Albert</a></p>
+            <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large pr-3">
+            </div>
+          </div>
+
+          <div id="review-card" class="col-3 p-3">
+            <h6>“Sean took great care of our Bruce! Cleo was lovely when we had her too, loads of cuddles!”</h6>
+            <div class="d-flex align-items-center justify-content-end">
+            <p class="pl-3">... from <a href="">Victoria & Albert</a></p>
+            <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large pr-3">
+            </div>
+          </div>
+
+          <div id="review-card" class="col-3 p-3">
+            <h6>“Sean took great care of our Bruce! Cleo was lovely when we had her too, loads of cuddles!”</h6>
+            <div class="d-flex align-items-center justify-content-end">
+            <p class="pl-3">... from <a href="">Victoria & Albert</a></p>
+            <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large pr-3">
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <div id="right-panel" style="background=color:red">
+
+      <%# Map %>
+      <div id="map">
+      <h3>map here</h3>
+      <img src="https://www.maptive.com/wp-content/uploads/2020/11/radius-map-covid-19-e1596147538260-590x374.jpg" alt="map placeholder" class="w-100">
+      </div>
+      <%# Appointments %>
+        <div id="appointments">
+      <h3>appointments here</h3>
+      </div>
+    </div>
   </div>
-
-    <%# Appointments %>
-
-
 
     <!-- Content here -->
 
