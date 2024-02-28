@@ -12,17 +12,47 @@
 
   <body>
 
-    <div class="navbar navbar-light bg-light justify-content-between sticky-top m-2">
-      <div class="mr-auto">
-        <h3 class="navbar-brand mr-auto">Collabrador</h3>
+    <div data-controller="modals"> <!-- Note: modals-controller sits in seperate div to cover the navbar and the modals itself -->
+      <div class="navbar navbar-light bg-light justify-content-between sticky-top m-2">
+        <div class="mr-auto">
+          <h3 class="navbar-brand mr-auto">Collabrador</h3>
+        </div>
+        <div class="">
+          <ul class="list-text">
+            <% unless current_user %>
+              <li class="btn btn-primary list-item" data-action="click->modals#openSignin">Login</li>
+              <li class="btn btn-light list-item" data-action="click->modals#openSignup">Sign-up</li>
+            <% else %>
+              <li class="btn btn-light list-item"><%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="">
-        <ul class="list-text">
-          <li class="btn btn-primary list-item">Login</li>
-          <li class="btn btn-light list-item">Signup</li>
-        </ul>
+
+
+      <!-- Modal - Sign-up -->
+      <div class="modal-custom" data-modals-target="signup">
+        <div class="inner">
+          <div class="modal-head">
+            <h1>Sign-up</h1>
+            <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeSignup"></i></span>
+          </div>
+          <h2>Join other collabradors in your neighborhood!</h2>
+          <%= render "devise/registrations/signup_form" %>
+        </div>
       </div>
-    </div>
+
+      <!-- Modal - Sign-in -->
+      <div class="modal-custom" data-modals-target="signin">
+        <div class="inner">
+          <div class="modal-head">
+            <h1>Login</h1>
+            <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeSignin"></i></span>
+          </div>
+          <h2>Sign in to continue</h2>
+          <%= render "devise/sessions/signin_form" %>
+        </div>
+      </div>
 
     <%= yield %>
   </body>
