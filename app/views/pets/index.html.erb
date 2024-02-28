@@ -27,7 +27,7 @@
       <div class="index-grid col-7">
 
           <% @pets.each do |pet| %>
-            <%= render 'profile_card', pet: pet, owner: @owner %>
+            <%= render 'profile_card', pet: pet, owner: pet.user %>
           <% end %>
 
 
