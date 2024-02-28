@@ -19,11 +19,11 @@
         </div>
         <div class="">
           <ul class="list-text">
-            <% if user_signed_in? %>
+            <% unless current_user %>
               <li class="btn btn-primary list-item" data-action="click->modals#openSignin">Login</li>
               <li class="btn btn-light list-item" data-action="click->modals#openSignup">Sign-up</li>
             <% else %>
-              <li class="btn btn-light list-item" data-action="click->modals#openSignup">Sign-out</li>
+              <li class="btn btn-light list-item"><%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %></li>
             <% end %>
           </ul>
         </div>

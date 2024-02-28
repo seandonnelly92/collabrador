@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { useClickOutside } from "stimulus-use"
+// import { useClickOutside } from "stimulus-use"
 
 // Connects to data-controller="modals"
 export default class extends Controller {
@@ -11,22 +11,22 @@ export default class extends Controller {
 
   connect() {
     console.log("Hello from the modals controller");
-    useClickOutside(this, { element: this.signupTarget });
+    // useClickOutside(this, { element: this.signupTarget });
   }
 
   openSignup() {
     this.signupTarget.classList.add('show');
   }
 
-  clickOutside(e) {
-    e.preventDefault();
-    // this.signupTarget.classList.remove('show');
-    // this.signupTarget.close()
-  }
-
   closeSignup(e) {
     this.signupTarget.classList.remove('show');
   }
+
+  // clickOutside(e) {
+  //   e.preventDefault();
+  //   // this.signupTarget.classList.remove('show');
+  //   // this.signupTarget.close()
+  // }
 
   // Methods for login
   openSignin(e) {
