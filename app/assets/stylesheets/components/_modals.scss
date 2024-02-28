@@ -9,7 +9,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba($color: rgb(0, 0, 0), $alpha: 0.1);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(3px);
 
   .inner {
     position: absolute;
@@ -36,7 +36,7 @@
 
   h1 {
     font-size: 28px;
-    font-weight: bolder;
+    font-weight: 800;
     color: rgb(113, 113, 113);
   }
 
@@ -96,6 +96,12 @@
   justify-content: end;
 
   #btn-signup {
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+
+  #btn-signin {
     font-size: 12px;
     font-weight: bold;
     border-radius: 8px;
