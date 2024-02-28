@@ -138,44 +138,6 @@
 
       <%# Appointments %>
       <div class="appointments-panel sticky-top sticky-offset">
-        <h3> <%= @owner.first_name %> is looking for...</h3>
-          <div class="appointment d-flex">
-            <div>
-              <h5>Saturday 2nd March</h5>
-              <p>Help type: Visit, Feed</p>
-              <p>Looking for help this weekend as we'll be out all day.</p>
-            </div>
-            <div>
-              <button>Offer to Help</button>
-            </div>
-          </div>
-
-          <div class="appointment d-flex">
-            <div>
-              <h6>Saturday 2nd March</h6>
-              <p>Help type: Visit, Feed</p>
-              <p>Looking for help this weekend as we'll be out all day.</p>
-            </div>
-            <div>
-              <button>Offer to Help</button>
-            </div>
-          </div>
-
-          <div class="appointment d-flex">
-            <div>
-              <h6>Saturday 2nd March</h6>
-              <p>Help type: Visit, Feed</p>
-              <p>Looking for help this weekend as we'll be out all day.</p>
-            </div>
-            <div>
-              <button>Offer to Help</button>
-            </div>
-          </div>
-
+          <%= render partial: 'listing_card', locals: { pet: @pet } %>
       </div>
-    </div>
-  </div>
-
-    <!-- Content here -->
-
   </div>

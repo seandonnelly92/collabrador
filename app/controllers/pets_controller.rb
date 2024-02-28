@@ -6,5 +6,6 @@ class PetsController < ApplicationController
   def show
     @pet = Pet.find(params[:id])
     @owner = @pet.user
+    @appointments = @pet.appointments
   end
 end
