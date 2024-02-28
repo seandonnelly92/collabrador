@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
 
+  get "user_profile", to: "pages#user_profile"
+
   # Defines the root path route ("/")
   # root "posts#index"
 end

@@ -1,0 +1,13 @@
+<%= simple_form_for(pet) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :animal_type %>
+  <%= f.input :breed %>
+  <%= f.input :size, as: :radio_buttons, collection: [['Small', 'small'], ['Medium', 'medium'], ['Large', 'large']], item_wrapper_tag: false, boolean_style: :inline %>
+  <div>
+      <%# <%= f.button :submit %>
+      <%= button_tag(type: 'submit') do %>
+        <span><i class="fa-solid fa-clapperboard"></i>  Add list</span>
+      <% end %>
+    </div>
+<% end %>
