@@ -1,25 +1,35 @@
-<h1>Pet owner: <%= @owner.first_name %> <%= @owner.last_name %></h1>
-<h2>Number of pets: <%= @owner.pets.length %></h2>
-<h3>Pet name(s): <% @owner.pets.each do |pet| %></h3>
-<h3><%= pet.name %></h3>
-<% end %>
+<div class="container">
 
-<button class="btn btn-primary" data-action="click->modals#openNewPet"><i class="fa-solid fa-paw"></i> Add pet</button>
+  <% if @owner.profile_picture.attached? %>
+    <%= cl_image_tag @owner.profile_picture.key, height: 400, width: 400, crop: :fill %>
+  <% else %>
+    <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar-profile" %>
+  <% end %>
 
-<% if @owner.pets.length.zero? %>
-  <!-- Modal - First pet -->
-  <div class="modal-custom show" data-modals-target="newPet">
-<% else %>
-  <!-- Modal - Other pets (not shown by default) -->
-  <div class="modal-custom" data-modals-target="newPet">
-<% end %>
-    <div class="inner">
-      <div class="modal-head">
-        <h1>Add your pet</h1>
-        <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeNewPet"></i></span>
+  <h1>Pet owner: <%= @owner.first_name %> <%= @owner.last_name %></h1>
+  <h2>Number of pets: <%= @owner.pets.length %></h2>
+  <h3>Pet name(s): <% @owner.pets.each do |pet| %></h3>
+  <h3><%= pet.name %></h3>
+  <% end %>
+
+  <button class="btn btn-primary" data-action="click->modals#openNewPet"><i class="fa-solid fa-paw"></i> Add pet</button>
+
+  <% if @owner.pets.length.zero? %>
+    <!-- Modal - First pet -->
+    <div class="modal-custom show" data-modals-target="newPet">
+  <% else %>
+    <!-- Modal - Other pets (not shown by default) -->
+    <div class="modal-custom" data-modals-target="newPet">
+  <% end %>
+      <div class="inner">
+        <div class="modal-head">
+          <h1>Add your pet</h1>
+          <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeNewPet"></i></span>
+        </div>
+        <h2>Other collabradors would love to meet your furry friend!</h2>
+        <% new_pet = Pet.new %>
+        <%= render "pets/new_pet", pet: new_pet %>
       </div>
-      <h2>Other collabradors would love to meet your furry friend!</h2>
-      <% new_pet = Pet.new %>
-      <%= render "pets/new_pet", pet: new_pet %>
-    </div>
-  </div>
+    </div> <!-- Note: This is the div-closing for the div-opening in the if-statement -->
+
+</div>

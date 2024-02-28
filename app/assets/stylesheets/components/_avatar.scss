@@ -10,6 +10,13 @@
   border-radius: 50%;
   object-fit: cover;
 }
+.avatar-profile {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 1px 2px 2px 2px lightgrey;
+}
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;
