@@ -2,17 +2,24 @@
 <h1><%= @owner %></h1>
 <h2><%= @owner.pets.length %></h2>
 
-<% if @owner.pets.length.zero? %>
-  <!-- Modal - First-pet -->
-  <div class="modal-custom show" data-modals-target="new-pet">
-    <div class="inner">
-      <div class="modal-head">
-        <h1>Add your pet</h1>
-        <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeSignup"></i></span>
+<button class="btn btn-primary" data-action="click->modals#openNewPet"><i class="fa-solid fa-paw"></i> Add pet</button>
+
+<div data-controller="modals">
+  <% if @owner.pets.length.zero? %>
+    <!-- Modal - First pet -->
+    <div class="modal-custom show" data-modals-target="new-pet">
+  <% else %>
+    <!-- Modal - Other pets (not shown by default) -->
+    <div class="modal-custom" data-modals-target="new-pet">
+  <% end %>
+      <div class="inner">
+        <div class="modal-head">
+          <h1>Add your pet</h1>
+          <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeSignup"></i></span>
+        </div>
+        <h2>Other collabradors would love to meet your furry friend!</h2>
+        <% new_pet = Pet.new %>
+        <%= render "pets/new_pet", pet: new_pet %>
       </div>
-      <h2>Other collabradors would love to meet your furry friend!</h2>
-      <% new_pet = Pet.new %>
-      <%= render "pets/new_pet", pet: new_pet %>
     </div>
-  </div>
-<% end %>
+</div>
