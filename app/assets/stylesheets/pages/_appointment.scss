@@ -1,0 +1,26 @@
+// .appointments-panel {
+//   // position: fixed;
+//   // top: 0;
+//   width: 220px;
+//   background-color: #fff;
+//   border: 1px solid black
+// }
+
+.listing-card-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.appointment {
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+  min-width: 200px;
+}
+
+.appointment-border {
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 25% 10%;
+  background-color: rgb(227, 249, 255);
+}
