@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container my-5">
 
   <% if @owner.profile_picture.attached? %>
-    <%= cl_image_tag @owner.profile_picture.key, height: 400, width: 400, crop: :fill %>
+    <%= cl_image_tag @owner.profile_picture.key, class: "avatar-profile" %>
   <% else %>
     <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar-profile" %>
   <% end %>
