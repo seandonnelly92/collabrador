@@ -12,7 +12,7 @@
 require 'date'
 
 
-puts "destroying all appointments"
+puts "destroying all appointments..."
 Appointment.destroy_all
 
 puts "destroying all pets..."
@@ -22,10 +22,8 @@ Pet.destroy_all
 puts "destroying all users..."
 User.destroy_all
 
-
-
 ## Randomly generated Users
-
+puts "Seeding users..."
 users = {
   user_1: {
     first_name: "Alex",
@@ -112,29 +110,40 @@ end
 
 puts "User data seeded successfully."
 
-
+puts "Seeding pets (dogs)..."
 # Defining common dog breeds
 COMMON_BREEDS = [
-  "Labrador Retriever",
-  "German Shepherd",
-  "Golden Retriever",
-  "Bulldog",
-  "Beagle",
-  "Poodle",
-  "Boxer",
+  "Labrador",
+  "Newfoundland",
+  "Pomeranian",
+  "Pyrenees",
+  "Vizsla",
+  "Whippet",
+  "Doberman",
   "Dachshund",
-  "Siberian Husky",
-  "Great Dane",
   "Chihuahua",
-  "Shih Tzu",
-  "Yorkshire Terrier",
-  "Pug",
-  "Border Collie"
+  "Boxer",
+  "Beagle",
 ]
+
 
 # Define common male and female names for dogs
 MALE_NAMES = ["Max", "Buddy", "Charlie", "Jack", "Cooper", "Rocky", "Bear", "Duke", "Tucker", "Oliver"]
 FEMALE_NAMES = ["Bella", "Lucy", "Daisy", "Molly", "Sadie", "Lola", "Sophie", "Bailey", "Luna", "Zoe"]
+
+
+#Fetching dog images from dog API
+def get_random_dog_image_by_breed(breed)
+  url = "https://dog.ceo/api/breed/#{breed}/images/random"
+  uri = URI(url)
+  response = Net::HTTP.get(uri)
+  data = JSON.parse(response)
+  if data["status"] == "success"
+    return data["message"]
+  else
+    return nil
+  end
+end
 
 # Seed Pet data
 
@@ -142,6 +151,7 @@ User.all.each do |user|
   name = [MALE_NAMES.sample, FEMALE_NAMES.sample].sample
   age = rand(2..15)
   breed = COMMON_BREEDS.sample
+  breed_img_title = breed.downcase
   sex = ["male", "female"].sample
   activity_needs = ["high", "medium", "low"].sample
   neutered = [true, false].sample
@@ -151,13 +161,15 @@ User.all.each do |user|
   hypoallergenic = [true, false].sample
 
   size = case breed
-         when "Chihuahua", "Shih Tzu", "Yorkshire Terrier", "Pomeranian"
-           "small"
-         when "Beagle", "Cocker Spaniel", "Dachshund", "French Bulldog", "Pug"
-           "medium"
-         else
-           "large"
-         end
+  when "Chihuahua","Pomeranian", "Dachsund", "Beagle"
+    "small"
+  when "Vizsla", "Whippet", "Boxer"
+    "medium"
+  else
+    "large"
+  end
+
+  dog_image = get_random_dog_image_by_breed(breed_img_title)
 
   Pet.create!(
     name: name,
@@ -172,11 +184,13 @@ User.all.each do |user|
     neutered_spayed: neutered,
     hypoallergenic: hypoallergenic,
     size: size,
-    user: user
+    user: user,
+    dog_image: dog_image
   )
 end
 
 puts "Pet seeded successfully."
+puts "Seeding appointments.."
 
 # Function to generate a random time between 08:00 and 21:00
 def generate_random_time
@@ -226,9 +240,6 @@ User.all.each do |user|
     appointment_key = "appointment #{available_appointments.delete_at(0)}"
     appointment_info = appointments[appointment_key]
     appointment = Appointment.new
-    # puts "CHECKING HERE"
-    # puts "Appointment key is: #{appointment_key}"
-    # puts "Appointment info is: #{appointment_info}"
     appointment.start_date = appointment_info['start_date']
     appointment.end_date = appointment_info['end_date']
     appointment.location = appointment_info['location']
