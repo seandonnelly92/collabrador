@@ -1,6 +1,18 @@
 // To be coded
 
 #review-card {
-  background-color: rgb(227, 249, 255);
   border-radius: 10px;
+}
+
+#review-card p {
+  color: grey;
+  margin-bottom: 0px;
+  font-size: small;
+
+}
+
+#review-card p a {
+  text-decoration: none;
+  font-size: medium
+
 }

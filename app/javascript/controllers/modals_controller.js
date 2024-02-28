@@ -6,6 +6,7 @@ export default class extends Controller {
   static targets = [
     "signup",
     "signin",
+    "newPet",
     "closeBtn"
   ]
 
@@ -29,6 +30,16 @@ export default class extends Controller {
 
   closeSignin(e) {
     this.signinTarget.classList.remove('show');
+  }
+
+  // Methods for new pet modal
+  openNewPet(e) {
+    console.log(e.currentTarget);
+    this.newPetTarget.classList.add('show');
+  }
+
+  closeNewPet(e) {
+    this.newPetTarget.classList.remove('show');
   }
 
   // clickOutside(e) {

@@ -11,6 +11,7 @@ class Registrations::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   # def create
+  #   after_sign_up_path_for(resource)
   #   super
   # end
 
@@ -51,12 +52,14 @@ class Registrations::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    # super(resource)
+    '/user_profile'
+  end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_inactive_sign_up_path_for(resource)
+    # super(resource)
+    '/user_profile'
+  end
 end
