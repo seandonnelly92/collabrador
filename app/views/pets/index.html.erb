@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="banner p-3 align-middle">
+  <div class="banner p-3 align-middle" style="height: 350px;">
     <div class="row m-2">
       <div class="col-7">
         <h1>Find fellow pet owners in your area</h1>
@@ -18,81 +18,65 @@
 </div>
 
 <div class="body">
-  <div class="row">
-    <h2 class="text-center">Members</h2>
-  </div>
-  <div class="row d-flex flex-grid justify-content-between">
-    <div class="col-3">
 
-      <ul>
-        <li><h2>Why join</h2></li>
-        <li>IMAGE</li>
-        <li><p>Find likeminded dog owners and support eachother</p></li>
-      </ul>
-
-    </div>
-
-    <div class="col-3">
-      <ul>
-        <li><h2>Why join</h2></li>
-        <li>IMAGE</li>
-        <li><p>Find likeminded dog owners and support eachother</p></li>
-      </ul>
-    </div>
-
-    <div class="col-3">
-      <ul>
-        <li><h2>Why join</h2></li>
-        <li>IMAGE</li>
-        <li><p>Find likeminded dog owners and support eachother</p></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="container">
+  <div class="container" style="height: 500px;">
     <div class="row">
-      <div class="col-8">
-        <div class="row">
-          <div class="col-6">
+      <div class="col-6">
+        <div class="row d-flex">
+          <div class="col-6 d-flex justify-content-center">
 
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="..." alt="Card image cap">
-              <div class="card-body">
-                <div class="profile-info d-flex justify-content-inline">
-                  <h5 class="card-title">Owner & Pet</h5>
-                  <p>Location</p>
-                </div>
-                  <p class="card-text">DOG description</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+            <%= render 'profile_card' %>
 
             </div>
-          </div>
 
-          <div class="col-6">
+          <div class="col-6 d-flex justify-content-center">
 
-                    <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="..." alt="Card image cap">
-              <div class="card-body">
-                <div class="profile-info d-flex justify-content-inline">
-                  <h5 class="card-title">Owner & Pet</h5>
-                  <p>Location</p>
-                </div>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+            <%= render 'profile_card' %>
 
           </div>
         </div>
-      </div>
-      </div>
 
-      <div class="col-4">
+      </div>
+      <div class="col-6">
         <div class="row mr-auto">
-          <h1>MAP</h1>
+          <img src="https://blogcdn.zeemaps.com/blog/wp-content/uploads/2020/01/Radius-map-2.png" class="map-eg-img">
         </div>
       </div>
     </div>
   </div>
+
+  <div class="container mt-5">
+    <div class="row mt-3">
+      <h2 class="text-center">Why Join</h2>
+    </div>
+    <div class="row d-flex flex-grid justify-content-between">
+      <div class="col-3">
+
+        <ul>
+          <li><h2>Why join</h2></li>
+          <li>IMAGE</li>
+          <li><p>Find likeminded dog owners and support eachother</p></li>
+        </ul>
+
+      </div>
+
+      <div class="col-3">
+        <ul>
+          <li><h2>Why join</h2></li>
+          <li>IMAGE</li>
+          <li><p>Find likeminded dog owners and support eachother</p></li>
+        </ul>
+      </div>
+
+      <div class="col-3">
+        <ul>
+          <li><h2>Why join</h2></li>
+          <li>IMAGE</li>
+          <li><p>Find likeminded dog owners and support eachother</p></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
 </div>
