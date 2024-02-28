@@ -15,7 +15,7 @@
     <div data-controller="modals"> <!-- Note: modals-controller sits in seperate div to cover the navbar and the modals itself -->
       <div class="navbar navbar-light bg-light justify-content-between sticky-top m-2">
         <div class="mr-auto">
-          <h3 class="navbar-brand mr-auto">Collabrador</h3>
+          <h3 class="navbar-brand mr-auto"><%= link_to 'Collabrador', root_path, id: "logo-link" %> </h3>
         </div>
         <div class="">
           <ul class="list-text">
@@ -23,7 +23,7 @@
               <li class="btn btn-primary list-item" data-action="click->modals#openSignin">Login</li>
               <li class="btn btn-light list-item" data-action="click->modals#openSignup">Sign-up</li>
             <% else %>
-              <li class="btn btn-light list-item"><%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %></li>
+              <li class="btn btn-light list-item"><%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, id: "signout-link" %></li>
             <% end %>
           </ul>
         </div>

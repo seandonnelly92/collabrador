@@ -1,0 +1,37 @@
+// Format of the pet size selection buttons
+.pet_size, .pet_activity_needs {
+  label {
+    color: black;
+    font-weight: normal;
+    margin-left: 4px;
+    margin-right: 12px;
+  }
+
+  legend {
+    font-weight: bold;
+    color: rgb(113, 113, 113);
+  }
+}
+
+.modal-custom .form-check label {
+  color: black;
+  font-weight: normal;
+  margin-left: 4px;
+  margin-right: 12px;
+}
+
+.pet-chars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  fieldset {
+    margin-bottom: 0 !important;
+  }
+}
+
+// Format of the new pet submit button
+#btn-new-pet {
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 8px;
+}
