@@ -20,7 +20,7 @@
           <img class="d-block w-100" src="..." alt="Third slide">
         </div>
       </div>
-      <a class="carousel-control-prev" href="" role="button" data-slide="prev">
+      <a class="carousel-control-prev" href="#" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
@@ -40,30 +40,36 @@
   </div>
 
     <%# <p><%= current_user.id = 12 ? 'owner' : 'helper'></p> %>
-  <div id="panels-container" class="d-flex m-0">
+  <div id="panels-container" class="d-flex">
     <div id="left-panel" class="col-7">
     <%# Bio %>
       <div id="bio" class="py-4 col-10">
         <h4>Introduction</h4>
-        <p>Cleo has a fantastic nature and loves nothing more than running through the woods and cuddling up to people. She's great and well-mannered around other dogs.</p>
+        <p><%= @pet.name %> has a fantastic nature and loves nothing more than running through the woods and cuddling up to people. She's great and well-mannered around other dogs.</p>
       </div>
 
       <%# Attributes %>
       <div id="attributes" class="py-4 col-10">
-        <h4>About Cleo</h4>
         <%# SD: I think we might need an if statement for every attribute.
         If present, show X icon and then the attribute's value. %>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
-        <p><i class="fa-solid fa-paw"></i> List icons</p>
+      <h4>About <%= @pet.name %> </h4>
+        <div id="attributes-container" class="d-flex justify-content-between col-11">
+          <div id="attributes-left">
+            <p><i class="fa-solid fa-paw"></i> Breed: <%= @pet.breed %>, <%= @pet.animal_type %></p>
+            <p><i class="fa-solid fa-paw"></i> Size: <%= @pet.size %></p>
+            <p><i class="fa-solid fa-paw"></i> Age: <%= @pet.age %></p>
+            <p><i class="fa-solid fa-paw"></i> Sex: <%= @pet.sex %></p>
+            <p><i class="fa-solid fa-paw"></i> Netuered/Spayed: <%= @pet.neutered_spayed %></p>
+          </div>
+
+          <div id="attributes-right">
+            <p><i class="fa-solid fa-paw"></i> Child Friendly: <%= @pet.child_friendly %></p>
+            <p><i class="fa-solid fa-paw"></i> Dog Friendly: <%= @pet.dog_friendly %></p>
+            <p><i class="fa-solid fa-paw"></i> Cat Friendly: <%= @pet.cat_friendly %></p>
+            <p><i class="fa-solid fa-paw"></i> Hypoallergenic: <%= @pet.hypoallergenic %></p>
+            <p><i class="fa-solid fa-paw"></i> Activity Needs: <%= @pet.activity_needs %></p>
+          </div>
+        </div>
       </div>
 
       <%# Reviews %>
@@ -98,15 +104,17 @@
       </div>
     </div>
 
+
     <div id="right-panel" style="background=color:red">
 
       <%# Map %>
       <div id="map">
         <img src="https://www.maptive.com/wp-content/uploads/2020/11/radius-map-covid-19-e1596147538260-590x374.jpg" alt="map placeholder" class="w-100">
       </div>
+
       <%# Appointments %>
       <div class="appointments-panel">
-        <h3>Sean is looking for...</h3>
+        <h3> <%= @owner.first_name %> is looking for...</h3>
           <div class="appointment d-flex">
             <div>
               <h5>Saturday 2nd March</h5>
