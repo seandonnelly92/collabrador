@@ -22,19 +22,18 @@ export default class extends Controller {
     this.signupTarget.classList.remove('show');
   }
 
-  // clickOutside(e) {
-  //   e.preventDefault();
-  //   // this.signupTarget.classList.remove('show');
-  //   // this.signupTarget.close()
-  // }
-
   // Methods for login
   openSignin(e) {
-    console.log(e.currentTarget);
     this.signinTarget.classList.add('show');
   }
 
   closeSignin(e) {
     this.signinTarget.classList.remove('show');
   }
+
+  // clickOutside(e) {
+  //   e.preventDefault();
+  //   // this.signupTarget.classList.remove('show');
+  //   // this.signupTarget.close()
+  // }
 }
