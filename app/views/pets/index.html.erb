@@ -1,6 +1,6 @@
 <div class="container">
   <div class="banner p-3 align-middle" style="height: 350px;">
-    <div class="row m-2" style="height: 300px">
+    <div class="row m-2 justify-content-between" style="height: 300px">
       <div class="col-7 d-flex flex-column justify-content-center">
         <h1>Find fellow pet owners in your area</h1>
         <div class="form-inline inline-block align-middle">
@@ -27,23 +27,8 @@
       <div class="index-grid col-7">
 
           <% @pets.each do |pet| %>
-            <div class="pet-profile-card">
-              <img class="pet-img" src="<%= pet.dog_image %>" alt="Picture of pet">
-              <div class="pet-card-content">
-                <div class="pet-content-titles">
-                  <h5 class="pc-title"><%= @owner.first_name %> & <%= pet.name %></h5>
-                  <p class="pc-title"><%= @owner.postcode %></p>
-                </div>
-                <div class="pet-desc">
-                  <p class="pet-card-text">Description of the dog and all the wonderful things this dog is</p>
-                </div>
-              </div>
-              <%# <button class="pet-card-btn"></button> %>
-              <%= link_to 'Profile', pet_path(pet), class: "pet-card-btn" %>
-              <img class="avatar" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww" alt="your profile picture">
-            </div>
+            <%= render 'profile_card', pet: pet, owner: @owner %>
           <% end %>
-            <%# <%= render 'profile_card' %>
 
 
       </div>
@@ -73,13 +58,13 @@
         <ul class="testim-list">
           <li><h2>Shared Value</h2></li>
           <li><i class="fa-solid fa-coins"></i></li>
-          <li><p>An ecosystem of free support</p></li>
+          <li><p>A meritocracy model of doggy daycare</p></li>
         </ul>
       </div>
 
       <div class="col-3">
         <ul class="testim-list">
-          <li><h2>Helper Community</h2></li>
+          <li><h2>Helpful Community</h2></li>
           <li><i class="fa-solid fa-house"></i></li>
           <li><p>Find and foster a community of support in your area</p></li>
         </ul>
