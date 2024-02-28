@@ -152,6 +152,7 @@ User.all.each do |user|
   age = rand(2..15)
   breed = COMMON_BREEDS.sample
   breed_img_title = breed.downcase
+  puts breed_img_title
   sex = ["male", "female"].sample
   activity_needs = ["high", "medium", "low"].sample
   neutered = [true, false].sample
