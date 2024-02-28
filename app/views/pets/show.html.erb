@@ -106,8 +106,11 @@
       </div>
       <%# Appointments %>
       <div class="appointments-panel">
-        <h3>Sean is looking for...</h3>
-          <div class="appointment d-flex">
+          <%= render partial: 'listing_card', locals: { pet: @pet } %>
+          </div>
+        </div>
+      </div>
+          <%# <div class="appointment d-flex">
             <div>
               <h5>Saturday 2nd March</h5>
               <p>Help type: Visit, Feed</p>
@@ -138,11 +141,9 @@
             <div>
               <button>Offer to Help</button>
             </div>
-          </div>
+          </div> %>
 
-      </div>
-    </div>
-  </div>
+
 
     <!-- Content here -->
 
