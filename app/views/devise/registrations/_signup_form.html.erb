@@ -1,0 +1,42 @@
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%# In the below, given-name, family-name, and postal-code are used to specify to the browser that it can autocomplete for saved names %>
+    <div class="form-split">
+      <%= f.input :first_name,
+                  required: true,
+                  input_html: { autocomplete: "given-name" },
+                  class: "form-first-name" %>
+      <div id="form-gap"></div>
+      <%= f.input :last_name,
+                  required: true,
+                  input_html: { autocomplete: "family-name" } %>
+    </div>
+
+    <%= f.input :postcode,
+                required: true,
+                input_html: { autocomplete: "postal-code" } %>
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+
+    <div class="form-split">
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <div id="form-gap"></div>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up",
+                 class: "btn btn-primary",
+                 id: "btn-signup" %>
+  </div>
+<% end %>

@@ -1,0 +1,109 @@
+.modal-custom {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s ease;
+  position: fixed;
+  z-index: 1021;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: rgb(0, 0, 0), $alpha: 0.1);
+  backdrop-filter: blur(3px);
+
+  .inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgb(232, 232, 232);
+    background-color: whitesmoke;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 40%;
+    height: fit-content;
+  }
+
+  &.show {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
+
+// Format of the fonts on the modal
+.modal-custom {
+  font-size: 12px;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: rgb(113, 113, 113);
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  label {
+    font-weight: bold;
+    color: rgb(113, 113, 113);
+  }
+
+  input {
+    font-size: 12px;
+  }
+}
+
+// Modal-head includes "Sign-up title" and the "close" button
+.modal-head {
+  display: flex;
+
+  h1 {
+    flex-grow: 1;
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+
+  span{
+    font-size: 30px;
+    color: rgb(113, 113, 113);
+    align-items: start;
+  }
+
+  i {
+    cursor: pointer;
+  }
+}
+
+// form-split is used for the form-items that are on the same row next to each other
+.form-split {
+  display: flex;
+
+  div {
+    flex-grow: 1;
+  }
+
+  #form-gap {
+    width: 16px;
+    flex-grow: 0;
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: end;
+
+  #btn-signup {
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+
+  #btn-signin {
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+}
