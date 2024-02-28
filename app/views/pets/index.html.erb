@@ -1,17 +1,20 @@
 <div class="container">
   <div class="banner p-3 align-middle" style="height: 350px;">
-    <div class="row m-2">
-      <div class="col-7">
+    <div class="row m-2" style="height: 300px">
+      <div class="col-7 d-flex flex-column justify-content-center">
         <h1>Find fellow pet owners in your area</h1>
-        <div class="form-inline">
-          <input class="form-control mr-sm-2 align-content-middle" type="search" placeholder="e.g D0G 4ME">
+        <div class="form-inline inline-block align-middle">
+          <input class="form-control mr-sm-2" type="search" placeholder="e.g D0G5 4US">
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </div>
       </div>
-      <div class="col-4">
-        <p>At Collabrador we connect local, like-minded dog owners to create a community of support when you need it.
-           Collabradors can post when their dog needs looking after and also help their connection when they need it, all without costing a penny!
-           Make friends and ensure your dog is always well looked after. </p>
+      <div class="col-4 banner-bg-img d-flex flex-column justify-content-center">
+
+          <%# <img src="https://png2.cleanpng.com/sh/d5427c9be2fb562143440e4b4d864a04/L0KzQYq3VsI3N6d7R91yc4Pzfri0jPFjepJphAQ2cnX3grrslvVzNZRxgeI2YYL3PcfsgCRwel5sitN5aHnmg376lP9kc15oh951ZXP3ebF1Tf9nNZd3fdc2dIX1hL3sTfRzaahuhtk2YXT5cbBqhfQubJD8ht54LUXnQYS4UPQ4bmE8SaQ6Lkm0SIO5UcQzOWY7Sac8MEW7Q4qBVMkveJ9s/kisspng-labrador-retriever-clip-art-vector-graphics-stock-collection-of-free-turtle-drawing-advanced-downlo-5d1310d7f07121.9182214215615305839849.png" width="300px" height="250px" alt="Low opacity labrador"> %>
+          <p class="text-justify">At Collabrador we connect local, like-minded dog owners to foster a community of support when you need it.
+            Collabradors can post when their dog needs looking after or help their fellow collabradors, all without costing a penny!
+            Make friends and ensure your dog is always well looked after. </p>
+
       </div>
     </div>
   </div>
@@ -21,58 +24,64 @@
 
   <div class="container" style="height: 500px;">
     <div class="row">
-      <div class="col-6">
-        <div class="row d-flex">
-          <div class="col-6 d-flex justify-content-center">
+      <div class="index-grid col-7">
 
-            <%= render 'profile_card' %>
-
+          <% @pets.each do |pet| %>
+            <div class="pet-profile-card">
+              <img class="pet-img" src="<%= pet.dog_image %>" alt="Picture of pet">
+              <div class="pet-card-content">
+                <div class="pet-content-titles">
+                  <h5 class="pc-title"><%= @owner.first_name %> & <%= pet.name %></h5>
+                  <p class="pc-title"><%= @owner.postcode %></p>
+                </div>
+                <div class="pet-desc">
+                  <p class="pet-card-text">Description of the dog and all the wonderful things this dog is</p>
+                </div>
+              </div>
+              <%# <button class="pet-card-btn"></button> %>
+              <%= link_to 'Profile', pet_path(pet), class: "pet-card-btn" %>
+              <img class="avatar" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww" alt="your profile picture">
             </div>
+          <% end %>
+            <%# <%= render 'profile_card' %>
 
-          <div class="col-6 d-flex justify-content-center">
-
-            <%= render 'profile_card' %>
-
-          </div>
-        </div>
 
       </div>
-      <div class="col-6">
+
+      <div class="col-5">
         <div class="row mr-auto">
           <img src="https://blogcdn.zeemaps.com/blog/wp-content/uploads/2020/01/Radius-map-2.png" class="map-eg-img">
         </div>
       </div>
+
     </div>
   </div>
 
-  <div class="container mt-5">
-    <div class="row mt-3">
-      <h2 class="text-center">Why Join</h2>
-    </div>
+  <div class="container mt-5 testim-bg">
     <div class="row d-flex flex-grid justify-content-between">
       <div class="col-3">
 
-        <ul>
-          <li><h2>Why join</h2></li>
-          <li>IMAGE</li>
-          <li><p>Find likeminded dog owners and support eachother</p></li>
+        <ul class="testim-list">
+          <li><h2>Meet Fellow Dog Lovers</h2></li>
+          <li><i class="fa-solid fa-paw"></i></li>
+          <li><p>Find likeminded dog owners near you at our park events</p></li>
         </ul>
 
       </div>
 
       <div class="col-3">
-        <ul>
-          <li><h2>Why join</h2></li>
-          <li>IMAGE</li>
-          <li><p>Find likeminded dog owners and support eachother</p></li>
+        <ul class="testim-list">
+          <li><h2>Shared Value</h2></li>
+          <li><i class="fa-solid fa-coins"></i></li>
+          <li><p>An ecosystem of free support</p></li>
         </ul>
       </div>
 
       <div class="col-3">
-        <ul>
-          <li><h2>Why join</h2></li>
-          <li>IMAGE</li>
-          <li><p>Find likeminded dog owners and support eachother</p></li>
+        <ul class="testim-list">
+          <li><h2>Helper Community</h2></li>
+          <li><i class="fa-solid fa-house"></i></li>
+          <li><p>Find and foster a community of support in your area</p></li>
         </ul>
       </div>
 

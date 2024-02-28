@@ -1,6 +1,8 @@
 class PetsController < ApplicationController
   def index
     @pets = Pet.all
+    @pet = Pet.find_by(params[:id])
+    @owner = @pet.user
   end
 
   def show
