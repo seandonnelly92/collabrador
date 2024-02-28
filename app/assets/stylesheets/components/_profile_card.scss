@@ -37,7 +37,7 @@
 .pet-profile-card {
   display: block;
 
-  width: 300px;
+  width: 280px;
   height: 360px;
   border-radius: 5px 20px;
   background-color: white;
@@ -56,13 +56,13 @@
 
 .pet-content-titles {
   max-width: 280px;
-  align-self: flex;
+  display: flex;
   justify-content: space-between;
   margin: 0;
 }
 
 .pc-title {
-  max-width: 120px;
+  max-width: 160px;
 }
 
 .pet-card-text {
@@ -90,7 +90,7 @@
 
 .pet-desc {
   overflow: scroll;
-  height: 60px;
+  height: 90px;
 }
 
 
@@ -117,5 +117,5 @@
 
   position: absolute;
   bottom: 55%;
-  right: 15%;
+  left: 10%;
 }

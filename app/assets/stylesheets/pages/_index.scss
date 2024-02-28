@@ -2,3 +2,46 @@
 @import "home";
 @import "profile";
 @import "pages/appointment";
+
+.index-grid {
+  max-height: 500px;
+  flex: content;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  overflow: scroll;
+}
+
+.banner-bg-img {
+  position: relative;
+}
+
+.banner-bg-img:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url("https://png2.cleanpng.com/sh/d5427c9be2fb562143440e4b4d864a04/L0KzQYq3VsI3N6d7R91yc4Pzfri0jPFjepJphAQ2cnX3grrslvVzNZRxgeI2YYL3PcfsgCRwel5sitN5aHnmg376lP9kc15oh951ZXP3ebF1Tf9nNZd3fdc2dIX1hL3sTfRzaahuhtk2YXT5cbBqhfQubJD8ht54LUXnQYS4UPQ4bmE8SaQ6Lkm0SIO5UcQzOWY7Sac8MEW7Q4qBVMkveJ9s/kisspng-labrador-retriever-clip-art-vector-graphics-stock-collection-of-free-turtle-drawing-advanced-downlo-5d1310d7f07121.9182214215615305839849.png");
+  opacity: 15%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.map-eg-img {
+  height: 500px;
+  background-size: contain;
+}
+
+body {
+  background-color: white;
+}
+
+.testim-list {
+  margin: none;
+  text-decoration: none;
+  text-align: center;
+  list-style-type: none;
