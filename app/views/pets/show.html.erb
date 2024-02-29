@@ -1,5 +1,13 @@
-<%# PUT NAVBAR IN %>
 <div class="container col-10 bg-light">
+
+<%# Testing user image upload %>
+<p>This user's ID is <%= @owner.id %></p>
+<p>This user's email address is <%= @owner.email %></p>
+<%= @pet.pet_photos[1] %>
+<% @pet.pet_photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+
 
   <%# Human and Pet Title %>
   <div id="profile-header" class="d-flex pt-3 pb-5">
