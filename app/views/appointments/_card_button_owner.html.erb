@@ -1,0 +1,20 @@
+<% if appointment.user %>
+  <% helper = appointment.user %>
+  <% helper_pet = helper.pets[0] %>
+  <%= link_to pet_path(helper_pet) do %>
+    <%= render 'appointments/helper_avatar', helper: helper %>
+  <% end %>
+  <%= link_to pet_path(helper_pet) do %>
+    <%= "#{helper.first_name} & #{helper_pet.name}" %>
+  <% end %>
+<% elsif appointment.pending_helper %>
+  <% pending_helper = User.find(appointment.pending_helper) %>
+  <% helper_pet = pending_helper.pets[0] %>
+  <%= link_to pet_path(helper_pet) do %>
+    <%= render 'appointments/helper_avatar', helper: pending_helper %>
+  <% end %>
+  <%= link_to pet_path(helper_pet) do %>
+    <%= "#{pending_helper.first_name} & #{helper_pet.name}" %>
+  <% end %>
+  <button class="btn btn-success" data-action="click->appointments#confirmHelper">Confirm</button>
+<% end %>

@@ -20,9 +20,9 @@ export default class extends Controller {
   }
 
   addPendingHelper(e) {
-    const data = { appointment: { pending_helper: this.helperidValue } };
     const button = e.currentTarget;
-    console.log(button);
+
+    const data = { appointment: { pending_helper: this.helperidValue } };
 
     fetch(`/appointments/${this.appointmentidValue}`, {
       method: "PATCH",
@@ -46,11 +46,44 @@ export default class extends Controller {
       this.headerTarget.innerHTML = `<h3>${this.petValue} - Pending</h3>`;
 
       button.classList.add('d-none');
-      // button.disabled = true;
-      // button.textContent = 'Pending...';
     })
     .catch(error => {
       console.error("Error:", error);
     });
   }
+
+  confirmHelper(e) {
+    const button = e.currentTarget;
+    console.log(button);
+
+    const data = { appointment: { user_id: this.helperidValue } };
+
+    fetch(`/appointments/${this.appointmentidValue}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": this.csrfToken // Include CSRF token
+      },
+      body: JSON.stringify(data)
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.error("Update failed");
+        throw new Error('Network response was not ok.');
+      }
+    })
+    .then(data => {
+      console.log("Update successful with data:", data);
+      this.headerTarget.classList.remove('pending');
+      this.headerTarget.classList.add('confirmed');
+      this.headerTarget.innerHTML = `<h3>${this.petValue} - Confirmed</h3>`;
+
+      button.classList.add('d-none');
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+  }
+
 }

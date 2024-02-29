@@ -19,13 +19,13 @@
   <tr>
     <th class="table-icon-c"><i class="fa-solid fa-hourglass-start"></i></th>
     <th class="table-text-c">
-      <%= appointment.start_date.strftime('%d %B %Y at %H:%M') %>
+      <%= appointment.start_date.strftime('%d %B %Y %H:%M') %>
     </th>
   </tr>
   <tr>
     <th class="table-icon-c"><i class="fa-solid fa-hourglass-end"></i></th>
     <th class="table-text-c">
-      <%= appointment.end_date.strftime('%d %B %Y at %H:%M') %>
+      <%= appointment.end_date.strftime('%d %B %Y %H:%M') %>
     </th>
   </tr>
 <% end %>

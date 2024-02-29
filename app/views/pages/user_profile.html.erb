@@ -2,11 +2,7 @@
 
   <div class="profile-section">
     <div class="profile-image">
-      <% if @owner.profile_picture.attached? %>
-        <%= cl_image_tag @owner.profile_picture.key, class: "avatar-profile" %>
-      <% else %>
-        <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar-profile" %>
-      <% end %>
+      <%= render 'pages/user_profile_avatar', owner: @owner %>
 
   <% if @owner.pets.length > 0 %>
     <div class="profile-section">
