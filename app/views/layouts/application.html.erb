@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Collabrador</title>
+    <title>Collabradors</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,10 +14,10 @@
   <body>
 
     <div data-controller="modals"> <!-- Note: modals-controller sits in seperate div to cover the navbar and the modals itself -->
-      <div class="navbar navbar-light bg-light justify-content-between sticky-top mb-2 p-3">
-        <div class="mr-auto">
-          <h3 class="navbar-brand" id="logo-link"><%= link_to root_path do %>
-            <img src="/app/assets/images/Collabradors-Logo.png" alt="Collabradors-Logo"> Collabradors
+      <div class="navbar navbar-light bg-white justify-content-between sticky-top mb-2 p-3">
+        <div class="mr-auto" style= 'height:50px'>
+          <h3 class="navbar-brand align-baseline" id="logo-link"><%= link_to root_path do %>
+          <%= image_tag "Collabradors-Logo.png", style: 'height:40px; width:auto; ', alt: "Colabrador Logo" %>
           <% end %>
           </h3>
         </div>

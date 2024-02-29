@@ -9,6 +9,9 @@
     <%= f.input :animal_type %>
     <div id="form-gap"></div>
     <%= f.input :breed %>
+    <div id="form-gap"></div>
+    <%= f.input :pet_photos, as: :file, input_html: { multiple: true } %>
+
   </div>
 
   <%= f.input :size, as: :radio_buttons, collection: [['Small', 'small'], ['Medium', 'medium'], ['Large', 'large']], item_wrapper_tag: false, boolean_style: :inline %>
