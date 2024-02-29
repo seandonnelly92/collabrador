@@ -1,0 +1,5 @@
+<% if appointment.pending_helper %>
+  <button class="btn btn-primary d-none" disabled>Pending...</button>
+<% else %>
+  <button class="btn btn-primary" data-action="click->appointments#addPendingHelper">Help out!</button>
+<% end %>

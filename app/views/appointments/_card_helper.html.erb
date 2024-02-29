@@ -1,4 +1,7 @@
-<div class="appointment-card helper" data->
+<div class="appointment-card helper" data-controller="appointments"
+  data-appointments-appointmentid-value="<%= appointment.id %>"
+  data-appointments-helperid-value="<%= current_user.id %>"
+  data-appointments-pet-value="<%= appointment.pet.name %>">
   <%= render 'appointments/card_header', appointment: appointment %>
   <div class="appointment-card-content">
     <table>
@@ -13,7 +16,7 @@
       </tr>
     </table>
     <div>
-      <button class="btn btn-primary"></button>
+      <%= render 'appointments/card_button_helper', appointment: appointment %>
     </div>
   </div>
 </div>

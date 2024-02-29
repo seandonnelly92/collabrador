@@ -188,6 +188,10 @@
   }
 }
 
+.appointment-card button {
+  border-radius: 30%;
+}
+
 .appointment-card-header {
   padding: 8px 16px;
   border-top-left-radius: 4px;
@@ -214,6 +218,14 @@
 
   h3 {
     color: rgb(130, 119, 40);
+  }
+}
+
+.appointment-card-header.available {
+  background-color: rgb(212, 212, 212);
+
+  h3 {
+    color: rgb(94, 94, 94);
   }
 }
 
