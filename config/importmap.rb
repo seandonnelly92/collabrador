@@ -8,9 +8,7 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "listings_button.js", to: "app/javascript/listings_button.js"
-<<<<<<< HEAD
 pin "flatpickr" # @4.6.13
-=======
 pin "mapbox-gl" # @3.1.2
 pin "process" # @2.0.1
 pin "@mapbox/mapbox-gl-geocoder", to: "@mapbox--mapbox-gl-geocoder.js" # @5.0.0
@@ -29,4 +27,3 @@ pin "nanoid" # @3.3.7
 pin "subtag" # @0.5.0
 pin "suggestions" # @1.7.1
 pin "xtend" # @4.0.2
->>>>>>> c54dfc6c916ea7a2070016d8e511353396ef2571

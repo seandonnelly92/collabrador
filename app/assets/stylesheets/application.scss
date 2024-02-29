@@ -10,3 +10,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+#attributes .fa-solid {
+  color: #8ABF9F;
+  transition: 0.3s;
+}
+
+#attributes .fa-solid:hover {
+  color: #9FCBB0;
+  cursor: pointer;
+}
