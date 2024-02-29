@@ -7,6 +7,21 @@
           <div class="form-inline inline-block align-middle">
             <%# <input data-map-target="postcodeInput" class="form-control mr-sm-2" type="search" placeholder="e.g D0G5 4US">
             <button  data-action="click->map#search" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button> %>
+            <p><%= @owner.postcode %></p>
+            <div class="row justify-content-center">
+              <div class="col-sm-8 my-3">
+                <%= form_with url: maps_search_path, method: :get, class: "d-flex" do %>
+                  <%= text_field_tag :postcode,
+                    params[:postcode],
+                    class: "form-control",
+                    placeholder: "e.g D0G5 4US"
+                  %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+  </div>
+</div>
           </div>
         </div>
         <div class="col-4 banner-bg-img d-flex flex-column justify-content-center">
