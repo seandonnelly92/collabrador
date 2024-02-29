@@ -93,35 +93,7 @@
         <% end %>
         <% sorted_appointments = appointments.sort_by { |appointment| appointment.start_date } %> <!-- Sorts appointments based on start_date -->
         <% sorted_appointments.each do |appointment| %>
-          <div class="appointment-card">
-            <div class="appointment-card-header">
-              <h3><%= appointment.pet.name %> - Confirmed</h3>
-            </div>
-            <div class="appointment-card-content">
-              <table>
-                <tr>
-                  <th class="table-icon-c"><i class="fa-solid fa-hourglass-start"></i></th>
-                  <th class="table-text-c">
-                    <%= appointment.start_date.strftime('%d %B %Y at %H:%M') %>
-                  </th>
-                </tr>
-                <tr>
-                  <th class="table-icon-c"><i class="fa-solid fa-hourglass-end"></i></th>
-                  <th class="table-text-c">
-                    <%= appointment.end_date.strftime('%d %B %Y at %H:%M') %>
-                  </th>
-                </tr>
-                <tr>
-                  <th class="table-icon-c"><i class="fa-solid fa-map-pin"></i></th>
-                  <th class="table-text-c">Park</th>
-                </tr>
-                <tr>
-                  <th class="table-icon-c"><i class="fa-solid fa-person-walking"></i></th>
-                  <th class="table-text-c">Walk</th>
-                </tr>
-              </table>
-            </div>
-          </div>
+          <%= render 'appointments/card_owner', appointment: appointment %>
         <% end %>
       </div>
     </div>

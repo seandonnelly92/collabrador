@@ -1,0 +1,11 @@
+<% if appointment.user_id %>
+  <div class="appointment-card-header confirmed">
+    <h3><%= appointment.pet.name %> - Confirmed</h3>
+  </div>
+<% else %>
+  <div class="appointment-card-header pending">
+    <h3><%= appointment.pet.name %> - Pending</h3>
+  </div>
+<% end %>
+
+<!-- Last one could be requested maybe? -->

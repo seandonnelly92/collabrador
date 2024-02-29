@@ -1,0 +1,16 @@
+<div class="appointment-card">
+  <%= render 'appointments/card_header', appointment: appointment %>
+  <div class="appointment-card-content">
+    <table>
+      <%= render 'appointments/appointment_slot', appointment: appointment %>
+      <tr>
+        <th class="table-icon-c"><i class="fa-solid fa-map-pin"></i></th>
+        <th class="table-text-c"><%= appointment.location %></th>
+      </tr>
+      <tr>
+        <th class="table-icon-c"><i class="fa-solid fa-person-walking"></i></th>
+        <th class="table-text-c"><%= appointment.looking_for %></th>
+      </tr>
+    </table>
+  </div>
+</div>
