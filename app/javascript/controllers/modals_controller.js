@@ -15,12 +15,20 @@ export default class extends Controller {
     // useClickOutside(this, { element: this.signupTarget });
   }
 
+  // Methods for signup
   openSignup() {
     this.signupTarget.classList.add('show');
   }
 
   closeSignup(e) {
     this.signupTarget.classList.remove('show');
+  }
+
+  rootRedirectSignup(e) {
+    this.signupTarget.classList.remove('show');
+    alert('Access denied. Login or sign-up to view this page.');
+    
+    window.location.href = "/"; // Will redirect to the root given that access is denied.
   }
 
   // Methods for login
@@ -30,6 +38,13 @@ export default class extends Controller {
 
   closeSignin(e) {
     this.signinTarget.classList.remove('show');
+  }
+
+  rootRedirectSignin(e) {
+    this.signinTarget.classList.remove('show');
+    alert('Access denied. Login or sign-up to view this page.');
+
+    window.location.href = "/"; // Will redirect to the root given that access is denied.
   }
 
   // Methods for new pet modal
