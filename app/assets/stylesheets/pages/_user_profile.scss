@@ -71,6 +71,7 @@
 .profile-header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 
   h2 {
     font-size: 20px;
@@ -87,6 +88,7 @@
 // "Your Pets"-section on the my profile page
 .profile-pets {
   margin: 0 auto 30px;
+  padding-bottom: 20px;
   width: 80%;
   border-bottom: 2px solid rgb(228, 228, 228);
 
@@ -94,6 +96,12 @@
   color: rgb(80, 80, 80);
 }
 
+.profile-pets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  justify-items: center;
+}
 
 .pets-card {
   border-radius: 4px;
@@ -155,6 +163,7 @@
 // "Your Appointments"-section on the my profile page
 .profile-appointments {
   margin: 0 auto 30px;
+  padding-bottom: 20px;
   width: 80%;
   border-bottom: 2px solid rgb(228, 228, 228);
 
@@ -162,10 +171,17 @@
   color: rgb(80, 80, 80);
 }
 
+.profile-appointments-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  justify-items: center;
+}
+
 .appointment-card {
   border-radius: 4px;
   box-shadow: 0 2px 2px 2px lightgrey;
-  width: fit-content;
+  width: 100%;
 }
 
 .appointment-card-header {
@@ -185,9 +201,9 @@
 
 .appointment-card-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 5px;
-  padding: 10px 25px;
+  padding: 10px 10px;
 
   ul {
     margin: 0;

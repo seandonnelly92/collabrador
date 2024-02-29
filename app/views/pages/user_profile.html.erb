@@ -77,18 +77,42 @@
         <button class="btn btn-primary" data-action="click->modals#openAppointment"><i class="fa-solid fa-calendar-days"></i> Add appointment</button>
       </div>
       <div class="profile-appointments-grid">
-        <div class="appointment-card">
-          <div class="appointment-card-header">
-            <h3>Confirmed</h3>
+        <% appointments = [] %>
+        <% @owner.pets.each do |pet| %>
+          <% pet.appointments.each{|appointment| appointments.push(appointment)} %>
+        <% end %>
+        <% sorted_appointments = appointments.sort_by { |appointment| appointment.start_date } %> <!-- Sorts appointments based on start_date -->
+        <% sorted_appointments.each do |appointment| %>
+          <div class="appointment-card">
+            <div class="appointment-card-header">
+              <h3><%= appointment.pet.name %> - Confirmed</h3>
+            </div>
+            <div class="appointment-card-content">
+              <table>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-hourglass-start"></i></th>
+                  <th class="table-text-c">
+                    <%= appointment.start_date.strftime('%d %B %Y at %H:%M') %>
+                  </th>
+                </tr>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-hourglass-end"></i></th>
+                  <th class="table-text-c">
+                    <%= appointment.end_date.strftime('%d %B %Y at %H:%M') %>
+                  </th>
+                </tr>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-map-pin"></i></th>
+                  <th class="table-text-c">Park</th>
+                </tr>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-person-walking"></i></th>
+                  <th class="table-text-c">Walk</th>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div class="appointment-card-content">
-            <ul>
-              <li><i class="fa-regular fa-calendar"></i> 1-Apr-2024</li>
-              <li><i class="fa-solid fa-clock"></i> 17:00-18:00</li>
-              <li><i class="fa-solid fa-map-pin"></i> Park</li>
-            </ul>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   <% end %>

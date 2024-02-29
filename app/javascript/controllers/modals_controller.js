@@ -58,7 +58,7 @@ export default class extends Controller {
   }
 
   // Methods for appointments modal
-  openAppointment(e) {
+  openAppointment() {
     this.appointmentTarget.classList.add('show');
   }
 
