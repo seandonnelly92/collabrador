@@ -7,7 +7,9 @@ class PetsController < ApplicationController
     @markers = @users.map do |user|
       {
         lat: user.latitude,
-        lng: user.longitude
+        lng: user.longitude,
+        map_marker_html: render_to_string(partial: "map_marker", locals: {user: user})
+
       }
 
     end
