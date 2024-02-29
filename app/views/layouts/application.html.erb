@@ -16,7 +16,7 @@
       <div class="navbar navbar-light bg-light justify-content-between sticky-top mb-2 p-3">
         <div class="mr-auto">
           <h3 class="navbar-brand" id="logo-link"><%= link_to root_path do %>
-            <i class="fa-solid fa-paw"></i> Collabrador
+            <img src="/app/assets/images/Collabradors-Logo.png" alt="Collabradors-Logo"> Collabradors
           <% end %>
           </h3>
         </div>
@@ -45,28 +45,10 @@
 
 
       <!-- Modal - Sign-up -->
-      <div class="modal-custom" data-modals-target="signup">
-        <div class="inner">
-          <div class="modal-head">
-            <h1>Sign-up</h1>
-            <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeSignup"></i></span>
-          </div>
-          <h2>Join other collabradors in your neighborhood!</h2>
-          <%= render "devise/registrations/signup_form" %>
-        </div>
-      </div>
+      <%= render "devise/registrations/signup_modal", show_modal: false %>
 
       <!-- Modal - Sign-in -->
-      <div class="modal-custom" data-modals-target="signin">
-        <div class="inner">
-          <div class="modal-head">
-            <h1>Login</h1>
-            <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeSignin"></i></span>
-          </div>
-          <h2>Sign in to continue</h2>
-          <%= render "devise/sessions/signin_form" %>
-        </div>
-      </div>
+      <%= render "devise/sessions/signin_modal", show_modal: false %>
 
     <%= yield %>
   </body>

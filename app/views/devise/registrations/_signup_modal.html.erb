@@ -1,0 +1,20 @@
+<!-- show_modal needs to be passed as an argument when calling the method. Determines whether singup shows by default -->
+<% if show_modal %>
+  <div class="modal-custom show" data-modals-target="signup">
+<% else %>
+  <div class="modal-custom" data-modals-target="signup">
+<% end %>
+
+  <div class="inner">
+    <div class="modal-head">
+      <h1>Sign-up</h1>
+      <% if current_page?(user_profile_path) %>
+        <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#rootRedirectSignup"></i></span>
+      <% else %>
+        <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeSignup"></i></span>
+      <% end %>
+    </div>
+    <h2>Join other collabradors in your neighborhood!</h2>
+    <%= render "devise/registrations/signup_form" %>
+  </div>
+</div>
