@@ -84,42 +84,68 @@
     <div class="profile-appointments">
       <div class="profile-header">
         <h2>Your Appointments</h2>
-        <button class="btn btn-primary" data-action="click->modals#openNewPet"><i class="fa-solid fa-calendar-days"></i> Add appointment</button>
+        <button class="btn btn-primary" data-action="click->modals#openAppointment"><i class="fa-solid fa-calendar-days"></i> Add appointment</button>
       </div>
       <div class="profile-appointments-grid">
-        <div class="appointment-card">
-          <div class="appointment-card-header">
-            <h3>Confirmed</h3>
+        <% appointments = [] %>
+        <% @owner.pets.each do |pet| %>
+          <% pet.appointments.each{|appointment| appointments.push(appointment)} %>
+        <% end %>
+        <% sorted_appointments = appointments.sort_by { |appointment| appointment.start_date } %> <!-- Sorts appointments based on start_date -->
+        <% sorted_appointments.each do |appointment| %>
+          <div class="appointment-card">
+            <div class="appointment-card-header">
+              <h3><%= appointment.pet.name %> - Confirmed</h3>
+            </div>
+            <div class="appointment-card-content">
+              <table>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-hourglass-start"></i></th>
+                  <th class="table-text-c">
+                    <%= appointment.start_date.strftime('%d %B %Y at %H:%M') %>
+                  </th>
+                </tr>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-hourglass-end"></i></th>
+                  <th class="table-text-c">
+                    <%= appointment.end_date.strftime('%d %B %Y at %H:%M') %>
+                  </th>
+                </tr>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-map-pin"></i></th>
+                  <th class="table-text-c">Park</th>
+                </tr>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-person-walking"></i></th>
+                  <th class="table-text-c">Walk</th>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div class="appointment-card-content">
-            <ul>
-              <li><i class="fa-regular fa-calendar"></i> 1-Apr-2024</li>
-              <li><i class="fa-solid fa-clock"></i> 17:00-18:00</li>
-              <li><i class="fa-solid fa-map-pin"></i> Park</li>
-            </ul>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
-
-  <% else %>
-    <% if @owner.pets.length.zero? %>
-      <!-- Modal - First pet -->
-      <div class="modal-custom show" data-modals-target="newPet">
-    <% else %>
-      <!-- Modal - Other pets (not shown by default) -->
-      <div class="modal-custom" data-modals-target="newPet">
-    <% end %>
-        <div class="inner">
-          <div class="modal-head">
-            <h1>Add your pet</h1>
-            <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeNewPet"></i></span>
-          </div>
-          <h2>Other collabradors would love to meet your furry friend!</h2>
-          <% new_pet = Pet.new %>
-          <%= render "pets/new_pet", pet: new_pet %>
-        </div>
-      </div> <!-- Note: This is the div-closing for the div-opening in the if-statement -->
   <% end %>
+
+  <% if @owner.pets.length.zero? %>
+    <!-- Modal - First pet -->
+    <div class="modal-custom show" data-modals-target="newPet">
+  <% else %>
+    <!-- Modal - Other pets (not shown by default) -->
+    <div class="modal-custom" data-modals-target="newPet">
+  <% end %>
+      <div class="inner">
+        <div class="modal-head">
+          <h1>Add your pet</h1>
+          <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeNewPet"></i></span>
+        </div>
+        <h2>Other collabradors would love to meet your furry friend!</h2>
+        <% new_pet = Pet.new %>
+        <%= render "pets/pet_form", pet: new_pet %>
+      </div>
+    </div> <!-- Note: This is the div-closing for the div-opening in the if-statement -->
+
+  <% new_appointment = Appointment.new %>
+  <%= render "appointments/appointment_modal", appointment: new_appointment %>
 
 </div>

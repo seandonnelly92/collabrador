@@ -17,7 +17,7 @@ class PetsController < ApplicationController
     if @pet.save
       redirect_to user_profile_path
     else
-      render user_profile_path, status: :unprocessable_entity
+      render '/user_profile', status: :unprocessable_entity
     end
   end
 
