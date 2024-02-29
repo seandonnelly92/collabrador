@@ -13,12 +13,26 @@
   <body>
 
     <div data-controller="modals"> <!-- Note: modals-controller sits in seperate div to cover the navbar and the modals itself -->
-      <div class="navbar navbar-light bg-light justify-content-between sticky-top m-2">
+      <div class="navbar navbar-light bg-light justify-content-between sticky-top mb-2 p-3">
         <div class="mr-auto">
-          <h3 class="navbar-brand mr-auto"><%= link_to 'Collabrador', root_path, id: "logo-link" %> </h3>
+          <h3 class="navbar-brand" id="logo-link"><%= link_to root_path do %>
+            <i class="fa-solid fa-paw"></i> Collabrador
+          <% end %>
+          </h3>
         </div>
+        <ul class="list-text" id="navbar-menu">
+          <li class="list-item"> <%= link_to root_path do %></li>
+            <i class="fa-solid fa-magnifying-glass"></i> Explore
+          <% end %>
+          <li class="list-item"> <%= link_to root_path do %></li>
+            <i class="fa-regular fa-calendar-check"></i> My Appointments
+          <% end %>
+          <li class="list-item"> <%= link_to user_profile_path do %></li>
+            <i class="fa-solid fa-user"></i> My Profile
+          <% end %>
+        </ul>
         <div class="">
-          <ul class="list-text">
+          <ul class="list-text" id="navbar-account">
             <% unless current_user %>
               <li class="btn btn-primary list-item" data-action="click->modals#openSignin">Login</li>
               <li class="btn btn-light list-item" data-action="click->modals#openSignup">Sign-up</li>
