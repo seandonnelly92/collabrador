@@ -1,0 +1,19 @@
+<% if show_modal %>
+  <div class="modal-custom show" data-modals-target="signin">
+<% else %>
+  <div class="modal-custom" data-modals-target="signin">
+<% end %>
+
+  <div class="inner">
+    <div class="modal-head">
+      <h1>Login</h1>
+      <% if current_page?(user_profile_path) %>
+        <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#rootRedirectSignin"></i></span>
+      <% else %>
+        <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeSignin"></i></span>
+      <% end %>
+    </div>
+    <h2>Sign in to continue</h2>
+    <%= render "devise/sessions/signin_form" %>
+  </div>
+</div>
