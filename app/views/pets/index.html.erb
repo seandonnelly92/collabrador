@@ -5,26 +5,29 @@
         <div class="col-7 d-flex flex-column justify-content-center">
           <h1>Find fellow pet owners in your area</h1>
           <div class="form-inline inline-block align-middle">
-            <%# <input data-map-target="postcodeInput" class="form-control mr-sm-2" type="search" placeholder="e.g D0G5 4US">
-            <button  data-action="click->map#search" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button> %>
+
             <p><%= @owner.postcode %></p>
+//Map search bar below
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <form data-controller="map" data-action="submit->map#search">
+      <input data-map-target="map.postcodeInput" type="text" class="form-control" placeholder="Type a postcode">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+</div>
+//Map search bar above
+
             <div class="row justify-content-center">
               <div class="col-sm-8 my-3">
-                <%= form_with url: maps_search_path, method: :get, class: "d-flex" do %>
-                  <%= text_field_tag :postcode,
-                    params[:postcode],
-                    class: "form-control",
-                    placeholder: "e.g D0G5 4US"
-                  %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
-  </div>
-</div>
+
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-4 banner-bg-img d-flex flex-column justify-content-center">
+      </div>
+    </div>
+  <div class="col-4 banner-bg-img d-flex flex-column justify-content-center">
 
             <%# <img src="https://png2.cleanpng.com/sh/d5427c9be2fb562143440e4b4d864a04/L0KzQYq3VsI3N6d7R91yc4Pzfri0jPFjepJphAQ2cnX3grrslvVzNZRxgeI2YYL3PcfsgCRwel5sitN5aHnmg376lP9kc15oh951ZXP3ebF1Tf9nNZd3fdc2dIX1hL3sTfRzaahuhtk2YXT5cbBqhfQubJD8ht54LUXnQYS4UPQ4bmE8SaQ6Lkm0SIO5UcQzOWY7Sac8MEW7Q4qBVMkveJ9s/kisspng-labrador-retriever-clip-art-vector-graphics-stock-collection-of-free-turtle-drawing-advanced-downlo-5d1310d7f07121.9182214215615305839849.png" width="300px" height="250px" alt="Low opacity labrador"> %>
             <p class="text-justify">At Collabrador we connect local, like-minded dog owners to foster a community of support when you need it.
@@ -51,6 +54,7 @@
 
         <div class="col-4">
           <div class="row mr-auto">
+          //Map below
             <div id ="map" data-controller="map" style="width: 100%; height: 600px;" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" class ="map-eg-img"></div>
           </div>
         </div>

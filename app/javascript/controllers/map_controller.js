@@ -2,7 +2,6 @@
 // app/javascript/controllers/map_controller.js
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
-// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
   static values = {
@@ -26,6 +25,7 @@ export default class extends Controller {
     this.#fitMapToMarkers()
     // this.bindSearch()
 
+
     // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
 
   }
@@ -46,6 +46,24 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
+
+  search(event) {
+    event.preventDefault();
+    const postcode = this.postcodeInputTarget.value;
+    console.log(postcode)
+    console.log("Post code:", postcode);
+    // You can perform further actions with the post code here, such as updating the map
+  }
+
+
+
+//   def search
+//   # Retrieve the postcode from the query parameters
+//   @postcode = params[:postcode]
+//   # Additional logic to handle the search (e.g., geocoding)
+//   # Pass the postcode to the view for rendering the map
+//   @markers = your_method_to_get_markers_based_on_postcode(@postcode)
+// end
 
   // bindSearch() {
 
