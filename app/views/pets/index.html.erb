@@ -35,7 +35,8 @@
 
       <div class="col-5">
         <div class="row mr-auto">
-          <img src="https://blogcdn.zeemaps.com/blog/wp-content/uploads/2020/01/Radius-map-2.png" class="map-eg-img">
+          <%# <img src="https://blogcdn.zeemaps.com/blog/wp-content/uploads/2020/01/Radius-map-2.png" class="map-eg-img"> %>
+        <div style="width: 100%; height: 600px;"data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
         </div>
       </div>
 
