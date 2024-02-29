@@ -182,6 +182,10 @@
   border-radius: 4px;
   box-shadow: 0 2px 2px 2px lightgrey;
   width: 100%;
+
+  &.helper {
+    margin-bottom: 12px;
+  }
 }
 
 .appointment-card-header {

@@ -2,14 +2,6 @@
 <div class="listing-card">
   <h2>Click on the listing below to help <%= @pet.name %>!</h2>
   <% @pet.appointments.each do |appointment| %>
-    <div class="appointment">
-      <div class="appointment-border" data-controller="offer-help">
-        <p>Activity: <b><%= appointment.looking_for %></b></p>
-        <p>Location: <b><%= appointment.location %></b></p>
-        <p>Start Date: <b><%= appointment.start_date.strftime("%B %d, %Y %I:%M %p") %></b></p>
-        <p>End Date: <b><%= appointment.end_date.strftime("%B %d, %Y %I:%M %p") %></b> </p>
-        <button class= "offer-help-button"data-action="click->offer-help#offerHelp">Offer to help!</button>
-      </div>
-    </div>
+    <%= render 'appointments/card_helper', appointment: appointment %>
   <% end %>
 </div>

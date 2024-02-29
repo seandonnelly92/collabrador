@@ -1,21 +1,19 @@
-<div class="appointment-card">
-  <div class="appointment-card-header">
-    <h3><%= appointment.pet.name %> - Confirmed</h3>
-  </div>
+<div class="appointment-card helper" data->
+  <%= render 'appointments/card_header', appointment: appointment %>
   <div class="appointment-card-content">
     <table>
       <%= render 'appointments/appointment_slot', appointment: appointment %>
       <tr>
         <th class="table-icon-c"><i class="fa-solid fa-map-pin"></i></th>
-        <th class="table-text-c">Park</th>
+        <th class="table-text-c"><%= appointment.location %></th>
       </tr>
       <tr>
         <th class="table-icon-c"><i class="fa-solid fa-person-walking"></i></th>
-        <th class="table-text-c">Walk</th>
+        <th class="table-text-c"><%= appointment.looking_for %></th>
       </tr>
     </table>
     <div>
-      
+      <button class="btn btn-primary"></button>
     </div>
   </div>
 </div>
