@@ -22,6 +22,8 @@
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
 
+    <%= f.input :profile_picture, as: :file %>
+
     <div class="form-split">
       <%= f.input :password,
                   required: true,
