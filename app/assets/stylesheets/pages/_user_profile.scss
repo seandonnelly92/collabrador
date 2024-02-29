@@ -120,18 +120,22 @@
 .pets-card-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5px;
+  gap: 10px;
   padding: 10px 25px;
 
-  ul {
+  p {
     margin: 0;
-    padding: 0;
+    display: flex;
   }
+}
 
-  li {
-    list-style-type: none;
-  }
+.table-icon-c {
+  width: 20px;
+  text-align: center;
+}
 
+.table-text-c {
+  font-weight: 500;
 }
 
 .pets-characteristics {
@@ -143,7 +147,8 @@
   text-align: center;
 
   i {
-    margin: 0 3px;
+    margin: 0 6px;
+    font-size: 14px;
   }
 }
 

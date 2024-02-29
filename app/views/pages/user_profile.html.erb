@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <% if @owner %>
+  <% if @owner.pets.length > 0 %>
     <div class="profile-section">
       <div class="profile-image">
         <% if @owner.profile_picture.attached? %>
@@ -42,14 +42,27 @@
             <h3><%= pet.name %></h3>
           </div>
           <div class="pets-card-content">
-            <ul>
-              <li><i class="fa-solid fa-seedling"></i> 5 years</li>
-              <li><i class="fa-solid fa-spa"></i> Cockapoo</li>
-              <li><i class="fa-solid fa-bolt"></i> High</li>
-              <li><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Medium</li>
-            </ul>
+            <table>
+              <tr>
+                <th class="table-icon-c"><i class="fa-solid fa-seedling"></i></th>
+                <th class="table-text-c">5 years</th>
+              </tr>
+              <tr>
+                <th class="table-icon-c"><i class="fa-solid fa-spa"></i></th>
+                <th class="table-text-c">Cockapoo</th>
+              </tr>
+              <tr>
+                <th class="table-icon-c"><i class="fa-solid fa-bolt"></i></th>
+                <th class="table-text-c">High</th>
+              </tr>
+              <tr>
+                <th class="table-icon-c"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></th>
+                <th class="table-text-c">Medium</th>
+              </tr>
+            </table>
+
             <div class="pets-characteristics">
-              <div><i class="fa-solid fa-venus"></i> <i class="fa-solid fa-heart-circle-check"></i></div>
+              <div><i class="fa-solid fa-venus" data-toggle="tooltip" data-placement="top" title="Female"></i> <i class="fa-solid fa-heart-circle-check"></i></div>
               <div><i class="fa-solid fa-dog"><i class="fa-solid fa-cat"></i></i><i class="fa-solid fa-child"></i></div>
               <div><i class="fa-solid fa-box-tissue"></i></div>
             </div>
@@ -79,6 +92,7 @@
       </div>
     </div>
 
+  <% else %>
     <% if @owner.pets.length.zero? %>
       <!-- Modal - First pet -->
       <div class="modal-custom show" data-modals-target="newPet">
@@ -96,9 +110,6 @@
           <%= render "pets/new_pet", pet: new_pet %>
         </div>
       </div> <!-- Note: This is the div-closing for the div-opening in the if-statement -->
-
-  <% else %>
-    <%= render "devise/sessions/signin_modal", show_modal: true %>
   <% end %>
 
 </div>
