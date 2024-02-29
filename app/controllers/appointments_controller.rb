@@ -12,7 +12,7 @@ class AppointmentsController < ApplicationController
                                     looking_for: appointment_params['looking_for'],
                                     pet_id: appointment_params['pet_id']
     )
-    @appointment.user = @owner
+    # @appointment.user = @owner
 
     if @appointment.save
       redirect_to user_profile_path
