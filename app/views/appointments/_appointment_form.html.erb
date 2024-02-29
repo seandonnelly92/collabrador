@@ -1,9 +1,14 @@
 <!-- Note: form-split and form-gap can be found in the modals.scss file -->
 <%= simple_form_for(appointment) do |f| %>
+
   <div class="form-split">
-    <%= f.input :start_date %>
+    <%= f.input :start_date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
     <div id="form-gap"></div>
-    <%= f.input :end_date %>
+    <%= f.input :end_date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
   </div>
 
   <%= f.input :location %>
