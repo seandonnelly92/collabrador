@@ -15,6 +15,7 @@
 
 .body::before {
   content: ' ';
+  pointer-events: none;
   display: block;
   position: absolute;
   left: 0;
@@ -29,6 +30,44 @@
 
 .banner-bg-img {
   position: relative;
+}
+
+.form-landing {
+  text-decoration: none;
+  width: auto;
+  margin-top: 5px;
+}
+
+.form-landing-search[type="text"] {
+  background-color: transparent;
+  box-sizing: border-box;
+  width: 25rem;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: solid 1px grey;
+  border-radius: 25px 5px 5px 25px;
+}
+
+.form-landing-button {
+  margin-right: -5px;
+  padding: 5px;
+  padding-right: 10px;
+  text-decoration: none;
+  border: 1px solid grey;
+  border-radius: 5px 25px 25px 5px;
+  background-color: rgba(138, 191, 159, .25);
+  backdrop-filter: blur(5px);
+
+  position: relative;
+  box-shadow: inset 0 0 0 0 #f4c167;
+  -webkit-transition: ease-out 0.3s;
+  -moz-transition: ease-out 0.3s;
+  transition: ease-out 0.3s;
+  &:hover {
+    box-shadow: inset 60px 0 0 0 #f4c167;
+  }
+
 }
 
 // .banner-bg-img:before {
@@ -52,12 +91,17 @@
 }
 
 .testim-list {
-  margin: none;
+  margin-left: 0;
   text-decoration: none;
   text-align: center;
   list-style-type: none;
+  padding-left: 0;
 }
 
 .body {
   position: relative;
+}
+
+.footer-bg {
+  background-color:rgba(244, 193, 103, 0.5);
 }
