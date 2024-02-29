@@ -27,4 +27,3 @@ Geocoder.configure(
   # }
 
   )
-)
