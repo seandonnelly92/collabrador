@@ -10,92 +10,104 @@
     <div class="profile-welcome">
       <h1>Welcome <%= @owner.first_name %>!</h1>
     </div>
-  </div>
 
-  <div class="profile-summary">
-    <div class="profile-bio">
-      <h2>Profile Summary</h2>
-      <ul>
-        <li><p><i class="fa-solid fa-pen-to-square"></i><span>Bio </span>Based in the vibrant city of London, I am a passionate web developer originally from the Netherlands. Alongside coding, my heart belongs to my 3-year-old Labradoodle, a loyal and playful companion who brings joy and laughter to every day. Known for his friendly demeanor and fluffy hugs, he's not just a pet, but a cherished member of the family, spreading happiness wherever he goes.</p></li>
-        <li><p><i class="fa-solid fa-clock-rotate-left"></i><span>Member since</span><%= render 'devise/registrations/active_since', owner: @owner %></p></li>
-      </ul>
+    <div class="profile-summary">
+      <div class="profile-bio">
+        <h2>Profile Summary</h2>
+        <ul>
+          <li><p><i class="fa-solid fa-pen-to-square"></i><span>Bio </span>Based in the vibrant city of London, I am a passionate web developer originally from the Netherlands. Alongside coding, my heart belongs to my 3-year-old Labradoodle, a loyal and playful companion who brings joy and laughter to every day. Known for his friendly demeanor and fluffy hugs, he's not just a pet, but a cherished member of the family, spreading happiness wherever he goes.</p></li>
+          <li><p><i class="fa-solid fa-clock-rotate-left"></i><span>Member since</span><%= render 'devise/registrations/active_since', owner: @owner %></p></li>
+        </ul>
+      </div>
+      <div class="profile-stats">
+        <h2>Number of pets: <%= @owner.pets.length %></h2>
+        <p>Pet name(s): <% @owner.pets.each do |pet| %></p>
+          <%= pet.name %>
+        <% end %>
+      </div>
     </div>
-    <div class="profile-stats">
-      <h2>Number of pets: <%= @owner.pets.length %></h2>
-      <p>Pet name(s): <% @owner.pets.each do |pet| %></p>
-        <%= pet.name %>
-      <% end %>
-    </div>
-  </div>
 
-  <div class="profile-pets">
-    <div class="profile-header">
-      <h2>Your Pets</h2>
-      <button class="btn btn-primary" data-action="click->modals#openNewPet"><i class="fa-solid fa-paw"></i> Add pet</button>
-    </div>
-    <div class="profile-pets-grid">
-      <% pet = @owner.pets[0] %>
-      <div class="pets-card">
-        <div class="pets-card-header">
-          <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar" %>
-          <h3><%= pet.name %></h3>
-        </div>
-        <div class="pets-card-content">
-          <ul>
-            <li><i class="fa-solid fa-seedling"></i> 5 years</li>
-            <li><i class="fa-solid fa-spa"></i> Cockapoo</li>
-            <li><i class="fa-solid fa-bolt"></i> High</li>
-            <li><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Medium</li>
-          </ul>
-          <div class="pets-characteristics">
-            <div><i class="fa-solid fa-venus"></i> <i class="fa-solid fa-heart-circle-check"></i></div>
-            <div><i class="fa-solid fa-dog"><i class="fa-solid fa-cat"></i></i><i class="fa-solid fa-child"></i></div>
-            <div><i class="fa-solid fa-box-tissue"></i></div>
+    <div class="profile-pets">
+      <div class="profile-header">
+        <h2>Your Pets</h2>
+        <button class="btn btn-primary" data-action="click->modals#openNewPet"><i class="fa-solid fa-paw"></i> Add pet</button>
+      </div>
+      <div class="profile-pets-grid">
+        <% pet = @owner.pets[0] %>
+        <div class="pets-card">
+          <div class="pets-card-header">
+            <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar" %>
+            <h3><%= pet.name %></h3>
+          </div>
+          <div class="pets-card-content">
+            <table>
+              <tr>
+                <th class="table-icon-c"><i class="fa-solid fa-seedling"></i></th>
+                <th class="table-text-c">5 years</th>
+              </tr>
+              <tr>
+                <th class="table-icon-c"><i class="fa-solid fa-spa"></i></th>
+                <th class="table-text-c">Cockapoo</th>
+              </tr>
+              <tr>
+                <th class="table-icon-c"><i class="fa-solid fa-bolt"></i></th>
+                <th class="table-text-c">High</th>
+              </tr>
+              <tr>
+                <th class="table-icon-c"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></th>
+                <th class="table-text-c">Medium</th>
+              </tr>
+            </table>
+
+            <div class="pets-characteristics">
+              <div><i class="fa-solid fa-venus" data-toggle="tooltip" data-placement="top" title="Female"></i> <i class="fa-solid fa-heart-circle-check"></i></div>
+              <div><i class="fa-solid fa-dog"><i class="fa-solid fa-cat"></i></i><i class="fa-solid fa-child"></i></div>
+              <div><i class="fa-solid fa-box-tissue"></i></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="profile-appointments">
-    <div class="profile-header">
-      <h2>Your Appointments</h2>
-      <button class="btn btn-primary" data-action="click->modals#openNewPet"><i class="fa-solid fa-calendar-days"></i> Add appointment</button>
-    </div>
-    <div class="profile-appointments-grid">
-      <div class="appointment-card">
-        <div class="appointment-card-header">
-          <h3>Confirmed</h3>
-        </div>
-        <div class="appointment-card-content">
-          <ul>
-            <li><i class="fa-regular fa-calendar"></i> 1-Apr-2024</li>
-            <li><i class="fa-solid fa-clock"></i> 17:00-18:00</li>
-            <li><i class="fa-solid fa-map-pin"></i> Park</li>
-          </ul>
+    <div class="profile-appointments">
+      <div class="profile-header">
+        <h2>Your Appointments</h2>
+        <button class="btn btn-primary" data-action="click->modals#openNewPet"><i class="fa-solid fa-calendar-days"></i> Add appointment</button>
+      </div>
+      <div class="profile-appointments-grid">
+        <div class="appointment-card">
+          <div class="appointment-card-header">
+            <h3>Confirmed</h3>
+          </div>
+          <div class="appointment-card-content">
+            <ul>
+              <li><i class="fa-regular fa-calendar"></i> 1-Apr-2024</li>
+              <li><i class="fa-solid fa-clock"></i> 17:00-18:00</li>
+              <li><i class="fa-solid fa-map-pin"></i> Park</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-
-
-  <% if @owner.pets.length.zero? %>
-    <!-- Modal - First pet -->
-    <div class="modal-custom show" data-modals-target="newPet">
   <% else %>
-    <!-- Modal - Other pets (not shown by default) -->
-    <div class="modal-custom" data-modals-target="newPet">
-  <% end %>
-      <div class="inner">
-        <div class="modal-head">
-          <h1>Add your pet</h1>
-          <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeNewPet"></i></span>
+    <% if @owner.pets.length.zero? %>
+      <!-- Modal - First pet -->
+      <div class="modal-custom show" data-modals-target="newPet">
+    <% else %>
+      <!-- Modal - Other pets (not shown by default) -->
+      <div class="modal-custom" data-modals-target="newPet">
+    <% end %>
+        <div class="inner">
+          <div class="modal-head">
+            <h1>Add your pet</h1>
+            <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeNewPet"></i></span>
+          </div>
+          <h2>Other collabradors would love to meet your furry friend!</h2>
+          <% new_pet = Pet.new %>
+          <%= render "pets/new_pet", pet: new_pet %>
         </div>
-        <h2>Other collabradors would love to meet your furry friend!</h2>
-        <% new_pet = Pet.new %>
-        <%= render "pets/new_pet", pet: new_pet %>
-      </div>
-    </div> <!-- Note: This is the div-closing for the div-opening in the if-statement -->
+      </div> <!-- Note: This is the div-closing for the div-opening in the if-statement -->
+  <% end %>
 
 </div>
