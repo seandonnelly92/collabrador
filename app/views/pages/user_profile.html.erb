@@ -1,5 +1,5 @@
 <div class="container my-5">
-<<<<<<< HEAD
+
   <div class="profile-section">
     <div class="profile-image">
       <% if @owner.profile_picture.attached? %>
@@ -7,7 +7,7 @@
       <% else %>
         <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar-profile" %>
       <% end %>
-=======
+
   <% if @owner.pets.length > 0 %>
     <div class="profile-section">
       <div class="profile-image">
@@ -20,6 +20,7 @@
       <div class="profile-welcome">
         <h1>Welcome <%= @owner.first_name %>!</h1>
       </div>
+
     </div>
 
     <div class="profile-summary">
@@ -36,7 +37,6 @@
           <%= pet.name %>
         <% end %>
       </div>
->>>>>>> 8179143c2d6a27fd09f08b6080ae8457bfda9c49
     </div>
 
     <div class="profile-pets">
