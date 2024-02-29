@@ -48,7 +48,9 @@ export default class extends Controller {
   bindSearch() {
 
     const searchButton = this.element.querySelector('#searchButton'); // Get the button inside the controller's element
+    console.log(searchButton)
     const postcodeInput = this.element.querySelector('#postcodeInput'); // Get the input field inside the controller's element
+    console.log(postcodeInput)
 
     searchButton.addEventListener('click', async () => {
       console.log("Postcode collected")
