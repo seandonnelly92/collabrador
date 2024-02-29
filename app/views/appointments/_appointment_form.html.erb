@@ -1,0 +1,17 @@
+<!-- Note: form-split and form-gap can be found in the modals.scss file -->
+<%= simple_form_for(appointment) do |f| %>
+  <div class="form-split">
+    <%= f.input :start_date %>
+    <div id="form-gap"></div>
+    <%= f.input :end_date %>
+  </div>
+
+  <%= f.input :location %>
+  <%= f.input :looking_for %>
+
+  <div class="form-actions"> <!-- Note: form-actions can be found in the modals.scss file -->
+    <%= button_tag(type: 'submit', class: "btn btn-primary", id: "btn-new-appointment") do %>
+      <span>Appointment</span>
+    <% end %>
+  </div>
+<% end %>

@@ -7,6 +7,7 @@ export default class extends Controller {
     "signup",
     "signin",
     "newPet",
+    "appointment",
     "closeBtn"
   ]
 
@@ -27,7 +28,7 @@ export default class extends Controller {
   rootRedirectSignup(e) {
     this.signupTarget.classList.remove('show');
     alert('Access denied. Login or sign-up to view this page.');
-    
+
     window.location.href = "/"; // Will redirect to the root given that access is denied.
   }
 
@@ -49,7 +50,6 @@ export default class extends Controller {
 
   // Methods for new pet modal
   openNewPet(e) {
-    console.log(e.currentTarget);
     this.newPetTarget.classList.add('show');
   }
 
@@ -57,9 +57,12 @@ export default class extends Controller {
     this.newPetTarget.classList.remove('show');
   }
 
-  // clickOutside(e) {
-  //   e.preventDefault();
-  //   // this.signupTarget.classList.remove('show');
-  //   // this.signupTarget.close()
-  // }
+  // Methods for appointments modal
+  openAppointment(e) {
+    this.appointmentTarget.classList.add('show');
+  }
+
+  closeAppointment() {
+    this.appointmentTarget.classList.remove('show');
+  }
 }
