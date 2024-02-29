@@ -10,6 +10,7 @@ class PetsController < ApplicationController
         lng: user.longitude
       }
 
+    end
   end
 
   def show
