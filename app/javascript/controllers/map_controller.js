@@ -10,6 +10,8 @@ export default class extends Controller {
     markers: Array
   }
 
+  static targets = ["postcodeInput", "map"];
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -22,7 +24,7 @@ export default class extends Controller {
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    this.bindSearch()
+    // this.bindSearch()
 
     // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
 
@@ -45,26 +47,26 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
-  bindSearch() {
+  // bindSearch() {
 
-    const searchButton = this.element.querySelector('#searchButton'); // Get the button inside the controller's element
-    console.log(searchButton)
-    const postcodeInput = this.element.querySelector('#postcodeInput'); // Get the input field inside the controller's element
-    console.log(postcodeInput)
+  //   const searchButton = this.element.querySelector('#searchButton'); // Get the button inside the controller's element
+  //   console.log(searchButton)
+  //   const postcodeInput = this.element.querySelector('#postcodeInput'); // Get the input field inside the controller's element
+  //   console.log(postcodeInput)
 
-    searchButton.addEventListener('click', async () => {
-      console.log("Postcode collected")
-      const postcode = postcodeInput.value;
+  //   searchButton.addEventListener('click', async () => {
+  //     console.log("Postcode collected")
+  //     const postcode = postcodeInput.value;
 
-      const coordinates = await this.geocodePostcode(postcode);
+  //     const coordinates = await this.geocodePostcode(postcode);
 
-      if (coordinates) {
-        this.map.setCenter(coordinates);
-      } else {
-        alert('Invalid postcode. Please enter a valid postcode.');
-      }
-    });
-}
+  //     if (coordinates) {
+  //       this.map.setCenter(coordinates);
+  //     } else {
+  //       alert('Invalid postcode. Please enter a valid postcode.');
+  //     }
+  //   });
+// }
 
 // async geocodePostcode(postcode) {
 //   try {
