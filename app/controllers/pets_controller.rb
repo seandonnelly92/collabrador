@@ -3,6 +3,13 @@ class PetsController < ApplicationController
     @pets = Pet.all
     @pet = Pet.find_by(params[:id])
     @owner = @pet.user
+    @users = User.geocoded
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+
   end
 
   def show
