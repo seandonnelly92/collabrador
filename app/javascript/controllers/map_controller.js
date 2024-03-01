@@ -2,7 +2,7 @@
 // app/javascript/controllers/map_controller.js
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
-// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
   static values = {
@@ -29,9 +29,7 @@ export default class extends Controller {
     this.#fitMapToMarkers()
     // this.bindSearch()
 
-
-
-    // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
+    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
 
   }
 
@@ -51,7 +49,6 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
-
 
   // search(event) {
   //   event.preventDefault();
