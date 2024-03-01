@@ -17,11 +17,11 @@ Appointment.destroy_all
 puts "destroying all pets..."
 Pet.destroy_all
 
-puts "destroying all users..."
-User.destroy_all
-
 puts "destroying all reviews..."
 Review.destroy_all
+
+puts "destroying all users..."
+User.destroy_all
 
 # Adding Jasper
 jasper = User.new(
@@ -254,6 +254,172 @@ review_2.save
 review_3.user = rowan
 review_3.save
 
+# Add custom appointments
+
+# Appointments Jasper
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 28, 15, 0),
+  end_date: DateTime.new(2024, 3, 29, 15, 0),
+  location: 'Islington',
+  looking_for: 'Boarding',
+  pending_helper: sean.id
+)
+appointment.pet = theo
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 15, 15, 0),
+  end_date: DateTime.new(2024, 3, 15, 17, 0),
+  location: 'Green Park',
+  looking_for: 'Walk',
+  pending_helper: rowan.id
+)
+appointment.pet = theo
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 13, 16, 0),
+  end_date: DateTime.new(2024, 3, 13, 12, 0),
+  location: 'Clerkenwell',
+  looking_for: 'Afternoon dog-sit',
+  pending_helper: nil
+)
+appointment.pet = theo
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 4, 3, 20, 0),
+  end_date: DateTime.new(2024, 4, 3, 21, 30),
+  location: 'Hoxton',
+  looking_for: 'Evening walk',
+  pending_helper: nil
+)
+appointment.pet = theo
+appointment.save
+
+# Appointments Sean
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 22, 12, 0),
+  end_date: DateTime.new(2024, 3, 23, 12, 0),
+  location: 'Farringdon',
+  looking_for: 'Boarding',
+  pending_helper: jasper.id
+)
+appointment.pet = cleo
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 29, 15, 0),
+  end_date: DateTime.new(2024, 3, 29, 17, 0),
+  location: 'Greenwich',
+  looking_for: 'Collabrador afternoon walk',
+  pending_helper: nil
+)
+appointment.pet = cleo
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 13, 16, 0),
+  end_date: DateTime.new(2024, 3, 20, 12, 0),
+  location: 'Shoreditch',
+  looking_for: 'Holiday stay',
+  pending_helper: nil
+)
+appointment.pet = cleo
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 4, 6, 9, 0),
+  end_date: DateTime.new(2024, 4, 6, 18, 0),
+  location: 'Canary Wharf',
+  looking_for: 'Office watch',
+  pending_helper: nil
+)
+appointment.pet = cleo
+appointment.save
+
+# Appointments Tom
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 15, 12, 0),
+  end_date: DateTime.new(2024, 3, 16, 12, 0),
+  location: 'Westminster',
+  looking_for: 'Overnight care',
+  pending_helper: rowan.id
+)
+appointment.pet = boris
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 20, 9, 0),
+  end_date: DateTime.new(2024, 3, 20, 11, 0),
+  location: 'Hyde Park',
+  looking_for: 'Park run',
+  pending_helper: sean.id
+)
+appointment.pet = boris
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 10, 9, 0),
+  end_date: DateTime.new(2024, 3, 14, 17, 0),
+  location: 'Peckham',
+  looking_for: 'Holiday stay',
+  pending_helper: nil
+)
+appointment.pet = boris
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 4, 1, 10, 0),
+  end_date: DateTime.new(2024, 4, 1, 11, 0),
+  location: 'Soho',
+  looking_for: 'Walk',
+  pending_helper: nil
+)
+appointment.pet = boris
+appointment.save
+
+# Appointments Rowan
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 18, 12, 0),
+  end_date: DateTime.new(2024, 3, 19, 12, 0),
+  location: 'Fullham',
+  looking_for: 'Overnight care',
+  pending_helper: tom.id
+)
+appointment.pet = lola
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 14, 8, 0),
+  end_date: DateTime.new(2024, 3, 14, 9, 0),
+  location: 'Holland Park',
+  looking_for: 'Morning walk',
+  pending_helper: sean.id
+)
+appointment.pet = lola
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 3, 10, 12, 0),
+  end_date: DateTime.new(2024, 3, 12, 12, 0),
+  location: 'Watford',
+  looking_for: 'Weekend stay',
+  pending_helper: nil
+)
+appointment.pet = lola
+appointment.save
+
+appointment = Appointment.new(
+  start_date: DateTime.new(2024, 4, 2, 10, 0),
+  end_date: DateTime.new(2024, 4, 2, 20, 0),
+  location: 'Covent Garden',
+  looking_for: 'Full-day dog-sit',
+  pending_helper: nil
+)
+appointment.pet = lola
+appointment.save
+
 ## Randomly generated additional Users
 puts "Seeding users..."
 users = {
@@ -390,16 +556,16 @@ end
 
 # Seed Pet data
 pet_bios = [
-  "Living amidst the constant hustle of London, my days are brightened by the presence of my lively companion, #{name}. Whether it's a leisurely stroll along the Thames or a playful romp through the leaf-strewn paths of Greenwich Park, #{name}'s enthusiasm for the outdoors knows no bounds. At home, #{name} is content to simply curl up by my side, a gentle reminder of the quiet joys in life.",
-  "The historic charm of London is best explored with #{name} trotting by my side. Our mornings are spent meandering through the misty paths of Hampstead Heath, where #{name} chases shadows and greets the dawn with vivacious barks. Back in the bustling city, #{name}'s curious nature turns our urban walks into delightful escapades, making every day an adventure.",
-  "In the heart of London, amidst its iconic landmarks and hidden gems, I find solace and joy in my walks with #{name}. This spirited soul finds wonder in the simplest things, from the rustling of leaves in St. James's Park to the lively sounds of the South Bank. Each evening, as #{name} settles down with a sigh of contentment, I'm reminded of the beauty in our shared moments.",
-  "The vibrant tapestry of London life is all the more colorful with #{name} by my side. Our weekend explorations take us from the serene beauty of the Royal Botanical Gardens to the lively streets of Notting Hill, with #{name} leading the charge with boundless energy. It's in these moments, watching #{name} revel in the joy of discovery, that I truly appreciate the bond we share.",
-  "Navigating the bustling streets of London becomes an adventure with #{name}, whose love for exploration knows no limits. From the grandeur of the Tower Bridge at dawn to the tranquil sunsets at Primrose Hill, #{name} appreciates every moment outdoors. At home, #{name}'s gentle presence fills the space, making every corner of our London flat feel like a haven.",
-  "London's ever-changing seasons bring new adventures for #{name} and me. With the first snowfall, #{name} dances with delight, leaving tiny paw prints across the city's parks. The arrival of spring sees us lounging in the dappled sunlight of Kew Gardens, where #{name} watches the world with wide-eyed wonder. Through #{name}'s eyes, I've come to see my city in a whole new light.",
-  "There's a certain magic to London's rainy days when experienced alongside #{name}. Splashing through puddles and chasing raindrops, #{name} finds joy in every droplet. Our quiet evenings are spent listening to the rain against the windows, with #{name} nestled close, reminding me that home is not just a place, but a feeling.",
-  "Our explorations of London are never complete without a visit to its bustling markets and serene riversides, with #{name} eagerly leading the way. #{name}'s friendly demeanor makes us a familiar sight in our neighborhood, where every outing is an opportunity for new friendships. As night falls, #{name}'s soft snores are a comforting end to our days filled with discovery.",
-  "The sprawling green spaces of London are #{name}'s playground, where every tree and trail tells a story. Our adventures through the city's parks are filled with moments of simple happiness, watching #{name} chase the wind and bask in the sunshine. These shared experiences, set against the backdrop of London's beauty, have created an unbreakable bond between us.",
-  "In the bustling city of London, #{name} is my steadfast companion, finding excitement in the rhythm of city life. From leisurely morning walks in serene parks to lively evening strolls along the Thames, #{name}'s adventurous spirit is undiminished. At home, #{name}'s quiet companionship is a gentle reminder of the enduring friendship we share, a beacon of joy in the heart of the city."
+  "Living amidst the constant hustle of London, my days are brightened by the presence of my lively companion, dog_name. Whether it's a leisurely stroll along the Thames or a playful romp through the leaf-strewn paths of Greenwich Park, dog_name's enthusiasm for the outdoors knows no bounds. At home, dog_name is content to simply curl up by my side, a gentle reminder of the quiet joys in life.",
+  "The historic charm of London is best explored with dog_name trotting by my side. Our mornings are spent meandering through the misty paths of Hampstead Heath, where dog_name chases shadows and greets the dawn with vivacious barks. Back in the bustling city, dog_name's curious nature turns our urban walks into delightful escapades, making every day an adventure.",
+  "In the heart of London, amidst its iconic landmarks and hidden gems, I find solace and joy in my walks with dog_name. This spirited soul finds wonder in the simplest things, from the rustling of leaves in St. James's Park to the lively sounds of the South Bank. Each evening, as dog_name settles down with a sigh of contentment, I'm reminded of the beauty in our shared moments.",
+  "The vibrant tapestry of London life is all the more colorful with dog_name by my side. Our weekend explorations take us from the serene beauty of the Royal Botanical Gardens to the lively streets of Notting Hill, with dog_name leading the charge with boundless energy. It's in these moments, watching dog_name revel in the joy of discovery, that I truly appreciate the bond we share.",
+  "Navigating the bustling streets of London becomes an adventure with dog_name, whose love for exploration knows no limits. From the grandeur of the Tower Bridge at dawn to the tranquil sunsets at Primrose Hill, dog_name appreciates every moment outdoors. At home, dog_name's gentle presence fills the space, making every corner of our London flat feel like a haven.",
+  "London's ever-changing seasons bring new adventures for dog_name and me. With the first snowfall, dog_name dances with delight, leaving tiny paw prints across the city's parks. The arrival of spring sees us lounging in the dappled sunlight of Kew Gardens, where dog_name watches the world with wide-eyed wonder. Through dog_name's eyes, I've come to see my city in a whole new light.",
+  "There's a certain magic to London's rainy days when experienced alongside dog_name. Splashing through puddles and chasing raindrops, dog_name finds joy in every droplet. Our quiet evenings are spent listening to the rain against the windows, with dog_name nestled close, reminding me that home is not just a place, but a feeling.",
+  "Our explorations of London are never complete without a visit to its bustling markets and serene riversides, with dog_name eagerly leading the way. dog_name's friendly demeanor makes us a familiar sight in our neighborhood, where every outing is an opportunity for new friendships. As night falls, dog_name's soft snores are a comforting end to our days filled with discovery.",
+  "The sprawling green spaces of London are dog_name's playground, where every tree and trail tells a story. Our adventures through the city's parks are filled with moments of simple happiness, watching dog_name chase the wind and bask in the sunshine. These shared experiences, set against the backdrop of London's beauty, have created an unbreakable bond between us.",
+  "In the bustling city of London, dog_name is my steadfast companion, finding excitement in the rhythm of city life. From leisurely morning walks in serene parks to lively evening strolls along the Thames, dog_name's adventurous spirit is undiminished. At home, dog_name's quiet companionship is a gentle reminder of the enduring friendship we share, a beacon of joy in the heart of the city."
 ]
 
 User.all.each do |user|
@@ -445,7 +611,7 @@ User.all.each do |user|
     user: user,
     dog_image: dog_image,
     town: "London",
-    bio: pet_bios.sample
+    bio: pet_bios.sample.gsub("dog_name", name)
   )
 end
 
@@ -540,7 +706,7 @@ User.all.each do |user|
     appointment.start_date = appointment_info['start_date']
     appointment.end_date = appointment_info['end_date']
     appointment.location = appointment_info['location']
-    appointment.pet = Pet.where(user_id: user.id)
+    appointment.pet = Pet.where(user_id: user.id).first
     appointment.looking_for = activity_types.sample
     appointment.save!
   end
