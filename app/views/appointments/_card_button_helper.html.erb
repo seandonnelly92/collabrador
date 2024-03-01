@@ -1,5 +1,3 @@
-<% if appointment.pending_helper %>
-  <button class="btn btn-primary d-none" disabled>Pending...</button>
-<% else %>
-  <button class="btn btn-primary" data-action="click->appointments#addPendingHelper">Help out!</button>
+<% unless appointment.pending_helper %>
+  <div id="appointment-help" data-action="click->appointments#addPendingHelper"><i class="fa-solid fa-paw"></i><p>Help out</p></div>
 <% end %>
