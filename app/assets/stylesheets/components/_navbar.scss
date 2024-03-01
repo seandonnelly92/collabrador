@@ -41,12 +41,12 @@
 #navbar-menu a {
   text-decoration: none;
   font-weight: 500;
-  color: rgb(144, 144, 144);
+  color: rgb(5, 81, 62);
   // border-bottom: 2px solid rgba(71, 71, 71, 0);
   transition: 0.5s ease;
 
   &:hover {
-    color: rgb(71, 71, 71);
+    color: rgb(138, 191, 159);
     // border-bottom: 2px solid rgba(71, 71, 71, 0.9);
     // font-weight: 600;
   }
@@ -67,4 +67,60 @@
 
 #logo-link {
   height: 20px;
+}
+
+// BUTTON CSS
+.nav-buttons {
+  display: flex;
+  align-items: inline;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-btn-login {
+  color: white;
+  list-style: none;
+  margin-right: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  // border: 1px solid rgb(5, 81, 62);
+  border-radius: 30px;
+
+  background-color: rgb(5, 81, 62);
+  position: relative;
+
+  box-shadow: inset 0 0 0 0 #8ABF9F;
+  -webkit-transition: ease-out 0.2s;
+  -moz-transition: ease-out 0.2s;
+  transition: ease-out 0.2s;
+
+  &:hover {
+    box-shadow: inset 200px 0 0 0 #8ABF9F;
+  }
+}
+
+.nav-btn-signup {
+  color: rgb(225, 102, 45);
+  list-style: none;
+  margin-right: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid rgb(225, 102, 45);
+  border-radius: 25px;
+
+  // background-color: rgba(138, 191, 159, .25);
+  position: relative;
+
+  box-shadow: inset 0 0 0 0 #f4c167;
+  -webkit-transition: ease-out 0.2s;
+  -moz-transition: ease-out 0.2s;
+  transition: ease-out 0.2s;
+
+  &:hover {
+    box-shadow: inset 200px 0 0 0 #f4c167;
+  }
 }
