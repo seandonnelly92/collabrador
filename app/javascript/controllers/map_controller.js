@@ -29,8 +29,6 @@ export default class extends Controller {
     this.#fitMapToMarkers()
     // this.bindSearch()
 
-
-
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
 
   }
@@ -51,7 +49,6 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
-
 
   // search(event) {
   //   event.preventDefault();
