@@ -2,22 +2,24 @@
 
 <%# PROFILE HEADER %>
 
-<div id="profile-header" class="d-flex col-7 mt-5 justify-content-center">
-
+<div id="profile-header" class="d-flex mt-5 justify-content-center me-0">
+  <div class="col-10 d-flex justify-content-center">
 <%# PROFILE HEADER TOP LEFT %>
   <div id="profile-top-header-left" class="d-flex flex-column align-self-end">
-    <h1 class="ps-1 pe-2"><%= @owner.first_name %> & <%= @pet.name %></h1>
+    <h2 class="ps-1 pe-2"><%= @owner.first_name %> & <%= @pet.name %></h2>
     <h5 class="ps-1 pe-2"><i class="fa-solid fa-location-dot"></i> <%= @owner.postcode %></h5>
       <% if @owner.profile_picture.attached? %>
         <%= cl_image_tag @owner.profile_picture.key, height: 250, width: 250, crop: :fill, :transformation=>[
-          {:radius=>"100"}] %>
+          {:radius=>"325"}] %>
+      <% elsif @owner.picture_url %>
+        <%= image_tag @owner.picture_url, class: "avatar-profile" %>
       <% else %>
-        <img class="me-3" id="profile-picture" src="https://hwchamber.co.uk/wp-content/uploads/2022/04/avatar-placeholder.gif" alt="Sean's profile picture">
+        <img class="me-3" id="profile-picture" src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="Sean's profile picture">
       <% end %>
   </div>
 
   <%# PROFILE HEADER TOP RIGHT %>
-  <div id="profile-header-top-right" class="col-12">
+  <div id="profile-header-top-right" class="col-7 align-self-start">
     <%# CAROUSEL  %>
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
       <div class="carousel-indicators">
@@ -51,130 +53,83 @@
   </div>
 </div>
 
-  <%# ATTRIBUTE CARD %>
 
-<div class="attributes-card col-9 mt-n3 pt-5">
-  <div id="attribute-headline" class="d-flex justify-content-center">
-    <h4 class="">About <%= @pet.name %> </h4>
-    </div>
-      <div id="attributes" class="d-flex justify-content-evenly col-12 px-5">
-        <% case @pet.animal_type %>
-        <% when "Dog"  %>
-          <p><i class="fa-solid fa-dog"></i> <%= @pet.breed if @pet.breed %></p>
-        <% when "cat" || "Cat" %>
-          <p><i class="fa-solid fa-cat"></i> <%= @pet.breed if @pet.breed %></p>
-        <% else %>
-          <p><%= @pet.animal_type %> <%= @pet.breed if @pet.breed %></p>
-        <% end %>
-        <p><i class="fa-solid fa-up-right-and-down-left-from-center"></i> <%= @pet.size.capitalize %></p>
-        <p><i class="fa-solid fa-seedling"></i> <%= @pet.age %> years</p>
-        <% if @pet.sex === "male" %>
-          <p><i class="fa-solid fa-mars"></i> Male</p>
-        <% else %>
-          <p><i class="fa-solid fa-venus"></i> Female</p>
-        <% end %>
-        <% if @pet.sex === "male" && @pet.neutered_spayed === true %>
-          <p><i class="fa-solid fa-mars"></i> Neutered</p>
-        <% elsif @pet.sex === "female" && @pet.neutered_spayed === true %>
-          <p><i class="fa-solid fa-scissors"></i> Spayed</p>
-        <% else %>
-        <% end %>
-        <% if @pet.hypoallergenic === true %>
-          <p><i class="fa-solid fa-hand-dots"></i> Hypoallergenic</p>
-        <% end %>
-        <% case @pet.activity_needs %>
-          <% when "low" || "Low"  %>
-            <p><i class="fa-solid fa-battery-quarter"></i> Low Energy </p>
-          <% when "medium" || "Medium" %>
-            <p><i class="fa-solid fa-battery-half"></i> Mid Energy </p>
+<%# ATTRIBUTE CARD %>
+<div class="d-flex justify-content-center">
+  <div class="attributes-card col-9 mt-n3 p-4">
+    <div id="attribute-headline" class="d-flex justify-content-center ">
+      <h4 class="pb-3">About <%= @pet.name %> </h4>
+      </div>
+        <div id="attributes" class="d-flex justify-content-evenly col-12 px-5">
+          <% case @pet.animal_type %>
+          <% when "Dog"  %>
+            <p><i class="fa-solid fa-dog"></i> <%= @pet.breed if @pet.breed %></p>
+          <% when "cat" || "Cat" %>
+            <p><i class="fa-solid fa-cat"></i> <%= @pet.breed if @pet.breed %></p>
           <% else %>
-            <p><i class="fa-solid fa-battery-full"></i> High Energy </p>
-        <% end %>
-        <% if @pet.dog_friendly == true || @pet.cat_friendly == true || @pet.child_friendly == true %>
-        <p>Friendly with
-        <% end %>
-        <% if @pet.dog_friendly == true %>
-          <i class="fa-solid fa-dog" data-bs-toggle="tooltip" data-bs-placement="top" title="Dogs"></i>
-        <% end %>
-        <% if @pet.cat_friendly == true %>
-          <i class="fa-solid fa-cat" data-bs-toggle="tooltip" data-bs-placement="top" title="Cats"></i>
-        <% end %>
-        <% if @pet.child_friendly == true %>
-          <i class="fa-solid fa-child-reaching" data-bs-toggle="tooltip" data-bs-placement="top" title="Children"></i>
-        <% end %>
-        </p>
+            <p><%= @pet.animal_type %> <%= @pet.breed if @pet.breed %></p>
+          <% end %>
+          <p><i class="fa-solid fa-up-right-and-down-left-from-center"></i> <%= @pet.size.capitalize %></p>
+          <p><i class="fa-solid fa-seedling"></i> <%= @pet.age %> years</p>
+          <% if @pet.sex === "male" %>
+            <p><i class="fa-solid fa-mars"></i> Male</p>
+          <% else %>
+            <p><i class="fa-solid fa-venus"></i> Female</p>
+          <% end %>
+          <% if @pet.sex === "male" && @pet.neutered_spayed === true %>
+            <p><i class="fa-solid fa-mars"></i> Neutered</p>
+          <% elsif @pet.sex === "female" && @pet.neutered_spayed === true %>
+            <p><i class="fa-solid fa-scissors"></i> Spayed</p>
+          <% else %>
+          <% end %>
+          <% if @pet.hypoallergenic === true %>
+            <p><i class="fa-solid fa-hand-dots"></i> Hypoallergenic</p>
+          <% end %>
+          <% case @pet.activity_needs %>
+            <% when "low" || "Low"  %>
+              <p><i class="fa-solid fa-battery-quarter"></i> Low Energy </p>
+            <% when "medium" || "Medium" %>
+              <p><i class="fa-solid fa-battery-half"></i> Mid Energy </p>
+            <% else %>
+              <p><i class="fa-solid fa-battery-full"></i> High Energy </p>
+          <% end %>
+          <% if @pet.dog_friendly == true || @pet.cat_friendly == true || @pet.child_friendly == true %>
+          <p>Friendly with
+          <% end %>
+          <% if @pet.dog_friendly == true %>
+            <i class="fa-solid fa-dog" data-bs-toggle="tooltip" data-bs-placement="top" title="Dogs"></i>
+          <% end %>
+          <% if @pet.cat_friendly == true %>
+            <i class="fa-solid fa-cat" data-bs-toggle="tooltip" data-bs-placement="top" title="Cats"></i>
+          <% end %>
+          <% if @pet.child_friendly == true %>
+            <i class="fa-solid fa-child-reaching" data-bs-toggle="tooltip" data-bs-placement="top" title="Children"></i>
+          <% end %>
+          </p>
+        </div>
       </div>
     </div>
+</div>
 
 <%# BIO/INTRODUCTION %>
-<h4 class="pt-3">Introduction</h4>
-<p><%= @pet.name %> has a fantastic nature and loves nothing more than running through the woods and cuddling up to people. Great and well-mannered around other dogs.</p>
-
-
-
-
+<div class="d-flex align-items-center justify-content-center">
+  <div class="col-7">
+    <h4 class="pt-5 py-2">👋 Intro</h4>
+    <p><%= @pet.name %> has a fantastic nature and loves nothing more than running through the woods and cuddling up to people. Great and well-mannered around other dogs.</p>
+  </div>
+</div>
 
     <%# Panels container %>
-    <div id="panels-container" class="d-flex">
+    <div class="d-flex align-items-center justify-content-center">
+    <div id="panels-container" class="d-flex col-7">
       <%# Left Panel %>
-      <div id="left-panel" class="col-7">
-      <%# Attributes %>
-      <div id="attributes" class="py-4 col-10">
-        <%# SD: I think we might need an if statement for every attribute.
-        If present, show X icon and then the attribute's value. %>
-      <h4>About <%= @pet.name %> </h4>
-        <div id="attributes-container" class="d-flex justify-content-between col-11">
-          <div id="attributes-left" class="d-flex">
-            <% case @pet.animal_type %>
-            <% when "dog" || "Dog"  %>
-              <p><i class="fa-solid fa-dog"></i> <%= @pet.breed if @pet.breed %></p>
-            <% when "cat" || "Cat" %>
-              <p><i class="fa-solid fa-cat"></i> <%= @pet.breed if @pet.breed %></p>
-            <% else %>
-              <p><%= @pet.animal_type %> <%= @pet.breed if @pet.breed %></p>
-            <% end %>
-            <p><i class="fa-solid fa-up-right-and-down-left-from-center"></i> <%= @pet.size.capitalize %></p>
-            <p><i class="fa-solid fa-seedling"></i> <%= @pet.age %> years</p>
-            <% if @pet.sex === "male" %>
-              <p><i class="fa-solid fa-mars"></i> Male</p>
-            <% else %>
-              <p><i class="fa-solid fa-venus"></i> Female</p>
-            <% end %>
-            <% if @pet.sex === "male" && @pet.neutered_spayed === true %>
-              <p><i class="fa-solid fa-mars"></i> Neutered</p>
-            <% else %>
-              <p><i class="fa-solid fa-scissors"></i> Spayed</p>
-            <% end %>
-            <p><i class="fa-solid fa-hand-dots"></i> Hypoallergenic</p>
-            <% case @pet.activity_needs %>
-              <% when "low" || "Low"  %>
-                <p><i class="fa-solid fa-battery-quarter"></i> Low Energy </p>
-              <% when "medium" || "Medium" %>
-                <p><i class="fa-solid fa-battery-half"></i> Mid Energy </p>
-              <% else %>
-                <p><i class="fa-solid fa-battery-full"></i> High Energy </p>
-            <% end %>
-
-
-            <p>Friendly with
-              <i class="fa-solid fa-dog" data-bs-toggle="tooltip" data-bs-placement="top" title="Dogs"></i>
-              <i class="fa-solid fa-cat" data-bs-toggle="tooltip" data-bs-placement="top" title="Cats"></i>
-              <i class="fa-solid fa-child-reaching" data-bs-toggle="tooltip" data-bs-placement="top" title="Children"></i>
-            </p>
-          </div>
-
-          <div id="attributes-right">
-          </div>
-        </div>
-      </div>
-
+      <div id="left-panel" class="col-6">
       <%# Reviews %>
+      <div id="reviews" class="py-5">
+        <h4 class="pb-2">⭐ Reviews</h4>
+        <div id="reviews-container" class="d-flex flex-column gap-4 justify-content-around">
 
-      <div id="reviews" class="py-5 my-5">
-        <h4>Reviews</h4>
-        <div id="reviews-container" class="d-flex flex-column gap-3 justify-content-around">
-
-          <div id="review-card" class="col-11 p-3 shadow-sm p-4 mb-5 bg-white">
+          <div id="review-card" class="col-11 p-3 shadow-sm p-4 bg-white">
             <h6 class="mb-3">"<%= @owner.first_name %> took great care of our Bruce! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
             <div class="d-flex align-items-center justify-content-end">
               <p>from <a href="">Victoria & Albert</a></p>
@@ -182,7 +137,7 @@
             </div>
           </div>
 
-          <div id="review-card" class="col-11 p-3 shadow-sm p-4 mb-5 bg-white">
+          <div id="review-card" class="col-11 p-3 shadow-sm p-4 bg-white">
             <h6 class="mb-3">"<%= @owner.first_name %> took great care of our Bruce! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
             <div class="d-flex align-items-center justify-content-end">
               <p>from <a href="">Victoria & Albert</a></p>
@@ -190,7 +145,7 @@
             </div>
           </div>
 
-          <div id="review-card" class="col-11 p-3 shadow-sm p-4 mb-5 bg-white">
+          <div id="review-card" class="col-11 p-3 shadow-sm p-4 bg-white">
             <h6 class="mb-3">"<%= @owner.first_name %> took great care of our Bruce! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
             <div class="d-flex align-items-center justify-content-end">
               <p>from <a href="">Victoria & Albert</a></p>
@@ -198,7 +153,7 @@
             </div>
           </div>
 
-          <div id="review-card" class="col-11 p-3 shadow-sm p-4 mb-5 bg-white">
+          <div id="review-card" class="col-11 p-3 shadow-sm p-4 bg-white">
             <h6 class="mb-3">"<%= @owner.first_name %> took great care of our Bruce! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
             <div class="d-flex align-items-center justify-content-end">
               <p>from <a href="">Victoria & Albert</a></p>
@@ -206,7 +161,7 @@
             </div>
           </div>
 
-          <div id="review-card" class="col-11 p-3 shadow-sm p-4 mb-5 bg-white">
+          <div id="review-card" class="col-11 p-3 shadow-sm p-4 bg-white">
             <h6 class="mb-3">"<%= @owner.first_name %> took great care of our Bruce! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
             <div class="d-flex align-items-center justify-content-end">
               <p>from <a href="">Victoria & Albert</a></p>
@@ -218,9 +173,12 @@
         </div>
       </div>
     </div>
+
 
     <%# Right Panel %>
     <div id="right-panel" style="col-7">
+        <h4 class="pt-5 py-2">📍 Location</h4>
+
       <%# Map %>
       <div id="map" class="mb-5">
         <%# <img src="https://lh6.googleusercontent.com/DAnBdkJto8zBAdQbysgmsTd0LRHO6fNurI_4C8nAdbGsfyMKvA3wKzWRyPSnJW7RaKfRqsxOiwtbvwUsuxx6P2qXtefHz-K8hF4wPE7ecMsSRfLeryJAnmzzpp3VINP2qP6nxfA" alt="map placeholder" class="w-100"> %>
@@ -234,4 +192,3 @@
     </div>
   </div>
   </div>
-</div>

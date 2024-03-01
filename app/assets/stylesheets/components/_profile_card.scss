@@ -20,31 +20,6 @@
 // $gray: #0E0000;
 // $light-gray: #F4F4F4;
 
-
-// .pet-profile-card {
-//   background: white;
-//   border-radius: 5px;
-//   &:hover {
-//     background-color: #f4c167;
-//   }
-// }
-
-// .pet-card-btn {
-//   text-decoration: none;
-//   color: black;
-//   padding: 5px;
-//   border-radius: 50%;
-//   display: inline-block;
-//   cursor: pointer;
-//   box-shadow: inset 0 0 0 0 #f4c167;
-//   -webkit-transition: ease-out 0.4s;
-//   -moz-transition: ease-out 0.4s;
-//   transition: ease-out 0.4s;
-//   &:hover {
-//     box-shadow: inset 400px 0 0 0 #f4c167;
-//   }
-// }
-
 .pet-img {
   align-self: center;
   object-fit: cover;
@@ -67,9 +42,9 @@
   height: 150px;
 
   box-shadow: inset 0 0 0 0 #f4c167;
-  -webkit-transition: ease-out 0.1s;
-  -moz-transition: ease-out 0.1s;
-  transition: ease-out 0.1s;
+  -webkit-transition: ease-out 0.15s;
+  -moz-transition: ease-out 0.15s;
+  transition: ease-out 0.15s;
 
   &:hover {
     box-shadow: inset 400px 0 0 0 #f4c167;
@@ -99,6 +74,7 @@
 }
 
 .pet-content-titles {
+  padding-top: 3px;
   max-width: 280px;
   display: flex;
   justify-content: space-around;
@@ -132,7 +108,7 @@
   // align-items: flex-end;
 	// white-space: nowrap;
   margin-top: 5px;
-  padding: 5px 15px;
+  padding: 3px 5px;
 	width: 90%;
   border-radius: 25px;
 	overflow: hidden;
@@ -178,7 +154,3 @@
 //   overflow: scroll;
 //   height: 90px;
 // }
-
-body {
-  background-color: aqua;
-}

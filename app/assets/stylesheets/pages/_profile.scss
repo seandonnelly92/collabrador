@@ -2,18 +2,22 @@
   height: 50vh;
 }
 
-// .carousel-item img {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     min-height: 100%;
-//     object-position: center;
-//     object-fit: cover;
-//     border-radius: 20px;
-// }
+.carousel-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 20px;
+}
 
 
 // This is for the appointments
 .sticky-offset {
   top: 100px;
 }
+
+// body {
+//   background-color: red;
+// }

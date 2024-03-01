@@ -23,19 +23,8 @@ export default class extends Controller {
     })
 
     console.log("I am connected")
-
-
-    //NEW CODE TO DELETE
-
-
-    // NEW CODE TO DELETE
-
-
-
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    // this.bindSearch()
-
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
 
   }
@@ -68,5 +57,4 @@ export default class extends Controller {
     }
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
-
 }

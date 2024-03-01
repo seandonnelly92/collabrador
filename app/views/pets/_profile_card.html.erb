@@ -1,6 +1,13 @@
 <%= link_to pet_path(pet), class: "pet-card-btn" do %>
   <div class="pet-profile-card">
-    <img class="pet-img" src="<%= pet.dog_image %>" alt="Picture of pet">
+
+    <% if pet.pet_photos.attached? %>
+      <%= cl_image_tag pet.pet_photos.first.key, class: "pet-img" %>
+    <% else %>
+      <img class="pet-img" src="<%= pet.dog_image %>" alt="Picture of a pet">
+    <% end %>
+    <%# <img class="pet-img" src="<%= pet.dog_image %>
+
     <div class="pet-card-content">
       <div class="pet-content-titles">
         <h5 class="pc-title"><%= owner.first_name %> & <%= pet.name %></h5>
@@ -8,6 +15,10 @@
       </div>
     <%# <button class="pet-card-btn"></button> %>
     </div>
-      <img class="avatar" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww" alt="your profile picture">
+      <% if owner.profile_picture.attached? %>
+        <%= cl_image_tag owner.profile_picture.key, class: "avatar" %>
+      <% else %>
+        <img class="avatar" src="<%= owner.picture_url %>" alt="your profile picture">
+      <% end %>
   </div>
 <% end %>
