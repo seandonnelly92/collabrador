@@ -11,19 +11,29 @@
 #Clearing all pets before each db:seed
 require 'date'
 
-
 puts "destroying all appointments..."
 Appointment.destroy_all
 
 puts "destroying all pets..."
 Pet.destroy_all
 
-
 puts "destroying all users..."
 User.destroy_all
 
-# User 1
-new_user = User.new(first_name: "Jasper")
+# Adding Jasper
+User.new(
+  first_name: "Jasper",
+  last_name: "Warmenhoven",
+  postcode: "WC2E 7DU",
+  town: "Covent Garden",
+  email: "jasper@lewagon.com",
+  password: "password"
+)
+
+Pet.new(
+  
+)
+
 
 ## Randomly generated Users
 puts "Seeding users..."
