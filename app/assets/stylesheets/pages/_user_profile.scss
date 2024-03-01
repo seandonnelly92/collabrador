@@ -107,6 +107,7 @@
   border-radius: 4px;
   box-shadow: 0 2px 2px 2px lightgrey;
   width: fit-content;
+  background-color: #f0f0dd49;
 }
 
 .pets-card-header {
@@ -117,6 +118,7 @@
 
   img {
     position: static;
+    box-shadow: 1px 1px 1px 1px lightgrey;
   }
 
   h3 {
