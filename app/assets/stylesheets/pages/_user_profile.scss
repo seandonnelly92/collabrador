@@ -31,7 +31,7 @@
   margin: 0 auto 30px;
   width: 80%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   border-bottom: 2px solid rgb(228, 228, 228);
 }
 
@@ -71,6 +71,7 @@
 .profile-header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 
   h2 {
     font-size: 20px;
@@ -87,6 +88,7 @@
 // "Your Pets"-section on the my profile page
 .profile-pets {
   margin: 0 auto 30px;
+  padding-bottom: 20px;
   width: 80%;
   border-bottom: 2px solid rgb(228, 228, 228);
 
@@ -94,6 +96,12 @@
   color: rgb(80, 80, 80);
 }
 
+.profile-pets-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  justify-items: center;
+}
 
 .pets-card {
   border-radius: 4px;
@@ -105,6 +113,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 5px;
 
   img {
     position: static;
@@ -119,9 +128,9 @@
 
 .pets-card-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 3fr;
   gap: 10px;
-  padding: 10px 25px;
+  padding: 10px 15px;
 
   p {
     margin: 0;
@@ -149,12 +158,18 @@
   i {
     margin: 0 6px;
     font-size: 14px;
+    color: lightgrey;
+  }
+
+  i.active {
+    color: rgba(244, 193, 103, 0.7);
   }
 }
 
 // "Your Appointments"-section on the my profile page
 .profile-appointments {
   margin: 0 auto 30px;
+  padding-bottom: 20px;
   width: 80%;
   border-bottom: 2px solid rgb(228, 228, 228);
 
@@ -162,15 +177,30 @@
   color: rgb(80, 80, 80);
 }
 
+.profile-appointments-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  justify-items: center;
+}
+
 .appointment-card {
   border-radius: 4px;
   box-shadow: 0 2px 2px 2px lightgrey;
-  width: fit-content;
+  width: 100%;
+
+  &.helper {
+    margin-bottom: 12px;
+    width: 100%;
+  }
+}
+
+.appointment-card button {
+  border-radius: 10%;
 }
 
 .appointment-card-header {
   padding: 8px 16px;
-  background-color: rgb(137, 193, 137);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   text-align: center;
@@ -179,15 +209,39 @@
     margin: 0;
     font-size: 16px;
     font-weight: 600;
+  }
+}
+
+.appointment-card-header.confirmed {
+  background-color: rgb(137, 193, 137);
+
+  h3 {
     color: rgb(47, 70, 47);
   }
 }
 
+.appointment-card-header.pending {
+  background-color: rgb(235, 238, 173);
+
+  h3 {
+    color: rgb(130, 119, 40);
+  }
+}
+
+.appointment-card-header.available {
+  background-color: rgb(212, 212, 212);
+
+  h3 {
+    color: rgb(94, 94, 94);
+  }
+}
+
 .appointment-card-content {
+  height: fit-content;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 5px;
-  padding: 10px 25px;
+  padding: 10px 10px;
 
   ul {
     margin: 0;
@@ -200,5 +254,72 @@
 
   li {
     list-style-type: none;
+  }
+}
+
+.appointment-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  img {
+    position: static;
+    width: 40px;
+    height: 40px;
+  }
+
+  a{
+    text-decoration: none;
+    font-weight: 600;
+    color: rgb(70, 70, 70);
+  }
+}
+
+.appointment-buttons {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+
+  #appointment-confirm {
+    cursor: pointer;
+    color: rgb(98, 133, 98);
+    margin: 5px 3px;
+  }
+
+  #appointment-reject {
+    cursor: pointer;
+    color: rgb(145, 90, 90);
+    margin: 5px 3px;
+  }
+}
+
+#appointment-help {
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  background-color: rgb(98, 133, 98);
+  transition: 0.4s ease;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 18px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  &:hover {
+    background-color: rgb(146, 186, 146);
   }
 }
