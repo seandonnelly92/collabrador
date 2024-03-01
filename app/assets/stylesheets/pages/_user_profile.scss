@@ -237,7 +237,6 @@
 }
 
 .appointment-card-content {
-  height: fit-content;
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 5px;
@@ -274,6 +273,7 @@
     text-decoration: none;
     font-weight: 600;
     color: rgb(70, 70, 70);
+    padding-top: 8px;
   }
 }
 
