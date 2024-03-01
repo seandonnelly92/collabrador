@@ -8,7 +8,7 @@
       </div>
     <%# <button class="pet-card-btn"></button> %>
     </div>
-      <% if owner.profile_picture_attached? %>
+      <% if owner.profile_picture.attached? %>
         <%= cl_image_tag owner.profile_picture.key, class: "avatar" %>
       <% else %>
         <img class="avatar" src="<%= owner.picture_url %>" alt="your profile picture">
