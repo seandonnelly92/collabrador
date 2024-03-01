@@ -1,13 +1,29 @@
-#marker-name-style {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 20px;
+// #marker {
+//   color: rgb(0, 0, 0);
+//   text-decoration: none;
+//   font-weight: bold;
+//   font-size: 20px;
+//   border-radius: 100%;
+// }
+
+// #link-style {
+//   color: rgb(0, 19, 231);
+//   text-decoration: none;
+//   font-weight: bold;
+//   font-size: 20px;
+// }
+
+
+.marker a {
+  display: inline-block; /* Ensures the <a> tag respects width and height */
+  overflow: hidden; /* Ensures the image doesn't overflow */
+  // border: 2px solid #000; /* Example border style */
+  width: 70px; /* Adjust size as needed */
+  height: 70px; /* Adjust size as needed */
 }
 
-#link-style {
-  color: rgb(0, 19, 231);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 20px;
+.marker img {
+  width: 100%; /* Ensures the image fills the circular container */
+  height: auto;
+  border: 2px solid #000; /* Example border style */
 }
