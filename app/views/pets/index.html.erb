@@ -4,10 +4,12 @@
       <div class="row m-2 justify-content-around" style="height: 300px">
         <div class="col-5 d-flex flex-column justify-content-center">
           <h1>Find fellow pet owners in your area</h1>
-          <form class="form-landing mt-4">
-            <input class="form-landing-search" type="text" placeholder="e.g D0G5 4US">
-            <button class="form-landing-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-          </form>
+          <div data-controller="postcode">
+             <form data-action="submit->postcode#search" class="form-landing mt-4">
+                <input data-postcode-target="postcodeInput" class="form-landing-search" type="text" placeholder="e.g D0G5 4US">
+                <button class="form-landing-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+           </div>
         </div>
         <div class="col-5 banner-bg-img d-flex flex-column justify-content-center">
 
@@ -33,7 +35,7 @@
       </div>
 
       <div class="col-6">
-          <img src="https://blogcdn.zeemaps.com/blog/wp-content/uploads/2020/01/Radius-map-2.png" class="map-eg-img">
+          <div id ="map" data-controller="map" style="width: 100%; height: 600px;" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" class ="map-eg-img"></div>
       </div>
 
     </div>
