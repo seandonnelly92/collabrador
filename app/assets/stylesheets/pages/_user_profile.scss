@@ -237,6 +237,7 @@
 }
 
 .appointment-card-content {
+  height: fit-content;
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 5px;
@@ -261,6 +262,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  justify-content: center;
 
   img {
     position: static;

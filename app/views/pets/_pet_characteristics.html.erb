@@ -1,16 +1,17 @@
 <div>
   <% if pet.sex == "female" %>
-    <i class="fa-solid fa-venus active" data-toggle="tooltip" data-placement="top" title="Female"></i>
+    <i class="fa-solid fa-venus active" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Female"></i>
+    <i class="fa-solid fa-heart-circle-check <%= "active" if pet.neutered_spayed %>" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Spayed"></i> <!-- Spayed if female -->
   <% else %>
-    <i class="fa-solid fa-mars active" data-toggle="tooltip" data-placement="top" title="Male"></i>
+    <i class="fa-solid fa-mars active" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Male"></i>
+    <i class="fa-solid fa-heart-circle-check <%= "active" if pet.neutered_spayed %>" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Neutered"></i>
   <% end %>
-  <i class="fa-solid fa-heart-circle-check <%= "active" if pet.neutered_spayed %>"></i>
 </div>
 <div>
-  <i class="fa-solid fa-dog"></i>
-  <i class="fa-solid fa-cat"></i>
-  <i class="fa-solid fa-child"></i>
+  <i class="fa-solid fa-dog <%= "active" if pet.dog_friendly %>" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Dog friendly"></i>
+  <i class="fa-solid fa-cat <%= "active" if pet.cat_friendly %>" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Cat friendly"></i>
+  <i class="fa-solid fa-child <%= "active" if pet.child_friendly %>" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Child friendly"></i>
 </div>
 <div>
-  <i class="fa-solid fa-box-tissue"></i>
+  <i class="fa-solid fa-box-tissue <%= "active" if pet.hypoallergenic %>" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Hypoallergenic"></i>
 </div>

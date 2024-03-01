@@ -61,7 +61,8 @@
                 </tr>
               </table>
 
-              <div class="pets-characteristics">
+              <!-- Initiates tooltip controller on all pet characteristics (see _pet_characteristics.html.erb for tooltips) -->
+              <div class="pets-characteristics" data-controller="tooltip">
                 <%= render 'pets/pet_characteristics', pet: pet %>
               </div>
             </div>
