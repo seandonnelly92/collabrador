@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <% if @owner.pets.length > 0 %>
+  <% if @owner && @owner.pets.length > 0 %>
     <div class="profile-section">
       <div class="profile-image">
         <% if @owner.profile_picture.key %>
@@ -86,7 +86,7 @@
     </div>
   <% end %>
 
-  <% if @owner.pets.length.zero? %>
+  <% if @owner && @owner.pets.length.zero? %>
     <!-- Modal - First pet -->
     <div class="modal-custom show" data-modals-target="newPet">
   <% else %>
@@ -104,7 +104,8 @@
       </div>
     </div> <!-- Note: This is the div-closing for the div-opening in the if-statement -->
 
-  <% new_appointment = Appointment.new %>
-  <%= render "appointments/appointment_modal", appointment: new_appointment %>
-
+  <% if @owner %>
+    <% new_appointment = Appointment.new %>
+    <%= render "appointments/appointment_modal", appointment: new_appointment %>
+  <% end %>
 </div>
