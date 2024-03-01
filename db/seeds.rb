@@ -45,7 +45,7 @@ theo = Pet.new(
   cat_friendly: false,
   hypoallergenic: false,
   town: "Covent Garden",
-  bio:
+  bio: "I hail from the Netherlands but have found my second home in London, where I dive into the world of web development. My sidekick, Theo, a 2-year-old Labrador with a zest for life, shares my adventures. While he's not too fond of cats, give him a puddle to jump into, and he's the happiest dog on the block. Our walks are never just walks; they're joyful explorations, with Theo leading the charge into every splash of water we come across."
 )
 theo_pictures = ['app/assets/images/dog_pic_theo_1.jpg', 'app/assets/images/dog_pic_theo_2.jpg']
 theo_pictures.each do |pic|
@@ -80,7 +80,7 @@ cleo = Pet.new(
   cat_friendly: false,
   hypoallergenic: true,
   town: "Islington",
-  bio:
+  bio: "Living in Islington as a tech-founder, I navigate the bustling world of startups with Cleo, my exuberant cockapoo, always by my side. She embodies high energy and is arguably the friendliest dog you'll ever meet — unless you're a cat, that is. Our days are filled with her boundless enthusiasm, making every moment a delightful escapade, her tail wagging in pure joy at every new face she meets."
 )
 cleo_pictures = ['app/assets/images/dog_pic_cleo_1.jpg', 'app/assets/images/dog_pic_cleo_2.jpg']
 cleo_pictures.each do |pic|
@@ -115,7 +115,7 @@ boris = Pet.new(
   cat_friendly: false,
   hypoallergenic: false,
   town: "Clerkenwell",
-  bio:
+  bio: "My transition from teaching to full-stack development brought many changes, but none as constant as my companion, Boris. We reside in Clerkenwell with my wife, and this 3-year-old Husky is a bundle of energy that loves nothing more than our runs in the local park. However, it's our annual winter trips to Finland that he lives for, where he can dash through the snow, his spirit as free as the winter wind. His love for the chilly outdoors makes every trip an unforgettable journey."
 )
 boris_pictures = ['app/assets/images/dog_pic_boris_1.jpg', 'app/assets/images/dog_pic_boris_2.jpg', 'app/assets/images/dog_pic_boris_3.jpg']
 boris_pictures.each do |pic|
@@ -150,7 +150,7 @@ lola = Pet.new(
   cat_friendly: true,
   hypoallergenic: true,
   town: "Finsbury Park",
-  bio:
+  bio: "As a software engineer living in Finsbury Park, my life is a blend of code and canine companionship, thanks to Lola, my spoodle. Unlike most dogs, Lola prefers the company of cats, making friends with every feline in the neighborhood. This unique trait ensures she's always the center of attention, a role she seems to relish. With Lola, every day is an adventure in diplomacy, as she navigates her circle of cat and human friends with equal aplomb, ensuring all eyes are on her."
 )
 lola_pictures = ['app/assets/images/dog_pic_lola_1.jpg', 'app/assets/images/dog_pic_lola_2.jpg', 'app/assets/images/dog_pic_lola_3.jpg']
 lola_pictures.each do |pic|
@@ -159,6 +159,10 @@ lola_pictures.each do |pic|
   lola.pet_photos.attach(io: image_io, filename: file_name, content_type: 'image/jpg')
 end
 lola.save
+
+
+
+
 
 ## Randomly generated additional Users
 puts "Seeding users..."
