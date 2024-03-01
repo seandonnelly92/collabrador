@@ -8,7 +8,7 @@
 <%# PROFILE HEADER TOP LEFT %>
   <div id="profile-top-header-left" class="d-flex flex-column align-self-end">
     <h2 class="ps-1 pe-2"><%= @owner.first_name %> & <%= @pet.name %></h2>
-    <h5 class="ps-1 pe-2"><i class="fa-solid fa-location-dot"></i> <%= @owner.postcode %></h5>
+    <h5 class="ps-1 pe-2"><i class="fa-solid fa-location-dot"></i> <%= @pet.town %></h5>
       <% if @owner.profile_picture.attached? %>
         <%= cl_image_tag @owner.profile_picture.key, height: 250, width: 250, crop: :fill, :transformation=>[
           {:radius=>"325"}] %>
