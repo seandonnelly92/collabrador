@@ -11,8 +11,10 @@
       <% if @owner.profile_picture.attached? %>
         <%= cl_image_tag @owner.profile_picture.key, height: 250, width: 250, crop: :fill, :transformation=>[
           {:radius=>"325"}] %>
+      <% elsif @owner.picture_url %>
+        <%= image_tag @owner.picture_url, class: "avatar-profile" %>
       <% else %>
-        <img class="me-3" id="profile-picture" src="https://hwchamber.co.uk/wp-content/uploads/2022/04/avatar-placeholder.gif" alt="Sean's profile picture">
+        <img class="me-3" id="profile-picture" src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="Sean's profile picture">
       <% end %>
   </div>
 
