@@ -1,106 +1,118 @@
 <div class="container col-10">
-  <div id="profile-header" class="d-flex py-5">
-    <div id="profile-header-left" class="col-5 pe-3">
-      <div class="d-flex">
-        <div>
-          <% if @owner.profile_picture.attached? %>
-            <%= cl_image_tag @owner.profile_picture.key, height: 150, width: 150, crop: :fill, :transformation=>[
-              {:radius=>"max"}] %>
-          <% else %>
-            <img class="me-3" id="profile-picture" src="https://hwchamber.co.uk/wp-content/uploads/2022/04/avatar-placeholder.gif" alt="Sean's profile picture">
-          <% end %>
-        </div>
-        <div class="ps-2">
-          <h1><%= @owner.first_name %> & <%= @pet.name %></h1>
-          <h5><i class="fa-solid fa-location-dot"></i> <%= @owner.postcode %></h5>
-        </div>
+
+<%# PROFILE HEADER %>
+
+<div id="profile-header" class="d-flex col-7 mt-5 justify-content-center">
+
+<%# PROFILE HEADER TOP LEFT %>
+  <div id="profile-top-header-left" class="d-flex flex-column align-self-end">
+    <h1 class="ps-1 pe-2"><%= @owner.first_name %> & <%= @pet.name %></h1>
+    <h5 class="ps-1 pe-2"><i class="fa-solid fa-location-dot"></i> <%= @owner.postcode %></h5>
+      <% if @owner.profile_picture.attached? %>
+        <%= cl_image_tag @owner.profile_picture.key, height: 250, width: 250, crop: :fill, :transformation=>[
+          {:radius=>"100"}] %>
+      <% else %>
+        <img class="me-3" id="profile-picture" src="https://hwchamber.co.uk/wp-content/uploads/2022/04/avatar-placeholder.gif" alt="Sean's profile picture">
+      <% end %>
+  </div>
+
+  <%# PROFILE HEADER TOP RIGHT %>
+  <div id="profile-header-top-right" class="col-12">
+    <%# CAROUSEL  %>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-      <h4 class="pt-3">Introduction</h4>
-      <p><%= @pet.name %> has a fantastic nature and loves nothing more than running through the woods and cuddling up to people. Great and well-mannered around other dogs.</p>
+      <div class="carousel-inner rounded-3">
+        <% @pet.pet_photos.each do |photo| %>
+        <%# If the index is zero add this %>
+            <% if photo === @pet.pet_photos.first %>
+              <div class="carousel-item active">
+            <% else %>
+              <div class="carousel-item">
+            <% end %>
+          <%= cl_image_tag photo.key, style: 'height:auto; width:100%; border-radius: 50px', alt: "Carousel image", gravity: "center" %>
+        </div>
+        <% end %>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
+
+  <%# ATTRIBUTE CARD %>
+
+<div class="attributes-card col-9 mt-n3 pt-5">
+  <div id="attribute-headline" class="d-flex justify-content-center">
+    <h4 class="">About <%= @pet.name %> </h4>
+    </div>
+      <div id="attributes" class="d-flex justify-content-evenly col-12 px-5">
+        <% case @pet.animal_type %>
+        <% when "Dog"  %>
+          <p><i class="fa-solid fa-dog"></i> <%= @pet.breed if @pet.breed %></p>
+        <% when "cat" || "Cat" %>
+          <p><i class="fa-solid fa-cat"></i> <%= @pet.breed if @pet.breed %></p>
+        <% else %>
+          <p><%= @pet.animal_type %> <%= @pet.breed if @pet.breed %></p>
+        <% end %>
+        <p><i class="fa-solid fa-up-right-and-down-left-from-center"></i> <%= @pet.size.capitalize %></p>
+        <p><i class="fa-solid fa-seedling"></i> <%= @pet.age %> years</p>
+        <% if @pet.sex === "male" %>
+          <p><i class="fa-solid fa-mars"></i> Male</p>
+        <% else %>
+          <p><i class="fa-solid fa-venus"></i> Female</p>
+        <% end %>
+        <% if @pet.sex === "male" && @pet.neutered_spayed === true %>
+          <p><i class="fa-solid fa-mars"></i> Neutered</p>
+        <% elsif @pet.sex === "female" && @pet.neutered_spayed === true %>
+          <p><i class="fa-solid fa-scissors"></i> Spayed</p>
+        <% else %>
+        <% end %>
+        <% if @pet.hypoallergenic === true %>
+          <p><i class="fa-solid fa-hand-dots"></i> Hypoallergenic</p>
+        <% end %>
+        <% case @pet.activity_needs %>
+          <% when "low" || "Low"  %>
+            <p><i class="fa-solid fa-battery-quarter"></i> Low Energy </p>
+          <% when "medium" || "Medium" %>
+            <p><i class="fa-solid fa-battery-half"></i> Mid Energy </p>
+          <% else %>
+            <p><i class="fa-solid fa-battery-full"></i> High Energy </p>
+        <% end %>
+        <% if @pet.dog_friendly == true || @pet.cat_friendly == true || @pet.child_friendly == true %>
+        <p>Friendly with
+        <% end %>
+        <% if @pet.dog_friendly == true %>
+          <i class="fa-solid fa-dog" data-bs-toggle="tooltip" data-bs-placement="top" title="Dogs"></i>
+        <% end %>
+        <% if @pet.cat_friendly == true %>
+          <i class="fa-solid fa-cat" data-bs-toggle="tooltip" data-bs-placement="top" title="Cats"></i>
+        <% end %>
+        <% if @pet.child_friendly == true %>
+          <i class="fa-solid fa-child-reaching" data-bs-toggle="tooltip" data-bs-placement="top" title="Children"></i>
+        <% end %>
+        </p>
+      </div>
     </div>
 
-    <div id="profile-header-right" class="col-7">
-      <%# Carousel  %>
-          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner rounded-3">
-              <% @pet.pet_photos.each do |photo| %>
-              <%# If the index is zero add this %>
-                  <% if photo === @pet.pet_photos.first %>
-                    <div class="carousel-item active">
-                  <% else %>
-                    <div class="carousel-item">
-                  <% end %>
-                <%= cl_image_tag photo.key, style: 'height:auto; width:100%; border-radius: 5px', alt: "Carousel image", gravity: "center" %>
-              </div>
-              <% end %>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+<%# BIO/INTRODUCTION %>
+<h4 class="pt-3">Introduction</h4>
+<p><%= @pet.name %> has a fantastic nature and loves nothing more than running through the woods and cuddling up to people. Great and well-mannered around other dogs.</p>
 
-      <div class="d-flex justify-content-center">
-        <h4 class="">About <%= @pet.name %> </h4>
-      </div>
-          <div id="attributes" class="d-flex justify-content-evenly col-12 px-5">
-            <% case @pet.animal_type %>
-            <% when "dog" || "Dog"  %>
-              <p><i class="fa-solid fa-dog"></i> <%= @pet.breed if @pet.breed %></p>
-            <% when "cat" || "Cat" %>
-              <p><i class="fa-solid fa-cat"></i> <%= @pet.breed if @pet.breed %></p>
-            <% else %>
-              <p><%= @pet.animal_type %> <%= @pet.breed if @pet.breed %></p>
-            <% end %>
-            <p><i class="fa-solid fa-up-right-and-down-left-from-center"></i> <%= @pet.size.capitalize %></p>
-            <p><i class="fa-solid fa-seedling"></i> <%= @pet.age %> years</p>
-            <% if @pet.sex === "male" %>
-              <p><i class="fa-solid fa-mars"></i> Male</p>
-            <% else %>
-              <p><i class="fa-solid fa-venus"></i> Female</p>
-            <% end %>
-            <% if @pet.sex === "male" && @pet.neutered_spayed === true %>
-              <p><i class="fa-solid fa-mars"></i> Neutered</p>
-            <% elsif @pet.sex === "female" && @pet.neutered_spayed === true %>
-              <p><i class="fa-solid fa-scissors"></i> Spayed</p>
-            <% else %>
-            <% end %>
-            <% if @pet.hypoallergenic === true %>
-              <p><i class="fa-solid fa-hand-dots"></i> Hypoallergenic</p>
-            <% end %>
-            <% case @pet.activity_needs %>
-              <% when "low" || "Low"  %>
-                <p><i class="fa-solid fa-battery-quarter"></i> Low Energy </p>
-              <% when "medium" || "Medium" %>
-                <p><i class="fa-solid fa-battery-half"></i> Mid Energy </p>
-              <% else %>
-                <p><i class="fa-solid fa-battery-full"></i> High Energy </p>
-            <% end %>
-            <% if @pet.dog_friendly == true || @pet.cat_friendly == true || @pet.child_friendly == true %>
-            <p>Friendly with
-            <% end %>
-            <% if @pet.dog_friendly == true %>
-              <i class="fa-solid fa-dog" data-bs-toggle="tooltip" data-bs-placement="top" title="Dogs"></i>
-            <% end %>
-            <% if @pet.cat_friendly == true %>
-              <i class="fa-solid fa-cat" data-bs-toggle="tooltip" data-bs-placement="top" title="Cats"></i>
-            <% end %>
-            <% if @pet.child_friendly == true %>
-              <i class="fa-solid fa-child-reaching" data-bs-toggle="tooltip" data-bs-placement="top" title="Children"></i>
-            <% end %>
-            </p>
-          </div>
+
+
+
 
     <%# Panels container %>
     <div id="panels-container" class="d-flex">

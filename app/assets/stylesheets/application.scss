@@ -11,6 +11,9 @@
 @import "components/index";
 @import "pages/index";
 
+// Components
+@import "components/attribute_card";
+
 #attributes .fa-solid {
   color: #8ABF9F;
   transition: 0.3s;
