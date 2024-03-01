@@ -1,19 +1,30 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,400;0,700;1,300&family=Sixtyfour&display=swap');
 
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
+$brand-font: "Grandstander", "ital", "cursive";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
+//   font-family: "Good Dog";
+//   src: font-url('GOODDC__.ttf') format('truetype');
+//   // src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
+//   //      font-url('FontFile.woff') format('woff'),
 // }
-// $my-font: "Font Name";
+// $my-font: "Good Dog"; <= DID NOT WORK FOR GOOD DOG DAFONT
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
+.grandstander-bold {
+  font-family: "Grandstander", "cursive";
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
 
 .text-justify {
   text-align: justify;
