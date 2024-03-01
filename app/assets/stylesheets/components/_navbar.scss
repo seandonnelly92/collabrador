@@ -124,3 +124,27 @@
     box-shadow: inset 200px 0 0 0 #f4c167;
   }
 }
+
+.nav-btn-signout {
+  color: rgb(5, 81, 62);
+  list-style: none;
+  margin-right: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid rgb(5, 81, 62);
+  border-radius: 25px;
+
+  // background-color: rgba(138, 191, 159, .25);
+  position: relative;
+
+  box-shadow: inset 0 0 0 0 #97C6CF;
+  -webkit-transition: ease-out 0.2s;
+  -moz-transition: ease-out 0.2s;
+  transition: ease-out 0.2s;
+
+  &:hover {
+    box-shadow: inset 200px 0 0 0 #97C6CF;
+  }
+}
