@@ -485,7 +485,7 @@ users = {
     postcode: "WC1N 3AX",
     password: "password",
     email: "sam.taylor@lewagon.com",
-    pictrure_url: "https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nJTIwYW5kJTIwb3duZXJ8ZW58MHx8MHx8fDA%3D"
+    pictrure_url: "https://images.unsplash.com/photo-1601758260944-72f34e1b8d57?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGRvZyUyMG93bmVyfGVufDB8fDB8fHww"
   },
   user_9: {
     first_name: "Alexis",
