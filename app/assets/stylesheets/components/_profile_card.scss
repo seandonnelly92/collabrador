@@ -74,6 +74,7 @@
 }
 
 .pet-content-titles {
+  padding-top: 3px;
   max-width: 280px;
   display: flex;
   justify-content: space-around;
@@ -107,7 +108,7 @@
   // align-items: flex-end;
 	// white-space: nowrap;
   margin-top: 5px;
-  padding: 5px 15px;
+  padding: 3px 5px;
 	width: 90%;
   border-radius: 25px;
 	overflow: hidden;
