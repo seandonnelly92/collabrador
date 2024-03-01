@@ -21,21 +21,146 @@ puts "destroying all users..."
 User.destroy_all
 
 # Adding Jasper
-User.new(
+jasper = User.new(
   first_name: "Jasper",
   last_name: "Warmenhoven",
   postcode: "WC2E 7DU",
-  town: "Covent Garden",
   email: "jasper@lewagon.com",
-  password: "password"
+  password: "password",
+  picture_url: "https://avatars.githubusercontent.com/u/38129807?v=4"
 )
+jasper.save
 
-Pet.new(
-  
+theo = Pet.new(
+  name: "Theo",
+  age: 2,
+  sex: "male",
+  animal_type: "dog",
+  breed: "labrador",
+  size: "medium",
+  activity_needs: "medium",
+  neutered_spayed: true,
+  child_friendly: true,
+  dog_friendly: true,
+  cat_friendly: false,
+  hypoallergenic: false,
+  town: "Covent Garden",
+  bio:
 )
+theo_pictures = ['app/assets/images/dog_pic_theo_1.jpg', 'app/assets/images/dog_pic_theo_2.jpg']
+theo_pictures.each do |pic|
+  image_io = File.open(pic)
+  file_name = pic.split('/')[-1]
+  theo.pet_photos.attach(io: image_io, filename: file_name, content_type: 'image/jpg')
+end
+theo.save
 
+# Adding Sean
+sean = User.new(
+  first_name: "Sean",
+  last_name: "Donnelly",
+  postcode: "N1 0PN",
+  email: "sean@lewagon.com",
+  password: "password",
+  picture_url: "https://avatars.githubusercontent.com/u/34680960?v=4"
+)
+sean.save
 
-## Randomly generated Users
+cleo = Pet.new(
+  name: "Cleo",
+  age: 5,
+  sex: "female",
+  animal_type: "dog",
+  breed: "cockapoo",
+  size: "medium",
+  activity_needs: "high",
+  neutered_spayed: true,
+  child_friendly: true,
+  dog_friendly: true,
+  cat_friendly: false,
+  hypoallergenic: true,
+  town: "Islington",
+  bio:
+)
+cleo_pictures = ['app/assets/images/dog_pic_cleo_1.jpg', 'app/assets/images/dog_pic_cleo_2.jpg']
+cleo_pictures.each do |pic|
+  image_io = File.open(pic)
+  file_name = pic.split('/')[-1]
+  cleo.pet_photos.attach(io: image_io, filename: file_name, content_type: 'image/jpg')
+end
+cleo.save
+
+# Adding Tom
+tom = User.new(
+  first_name: "Tom",
+  last_name: "Ellwood",
+  postcode: "EC1R 4QL",
+  email: "tom@lewagon.com",
+  password: "password",
+  picture_url: "https://avatars.githubusercontent.com/u/142323005?v=4"
+)
+tom.save
+
+boris = Pet.new(
+  name: "Boris",
+  age: 3,
+  sex: "male",
+  animal_type: "dog",
+  breed: "husky",
+  size: "large",
+  activity_needs: "high",
+  neutered_spayed: true,
+  child_friendly: false,
+  dog_friendly: true,
+  cat_friendly: false,
+  hypoallergenic: false,
+  town: "Clerkenwell",
+  bio:
+)
+boris_pictures = ['app/assets/images/dog_pic_boris_1.jpg', 'app/assets/images/dog_pic_boris_2.jpg', 'app/assets/images/dog_pic_boris_3.jpg']
+boris_pictures.each do |pic|
+  image_io = File.open(pic)
+  file_name = pic.split('/')[-1]
+  boris.pet_photos.attach(io: image_io, filename: file_name, content_type: 'image/jpg')
+end
+boris.save
+
+# Adding Rowan
+rowan = User.new(
+  first_name: "Rowan",
+  last_name: "Heptinstall",
+  postcode: "N4 2DW",
+  email: "rowan@lewagon.com",
+  password: "password",
+  picture_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1705241307/q1aeefju2sajr9jxmls0.jpg"
+)
+tom.save
+
+lola = Pet.new(
+  name: "Lola",
+  age: 3,
+  sex: "female",
+  animal_type: "dog",
+  breed: "spoodle",
+  size: "medium",
+  activity_needs: "high",
+  neutered_spayed: true,
+  child_friendly: true,
+  dog_friendly: false,
+  cat_friendly: true,
+  hypoallergenic: true,
+  town: "Finsbury Park",
+  bio:
+)
+lola_pictures = ['app/assets/images/dog_pic_lola_1.jpg', 'app/assets/images/dog_pic_lola_2.jpg', 'app/assets/images/dog_pic_lola_3.jpg']
+lola_pictures.each do |pic|
+  image_io = File.open(pic)
+  file_name = pic.split('/')[-1]
+  lola.pet_photos.attach(io: image_io, filename: file_name, content_type: 'image/jpg')
+end
+lola.save
+
+## Randomly generated additional Users
 puts "Seeding users..."
 users = {
   user_1: {
