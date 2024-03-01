@@ -1,5 +1,5 @@
 // Format of the pet size selection buttons
-.pet_size, .pet_activity_needs {
+.pet_sex, .pet_size, .pet_activity_needs {
   label {
     color: black;
     font-weight: normal;
@@ -11,6 +11,10 @@
     font-weight: bold;
     color: rgb(113, 113, 113);
   }
+}
+
+label#additional_details  {
+  padding-bottom: 7px;
 }
 
 .modal-custom .form-check label {

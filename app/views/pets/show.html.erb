@@ -223,7 +223,6 @@
     <div id="right-panel" style="col-7">
       <%# Map %>
       <div id="map" class="mb-5">
-        <img src="https://www.digitaltrends.com/wp-content/uploads/2020/02/custom-map.jpg?fit=720%2C479&p=1" alt="map placeholder" class="w-100">
         <%# <img src="https://lh6.googleusercontent.com/DAnBdkJto8zBAdQbysgmsTd0LRHO6fNurI_4C8nAdbGsfyMKvA3wKzWRyPSnJW7RaKfRqsxOiwtbvwUsuxx6P2qXtefHz-K8hF4wPE7ecMsSRfLeryJAnmzzpp3VINP2qP6nxfA" alt="map placeholder" class="w-100"> %>
         <div style="width: 100%; height: 600px;"data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" class ="w-100"></div>
       </div>

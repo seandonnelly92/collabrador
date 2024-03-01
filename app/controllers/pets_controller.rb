@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
   def index
-    @pets = Pet.all
+    @pets = Pet.where.not(user: current_user)
     @pet = Pet.find_by(params[:id])
     @owner = @pet.user
     @users = User.geocoded
