@@ -1,0 +1,16 @@
+<div>
+  <% if pet.sex == "female" %>
+    <i class="fa-solid fa-venus active" data-toggle="tooltip" data-placement="top" title="Female"></i>
+  <% else %>
+    <i class="fa-solid fa-mars active" data-toggle="tooltip" data-placement="top" title="Male"></i>
+  <% end %>
+  <i class="fa-solid fa-heart-circle-check <%= "active" if pet.neutered_spayed %>"></i>
+</div>
+<div>
+  <i class="fa-solid fa-dog"></i>
+  <i class="fa-solid fa-cat"></i>
+  <i class="fa-solid fa-child"></i>
+</div>
+<div>
+  <i class="fa-solid fa-box-tissue"></i>
+</div>
