@@ -34,17 +34,17 @@
             <i class="fa-solid fa-magnifying-glass"></i> Explore
           <% end %>
           <li class="list-item"> <%= link_to appointments_path do %></li>
-            <i class="fa-regular fa-calendar-check"></i> My Appointments
+            <i class="fa-regular fa-calendar-check"></i> Collabs
           <% end %>
           <li class="list-item"> <%= link_to user_profile_path do %></li>
-            <i class="fa-solid fa-user"></i> My Profile
+            <i class="fa-solid fa-user"></i> Profile
           <% end %>
         </ul>
         <div class="">
-          <ul class="list-text" id="navbar-account">
+          <ul class="nav-buttons" id="navbar-account">
             <% unless current_user %>
-              <li class="btn btn-primary list-item" data-action="click->modals#openSignin">Login</li>
-              <li class="btn btn-light list-item" data-action="click->modals#openSignup">Sign-up</li>
+              <li class="nav-btn-login list-item" data-action="click->modals#openSignin">Login</li>
+              <li class="nav-btn-signup list-item" data-action="click->modals#openSignup">Sign-up</li>
             <% else %>
               <li class="btn btn-light list-item"><%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, id: "signout-link" %></li>
             <% end %>
