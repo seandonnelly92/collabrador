@@ -316,20 +316,20 @@ User.all.each do |user|
   dog_friendly = [true, false].sample
   hypoallergenic = [true, false].sample
 
-  size = case breed
-  when "Chihuahua","Pomeranian", "Dachsund", "Beagle"
-    "small"
-  when "Vizsla", "Whippet", "Boxer"
-    "medium"
-  else
-    "large"
+  size =  case breed
+          when "Chihuahua", "Pomeranian", "Dachsund", "Beagle"
+            "small"
+          when "Vizsla", "Whippet", "Boxer"
+            "medium"
+          else
+            "large"
   end
 
   dog_image = get_random_dog_image_by_breed(breed_img_title)
 
   Pet.create!(
     name: name,
-    animal_type: "Dog",
+    animal_type: "dog",
     age: age,
     breed: breed,
     sex: sex,
@@ -353,26 +353,60 @@ def generate_random_time
   hour = rand(8..20) # Random hour between 8 and 20 (inclusive)
   minute = rand(0..59) # Random minute between 0 and 59
   second = rand(0..59) # Random second between 0 and 59
-  DateTime.now.change(hour: hour, min: minute, sec: second)
+  DateTime.now.change(hour:, min:, sec:)
 end
 
 appointments = {}
 
 # Generate appointments
+number_of_appointments = 30
 
-20.times do |i|
-  appointment_key = "appointment #{i+1}"
+locations = [
+  "Richmond Park",
+  "Hyde Park",
+  "Clapham Common",
+  "Regent's Park",
+  "Greenwich Park",
+  "Hampstead Heath",
+  "Battersea Park",
+  "Victoria Park",
+  "Finsbury Park",
+  "Clissold Park",
+  "Wimbledon Common",
+  "Brockwell Park",
+  "Kensington Gardens",
+  "Bushy Park",
+  "Crystal Palace Park",
+  "Alexandra Palace",
+  "Primrose Hill",
+  "Holland Park",
+  "Tottenham Marshes",
+  "Lee Valley Park",
+  "Thames Path",
+  "Islington",
+  "Shoreditch",
+  "Notting Hill",
+  "Camden Town",
+  "Brixton",
+  "Greenwich",
+  "Wandsworth",
+  "Chelsea",
+  "Hackney Marshes"
+]
+
+number_of_appointments.times do |i|
+  appointment_key = "appointment #{i + 1}"
   days_ahead = rand(0..90)
   current_date = DateTime.now
   random_future_date = current_date + days_ahead
   random_time = generate_random_time
   random_future_datetime = random_future_date.change(hour: random_time.hour, min: random_time.minute, sec: random_time.second)
-  location = "park #{rand(1..5)}"
+  # location = "park #{rand(1..5)}"
   end_date = random_future_datetime + Rational(1, 24)
   appointment_info = {
     'start_date' => random_future_datetime,
     'end_date' => end_date,
-    'location' => location
+    'location' => locations.sample
   }
 
   appointments[appointment_key] = appointment_info
@@ -387,23 +421,25 @@ def valid_pet_owner(user)
   return pet
 end
 
-available_appointments = (1..20).to_a
+available_appointments = (1..number_of_appointments).to_a
+appointment_per_user = (available_appointments / users.length).floor
 
-activity_types = ["walking", "feeding", "boarding", "overnight", "socialising"]
+activity_types = ["Walking", "Feeding", "Boarding", "Overnight", "Socialising"]
 
 User.all.each do |user|
-  2.times do
-    appointment_key = "appointment #{available_appointments.delete_at(0)}"
-    appointment_info = appointments[appointment_key]
-    appointment = Appointment.new
-    appointment.start_date = appointment_info['start_date']
-    appointment.end_date = appointment_info['end_date']
-    appointment.location = appointment_info['location']
-    appointment.user = user
-    appointment.pet = valid_pet_owner(user)
-    appointment.looking_for = activity_types.sample
-    appointment.save!
-  end
+  unless ['Jasper', 'Sean', 'Tom', 'Rowan'].include?(user.name)
+    2.times do
+      appointment_key = "appointment #{available_appointments.delete_at(0)}"
+      appointment_info = appointments[appointment_key]
+      appointment = Appointment.new
+      appointment.start_date = appointment_info['start_date']
+      appointment.end_date = appointment_info['end_date']
+      appointment.location = appointment_info['location']
+      appointment.pet = user.pet
+      appointment.looking_for = activity_types.sample
+      appointment.save!
+    end
+
 end
 
 puts "Appointments seeded successfully."
