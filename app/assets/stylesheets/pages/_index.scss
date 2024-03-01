@@ -38,6 +38,8 @@
   margin-top: 5px;
 }
 
+
+// FORM STYLING FOR POSTCODE SEARCH
 .form-landing-search[type="text"] {
   background-color: transparent;
   box-sizing: border-box;
@@ -86,7 +88,7 @@
 // }
 
 .map-eg-img {
-  height: 500px;
+  max-height: 500px;
   background-size: contain;
 }
 
@@ -104,4 +106,9 @@
 
 .footer-bg {
   background-color:rgba(244, 193, 103, 0.5);
+}
+
+
+body {
+  background-color: aqua;
 }

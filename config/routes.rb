@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   get "user_profile", to: "pages#user_profile"
+  get '/maps/search', to: 'maps#search', as: 'maps_search'
 
   # Defines the root path route ("/")
   # root "posts#index"
