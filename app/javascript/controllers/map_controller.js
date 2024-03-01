@@ -2,6 +2,7 @@
 // app/javascript/controllers/map_controller.js
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
   static values = {
@@ -9,14 +10,17 @@ export default class extends Controller {
     markers: Array
   }
 
-  static targets = ["postcodeInput", "map"];
+  static targets = ["map"];
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/mapbox/streets-v10",
+      center: [-0.1372148, 51.5048867],
+      zoom: 12,
+      speed: 1.5
     })
 
     console.log("I am connected")
@@ -24,6 +28,7 @@ export default class extends Controller {
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
     // this.bindSearch()
+
 
 
     // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
@@ -47,14 +52,12 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
-  search(event) {
-    event.preventDefault();
-    const postcode = this.postcodeInputTarget.value;
-    console.log(postcode)
-    console.log("Post code:", postcode);
-    // You can perform further actions with the post code here, such as updating the map
-  }
 
+  // search(event) {
+  //   event.preventDefault();
+  //   const postcode = this.postcodeInputTarget.value;
+  //   console.log(postcode)
+  //   console.log("Post code:", postcode);
 
 
 //   def search
