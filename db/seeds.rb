@@ -20,6 +20,9 @@ Pet.destroy_all
 puts "destroying all users..."
 User.destroy_all
 
+puts "destroying all reviews..."
+Review.destroy_all
+
 # Adding Jasper
 jasper = User.new(
   first_name: "Jasper",
@@ -166,6 +169,91 @@ lola.user = rowan
 puts "Lola save is #{lola.valid?}"
 lola.save
 
+# Adding custom reviews
+review_1 = Review.new(
+  rating: 5,
+  comment: "I had Jasper look after Cleo for a weekend, and I couldn't be happier. He took her on numerous walks to the park, and she came back exhausted but very happy. Jasper clearly loves dogs, and Cleo has been wagging her tail non-stop ever since."
+)
+
+review_2 = Review.new(
+  rating: 4,
+  comment: "Jasper took Boris out for a day while I was busy with work. He managed to keep up with Boris's high energy, taking him on long runs and playing fetch. I came back to a very content Husky who had clearly had a great day out."
+)
+
+review_3 = Review.new(
+  rating: 4,
+  comment: "Lola spent a few days with Jasper when I was out of town, and she was treated like royalty. Jasper made sure she had plenty of cuddles and walks. It's clear Lola enjoyed her mini-vacation, and I wouldn't hesitate to leave her with Jasper again."
+)
+review_1.user = jasper
+review_1.save
+review_2.user = jasper
+review_2.save
+review_3.user = jasper
+review_3.save
+
+review_1 = Review.new(
+  rating: 5,
+  comment: "Having Sean take care of Boris for the weekend was a blessing. He's knowledgeable and was very attentive to Boris's needs, ensuring he stayed warm and active. Boris came back home looking as joyful as ever. Sean is a fantastic caregiver!"
+)
+
+review_2 = Review.new(
+  rating: 4,
+  comment: "Sean took Theo for a few days, and I was thoroughly impressed with the care he provided. He understood Theo's dislike for cats and made sure to avoid them during their walks. Theo returned home happy and well-exercised. Highly recommend Sean's pet care!"
+)
+
+review_3 = Review.new(
+  rating: 5,
+  comment: "Cleo and Lola had a blast at Sean's place. Sean's expertise with high-energy dogs was evident, and he provided them with the perfect balance of play and rest. I'm grateful for his exceptional care and the peace of mind it brought."
+)
+review_1.user = sean
+review_1.save
+review_2.user = sean
+review_2.save
+review_3.user = sean
+review_3.save
+
+review_1 = Review.new(
+  rating: 4,
+  comment: "Tom looked after Theo for an afternoon, and I was delighted with the experience. He took Theo to his favorite puddle-jumping spots, ensuring he had a fantastic time. It's clear Tom goes the extra mile to make sure the dogs are happy and entertained."
+)
+
+review_2 = Review.new(
+  rating: 5,
+  comment: "Tom's care for Cleo over a long weekend was outstanding. He even took her on a mini-adventure to a local park, which she absolutely loved. Tom's warm and caring nature makes him an excellent dog sitter."
+)
+
+review_3 = Review.new(
+  rating: 4,
+  comment: "Lola was with Tom for a couple of days, and she returned home happier than ever. Tom's patience and love for dogs shone through, and he even managed to make Lola comfortable around other dogs. I highly recommend Tom for anyone needing pet care."
+)
+review_1.user = tom
+review_1.save
+review_2.user = tom
+review_2.save
+review_3.user = tom
+review_3.save
+
+review_1 = Review.new(
+  rating: 4,
+  comment: "Rowan took excellent care of Theo during our last-minute trip. He ensured Theo had plenty of exercise and even taught him a new trick. Theo's been missing Rowan ever since we got back, which speaks volumes of the care he received."
+)
+
+review_2 = Review.new(
+  rating: 5,
+  comment: "Leaving Cleo with Rowan was a great decision. Rowan's attentive and caring approach meant Cleo was in great hands, and the daily updates were much appreciated. Cleo's already looking forward to her next stay!"
+)
+
+review_3 = Review.new(
+  rating: 5,
+  comment: "Rowan was a lifesaver when I needed someone to look after Boris urgently. He understood Boris's energy levels and made sure he was well taken care of, with plenty of runs and activities. Boris came back exhausted but very happy, thanks to Rowan's excellent care."
+)
+review_1.user = rowan
+review_1.save
+review_2.user = rowan
+review_2.save
+review_3.user = rowan
+review_3.save
+
 ## Randomly generated additional Users
 puts "Seeding users..."
 users = {
@@ -301,8 +389,22 @@ def get_random_dog_image_by_breed(breed)
 end
 
 # Seed Pet data
+pet_bios = [
+  "Living amidst the constant hustle of London, my days are brightened by the presence of my lively companion, #{name}. Whether it's a leisurely stroll along the Thames or a playful romp through the leaf-strewn paths of Greenwich Park, #{name}'s enthusiasm for the outdoors knows no bounds. At home, #{name} is content to simply curl up by my side, a gentle reminder of the quiet joys in life.",
+  "The historic charm of London is best explored with #{name} trotting by my side. Our mornings are spent meandering through the misty paths of Hampstead Heath, where #{name} chases shadows and greets the dawn with vivacious barks. Back in the bustling city, #{name}'s curious nature turns our urban walks into delightful escapades, making every day an adventure.",
+  "In the heart of London, amidst its iconic landmarks and hidden gems, I find solace and joy in my walks with #{name}. This spirited soul finds wonder in the simplest things, from the rustling of leaves in St. James's Park to the lively sounds of the South Bank. Each evening, as #{name} settles down with a sigh of contentment, I'm reminded of the beauty in our shared moments.",
+  "The vibrant tapestry of London life is all the more colorful with #{name} by my side. Our weekend explorations take us from the serene beauty of the Royal Botanical Gardens to the lively streets of Notting Hill, with #{name} leading the charge with boundless energy. It's in these moments, watching #{name} revel in the joy of discovery, that I truly appreciate the bond we share.",
+  "Navigating the bustling streets of London becomes an adventure with #{name}, whose love for exploration knows no limits. From the grandeur of the Tower Bridge at dawn to the tranquil sunsets at Primrose Hill, #{name} appreciates every moment outdoors. At home, #{name}'s gentle presence fills the space, making every corner of our London flat feel like a haven.",
+  "London's ever-changing seasons bring new adventures for #{name} and me. With the first snowfall, #{name} dances with delight, leaving tiny paw prints across the city's parks. The arrival of spring sees us lounging in the dappled sunlight of Kew Gardens, where #{name} watches the world with wide-eyed wonder. Through #{name}'s eyes, I've come to see my city in a whole new light.",
+  "There's a certain magic to London's rainy days when experienced alongside #{name}. Splashing through puddles and chasing raindrops, #{name} finds joy in every droplet. Our quiet evenings are spent listening to the rain against the windows, with #{name} nestled close, reminding me that home is not just a place, but a feeling.",
+  "Our explorations of London are never complete without a visit to its bustling markets and serene riversides, with #{name} eagerly leading the way. #{name}'s friendly demeanor makes us a familiar sight in our neighborhood, where every outing is an opportunity for new friendships. As night falls, #{name}'s soft snores are a comforting end to our days filled with discovery.",
+  "The sprawling green spaces of London are #{name}'s playground, where every tree and trail tells a story. Our adventures through the city's parks are filled with moments of simple happiness, watching #{name} chase the wind and bask in the sunshine. These shared experiences, set against the backdrop of London's beauty, have created an unbreakable bond between us.",
+  "In the bustling city of London, #{name} is my steadfast companion, finding excitement in the rhythm of city life. From leisurely morning walks in serene parks to lively evening strolls along the Thames, #{name}'s adventurous spirit is undiminished. At home, #{name}'s quiet companionship is a gentle reminder of the enduring friendship we share, a beacon of joy in the heart of the city."
+]
 
 User.all.each do |user|
+  next if ['Jasper', 'Sean', 'Tom', 'Rowan'].include?(user.first_name)
+
   name = [MALE_NAMES.sample, FEMALE_NAMES.sample].sample
   age = rand(2..15)
   breed = COMMON_BREEDS.sample
@@ -341,7 +443,9 @@ User.all.each do |user|
     hypoallergenic: hypoallergenic,
     size: size,
     user: user,
-    dog_image: dog_image
+    dog_image: dog_image,
+    town: "London",
+    bio: pet_bios.sample
   )
 end
 
@@ -353,7 +457,7 @@ def generate_random_time
   hour = rand(8..20) # Random hour between 8 and 20 (inclusive)
   minute = rand(0..59) # Random minute between 0 and 59
   second = rand(0..59) # Random second between 0 and 59
-  DateTime.now.change(hour:, min:, sec:)
+  DateTime.now.change(hour: hour, min: minute, sec: second)
 end
 
 appointments = {}
@@ -422,24 +526,24 @@ def valid_pet_owner(user)
 end
 
 available_appointments = (1..number_of_appointments).to_a
-appointment_per_user = (available_appointments / users.length).floor
+appointment_per_user = (number_of_appointments / users.length).floor
 
 activity_types = ["Walking", "Feeding", "Boarding", "Overnight", "Socialising"]
 
 User.all.each do |user|
-  unless ['Jasper', 'Sean', 'Tom', 'Rowan'].include?(user.name)
-    2.times do
-      appointment_key = "appointment #{available_appointments.delete_at(0)}"
-      appointment_info = appointments[appointment_key]
-      appointment = Appointment.new
-      appointment.start_date = appointment_info['start_date']
-      appointment.end_date = appointment_info['end_date']
-      appointment.location = appointment_info['location']
-      appointment.pet = user.pet
-      appointment.looking_for = activity_types.sample
-      appointment.save!
-    end
+  next if ['Jasper', 'Sean', 'Tom', 'Rowan'].include?(user.first_name)
 
+  2.times do
+    appointment_key = "appointment #{available_appointments.delete_at(0)}"
+    appointment_info = appointments[appointment_key]
+    appointment = Appointment.new
+    appointment.start_date = appointment_info['start_date']
+    appointment.end_date = appointment_info['end_date']
+    appointment.location = appointment_info['location']
+    appointment.pet = Pet.where(user_id: user.id)
+    appointment.looking_for = activity_types.sample
+    appointment.save!
+  end
 end
 
 puts "Appointments seeded successfully."
