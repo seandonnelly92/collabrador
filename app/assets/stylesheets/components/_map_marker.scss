@@ -13,17 +13,21 @@
 //   font-size: 20px;
 // }
 
+.marker {
+  width: 80px; /* Adjust size as needed */
+  height: 80px; /* Adjust size as needed */
+}
 
 .marker a {
   display: inline-block; /* Ensures the <a> tag respects width and height */
   overflow: hidden; /* Ensures the image doesn't overflow */
   // border: 2px solid #000; /* Example border style */
-  width: 70px; /* Adjust size as needed */
-  height: 70px; /* Adjust size as needed */
+  // width: 70px; /* Adjust size as needed */
+  // height: 70px; /* Adjust size as needed */
 }
 
 .marker img {
   width: 100%; /* Ensures the image fills the circular container */
   height: auto;
-  border: 2px solid #000; /* Example border style */
+  // border: 2px solid #000; /* Example border style */
 }
