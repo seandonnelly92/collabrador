@@ -53,6 +53,7 @@ theo_pictures.each do |pic|
   file_name = pic.split('/')[-1]
   theo.pet_photos.attach(io: image_io, filename: file_name, content_type: 'image/jpg')
 end
+theo.user = jasper
 theo.save
 
 # Adding Sean
@@ -82,12 +83,13 @@ cleo = Pet.new(
   town: "Islington",
   bio: "Living in Islington as a tech-founder, I navigate the bustling world of startups with Cleo, my exuberant cockapoo, always by my side. She embodies high energy and is arguably the friendliest dog you'll ever meet — unless you're a cat, that is. Our days are filled with her boundless enthusiasm, making every moment a delightful escapade, her tail wagging in pure joy at every new face she meets."
 )
-cleo_pictures = ['app/assets/images/dog_pic_cleo_1.jpg', 'app/assets/images/dog_pic_cleo_2.jpg']
+cleo_pictures = ['app/assets/images/dog_pic_cleo_1.jpg', 'app/assets/images/dog_pic_cleo_2.jpg', 'app/assets/images/dog_pic_cleo_3.jpg']
 cleo_pictures.each do |pic|
   image_io = File.open(pic)
   file_name = pic.split('/')[-1]
   cleo.pet_photos.attach(io: image_io, filename: file_name, content_type: 'image/jpg')
 end
+cleo.user = sean
 cleo.save
 
 # Adding Tom
@@ -123,6 +125,8 @@ boris_pictures.each do |pic|
   file_name = pic.split('/')[-1]
   boris.pet_photos.attach(io: image_io, filename: file_name, content_type: 'image/jpg')
 end
+boris.user = tom
+puts "Boris save is #{boris.valid?}"
 boris.save
 
 # Adding Rowan
@@ -134,7 +138,7 @@ rowan = User.new(
   password: "password",
   picture_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1705241307/q1aeefju2sajr9jxmls0.jpg"
 )
-tom.save
+rowan.save
 
 lola = Pet.new(
   name: "Lola",
@@ -158,11 +162,9 @@ lola_pictures.each do |pic|
   file_name = pic.split('/')[-1]
   lola.pet_photos.attach(io: image_io, filename: file_name, content_type: 'image/jpg')
 end
+lola.user = rowan
+puts "Lola save is #{lola.valid?}"
 lola.save
-
-
-
-
 
 ## Randomly generated additional Users
 puts "Seeding users..."
@@ -172,81 +174,92 @@ users = {
     last_name: "Smith",
     postcode: "E1 6AN",
     password: "password",
-    email: "alex.smith@lewagon.com"
+    email: "alex.smith@lewagon.com",
+    picture_url: "https://images.unsplash.com/photo-1532469060546-4eb37b460481?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29uJTIwd2l0aCUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D"
   },
   user_2: {
     first_name: "Jamie",
     last_name: "Brown",
     postcode: "N1 9GU",
     password: "password",
-    email: "jamie.brown@lewagon.com"
+    email: "jamie.brown@lewagon.com",
+    picture_url: "https://images.unsplash.com/photo-1557199582-14cd70bc6d39?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlcnNvbiUyMHdpdGglMjBkb2d8ZW58MHx8MHx8fDA%3D"
   },
   user_3: {
     first_name: "Taylor",
     last_name: "Johnson",
     postcode: "W1T 3NF",
     password: "password",
-    email: "taylor.johnson@lewagon.com"
+    email: "taylor.johnson@lewagon.com",
+    picture_url: "https://images.unsplash.com/photo-1557495235-340eb888a9fb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29uJTIwd2l0aCUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D"
   },
   user_4: {
     first_name: "Casey",
     last_name: "Lee",
     postcode: "SE1 9SG",
     password: "password",
-    email: "casey.lee@lewagon.com"
+    email: "casey.lee@lewagon.com",
+    picture_url: "https://images.unsplash.com/photo-1579119134757-5c38803f34fc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyc29uJTIwd2l0aCUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D"
   },
   user_5: {
     first_name: "Jordan",
     last_name: "Davis",
     postcode: "SW1A 1AA",
     password: "password",
-    email: "jordan.davis@lewagon.com"
+    email: "jordan.davis@lewagon.com",
+    picture_url: "https://images.unsplash.com/photo-1536780250812-9c417ccad37d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBlcnNvbiUyMHdpdGglMjBkb2d8ZW58MHx8MHx8fDA%3D"
   },
   user_6: {
     first_name: "Morgan",
     last_name: "White",
     postcode: "EC1A 1BB",
     password: "password",
-    email: "morgan.white@lewagon.com"
+    email: "morgan.white@lewagon.com",
+    picture_url: "https://images.unsplash.com/flagged/photo-1579195107754-c8fe9ee2ddfc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcnNvbiUyMHdpdGglMjBkb2d8ZW58MHx8MHx8fDA%3D"
   },
   user_7: {
     first_name: "Drew",
     last_name: "Moore",
     postcode: "NW1 6XE",
     password: "password",
-    email: "drew.moore@lewagon.com"
+    email: "drew.moore@lewagon.com",
+    picture_url: "https://images.unsplash.com/photo-1587143185708-674ef4a1c09b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHBlcnNvbiUyMHdpdGglMjBkb2d8ZW58MHx8MHx8fDA%3D"
   },
   user_8: {
     first_name: "Sam",
     last_name: "Taylor",
     postcode: "WC1N 3AX",
     password: "password",
-    email: "sam.taylor@lewagon.com"
+    email: "sam.taylor@lewagon.com",
+    pictrure_url: "https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nJTIwYW5kJTIwb3duZXJ8ZW58MHx8MHx8fDA%3D"
   },
   user_9: {
     first_name: "Alexis",
     last_name: "Martin",
     postcode: "E2 8AA",
     password: "password",
-    email: "alexis.martin@lewagon.com"
+    email: "alexis.martin@lewagon.com",
+    picture_url: "https://images.unsplash.com/photo-1632498301446-5f78baad40d0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGRvZyUyMGFuZCUyMG93bmVyfGVufDB8fDB8fHww"
   },
   user_10: {
     first_name: "Robin",
     last_name: "Jackson",
     postcode: "SW1W 0NY",
     password: "password",
-    email: "robin.jackson@lewagon.com"
+    email: "robin.jackson@lewagon.com",
+    picture_url: "https://images.unsplash.com/photo-1602205412668-8c77d02a48b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9nJTIwYW5kJTIwb3duZXJ8ZW58MHx8MHx8fDA%3D"
   }
 }
 
 ## Seeding users
-users.each do |key, user_data|
+users.each_value do |user_data|
   User.create!(
     first_name: user_data[:first_name],
     last_name: user_data[:last_name],
     postcode: user_data[:postcode],
     password: user_data[:password],
-    email: user_data[:email]
+    email: user_data[:email],
+    picture_url: user_data[:picture_url]
   )
 end
 
