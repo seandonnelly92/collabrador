@@ -10,9 +10,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/_profile";
 
 // Components
 @import "components/attribute_card";
+
 
 #attributes .fa-solid {
   color: #8ABF9F;

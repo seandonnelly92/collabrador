@@ -1,4 +1,5 @@
-<div class="container col-10">
+<div class="body">
+  <div class="container col-10">
 
 <%# PROFILE HEADER %>
 
@@ -12,7 +13,7 @@
         <%= cl_image_tag @owner.profile_picture.key, height: 250, width: 250, crop: :fill, :transformation=>[
           {:radius=>"325"}] %>
       <% elsif @owner.picture_url %>
-        <%= image_tag @owner.picture_url, class: "avatar-profile" %>
+        <%= image_tag @owner.picture_url, class: "profile-picture" %>
       <% else %>
         <img class="me-3" id="profile-picture" src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="Sean's profile picture">
       <% end %>
@@ -35,7 +36,7 @@
             <% else %>
               <div class="carousel-item">
             <% end %>
-          <%= cl_image_tag photo.key, style: 'height:auto; width:100%; border-radius: 50px', alt: "Carousel image", gravity: "center" %>
+          <%= cl_image_tag photo.key, style: 'height:auto; width:100%; border-radius: 50px', alt: "Carousel image", gravity: "center", crop: "fill" %>
         </div>
         <% end %>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -62,8 +63,8 @@
       </div>
         <div id="attributes" class="d-flex justify-content-evenly col-12 px-5">
           <% case @pet.animal_type %>
-          <% when "Dog"  %>
-            <p><i class="fa-solid fa-dog"></i> <%= @pet.breed if @pet.breed %></p>
+          <% when "dog" || "Dog" %>
+            <p><i class="fa-solid fa-dog"></i> <%= @pet.breed.capitalize if @pet.breed %></p>
           <% when "cat" || "Cat" %>
             <p><i class="fa-solid fa-cat"></i> <%= @pet.breed if @pet.breed %></p>
           <% else %>
@@ -77,7 +78,7 @@
             <p><i class="fa-solid fa-venus"></i> Female</p>
           <% end %>
           <% if @pet.sex === "male" && @pet.neutered_spayed === true %>
-            <p><i class="fa-solid fa-mars"></i> Neutered</p>
+            <p><i class="fa-solid fa-scissors"></i> Neutered</p>
           <% elsif @pet.sex === "female" && @pet.neutered_spayed === true %>
             <p><i class="fa-solid fa-scissors"></i> Spayed</p>
           <% else %>
@@ -109,13 +110,14 @@
         </div>
       </div>
     </div>
-</div>
-
+  </div>
+  </div>
+<div class="body">
 <%# BIO/INTRODUCTION %>
-<div class="d-flex align-items-center justify-content-center">
+<div class="d-flex align-items-center justify-content-center bg-transparent">
   <div class="col-7">
     <h4 class="pt-5 py-2">👋 Intro</h4>
-    <p><%= @pet.name %> has a fantastic nature and loves nothing more than running through the woods and cuddling up to people. Great and well-mannered around other dogs.</p>
+    <p><%= @pet.bio %></p>
   </div>
 </div>
 
@@ -129,47 +131,29 @@
         <h4 class="pb-2">⭐ Reviews</h4>
         <div id="reviews-container" class="d-flex flex-column gap-4 justify-content-around">
 
-          <div id="review-card" class="col-11 p-3 shadow-sm p-4 bg-white">
-            <h6 class="mb-3">"<%= @owner.first_name %> took great care of our Bruce! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
+          <div id="review-card" class="col-11 p-3 shadow-sm p-4">
+            <h6 class="mb-3">"<%= @owner.first_name %> took great care of my Albert! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
             <div class="d-flex align-items-center justify-content-end">
               <p>from <a href="">Victoria & Albert</a></p>
               <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large ms-3">
             </div>
           </div>
 
-          <div id="review-card" class="col-11 p-3 shadow-sm p-4 bg-white">
-            <h6 class="mb-3">"<%= @owner.first_name %> took great care of our Bruce! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
+          <div id="review-card" class="col-11 p-3 shadow-sm p-4">
+            <h6 class="mb-3">"I had <%= @owner.first_name %> look after Max for a weekend, and I couldn't be happier. He took her on numerous walks to the park, and she came back exhausted but very happy. <%= @owner.first_name %> clearly loves dogs, and Cleo has been wagging her tail non-stop ever since."</h6>
             <div class="d-flex align-items-center justify-content-end">
-              <p>from <a href="">Victoria & Albert</a></p>
-              <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large ms-3">
+              <p>from <a href="">Tim & Max</a></p>
+              <img src="https://images.unsplash.com/photo-1596490479153-68cd194d1aeb?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWFuJTIwd2l0aCUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D" alt="Victoria's Profile Picture" class="avatar-large ms-3">
             </div>
           </div>
 
-          <div id="review-card" class="col-11 p-3 shadow-sm p-4 bg-white">
+          <div id="review-card" class="col-11 p-3 shadow-sm p-4">
             <h6 class="mb-3">"<%= @owner.first_name %> took great care of our Bruce! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
             <div class="d-flex align-items-center justify-content-end">
-              <p>from <a href="">Victoria & Albert</a></p>
-              <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large ms-3">
+              <p>from <a href="">Sarah & Fluffy</a></p>
+              <img src="https://images.unsplash.com/photo-1527362950785-f487a7c1fe48?q=80&w=2784&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Victoria's Profile Picture" class="avatar-large ms-3">
             </div>
           </div>
-
-          <div id="review-card" class="col-11 p-3 shadow-sm p-4 bg-white">
-            <h6 class="mb-3">"<%= @owner.first_name %> took great care of our Bruce! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
-            <div class="d-flex align-items-center justify-content-end">
-              <p>from <a href="">Victoria & Albert</a></p>
-              <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large ms-3">
-            </div>
-          </div>
-
-          <div id="review-card" class="col-11 p-3 shadow-sm p-4 bg-white">
-            <h6 class="mb-3">"<%= @owner.first_name %> took great care of our Bruce! <%= @pet.name %> was lovely when we had her too, loads of cuddles!”</h6>
-            <div class="d-flex align-items-center justify-content-end">
-              <p>from <a href="">Victoria & Albert</a></p>
-              <img src="https://images.pexels.com/photos/1174081/pexels-photo-1174081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Victoria's Profile Picture" class="avatar-large ms-3">
-            </div>
-          </div>
-
-
         </div>
       </div>
     </div>
@@ -192,3 +176,4 @@
     </div>
   </div>
   </div>
+</div>
