@@ -10,7 +10,6 @@ pin "@popperjs/core", to: "popper.js", preload: true
 pin "listings_button.js", to: "app/javascript/listings_button.js"
 pin "mapbox-gl" # @3.1.2
 pin "process" # @2.0.1
-<<<<<<< HEAD
 pin "@mapbox/mapbox-gl-geocoder", to: "https://ga.jspm.io/npm:@mapbox/mapbox-gl-geocoder@5.0.0/lib/index.js"
 pin "#lib/client.js", to: "https://ga.jspm.io/npm:@mapbox/mapbox-sdk@0.13.7/lib/browser/browser-client.js"
 pin "@mapbox/fusspot", to: "https://ga.jspm.io/npm:@mapbox/fusspot@0.4.0/lib/index.js"
@@ -27,22 +26,3 @@ pin "nanoid", to: "https://ga.jspm.io/npm:nanoid@3.3.7/index.browser.js"
 pin "subtag", to: "https://ga.jspm.io/npm:subtag@0.5.0/subtag.js"
 pin "suggestions", to: "https://ga.jspm.io/npm:suggestions@1.7.1/index.js"
 pin "xtend", to: "https://ga.jspm.io/npm:xtend@4.0.2/immutable.js"
-=======
-pin "@mapbox/mapbox-gl-geocoder", to: "@mapbox--mapbox-gl-geocoder.js" # @5.0.0
-pin "#lib/client.js", to: "#lib--client.js.js" # @0.13.7
-pin "@mapbox/fusspot", to: "@mapbox--fusspot.js" # @0.4.0
-pin "@mapbox/mapbox-sdk", to: "@mapbox--mapbox-sdk.js" # @0.13.7
-pin "@mapbox/mapbox-sdk/services/geocoding", to: "@mapbox--mapbox-sdk--services--geocoding.js" # @0.13.7
-pin "@mapbox/parse-mapbox-token", to: "@mapbox--parse-mapbox-token.js" # @0.2.0
-pin "base-64" # @0.1.0
-pin "eventemitter3" # @3.1.2
-pin "events" # @3.3.0
-pin "fuzzy" # @0.1.3
-pin "is-plain-obj" # @1.1.0
-pin "lodash.debounce" # @4.0.8
-pin "nanoid" # @3.3.7
-pin "subtag" # @0.5.0
-pin "suggestions" # @1.7.1
-pin "xtend" # @4.0.2
-pin "flatpickr" # @4.6.13
->>>>>>> master
