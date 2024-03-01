@@ -30,6 +30,11 @@
   }
 }
 
+// Specific width for the new_pet modal
+.modal-custom .inner.pets {
+  width: 50%;
+}
+
 // Format of the fonts on the modal
 .modal-custom {
   font-size: 12px;

@@ -1,5 +1,4 @@
 <div class="container my-5">
-
   <% if @owner.pets.length > 0 %>
     <div class="profile-section">
       <div class="profile-image">
@@ -23,12 +22,6 @@
           <li><p><i class="fa-solid fa-clock-rotate-left"></i><span>Member since</span><%= render 'devise/registrations/active_since', owner: @owner %></p></li>
         </ul>
       </div>
-      <div class="profile-stats">
-        <h2>Number of pets: <%= @owner.pets.length %></h2>
-        <p>Pet name(s): <% @owner.pets.each do |pet| %></p>
-          <%= pet.name %>
-        <% end %>
-      </div>
     </div>
 
     <div class="profile-pets">
@@ -37,39 +30,39 @@
         <button class="btn btn-primary" data-action="click->modals#openNewPet"><i class="fa-solid fa-paw"></i> Add pet</button>
       </div>
       <div class="profile-pets-grid">
-        <% pet = @owner.pets[0] %>
-        <div class="pets-card">
-          <div class="pets-card-header">
-            <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar" %>
-            <h3><%= pet.name %></h3>
-          </div>
-          <div class="pets-card-content">
-            <table>
-              <tr>
-                <th class="table-icon-c"><i class="fa-solid fa-seedling"></i></th>
-                <th class="table-text-c">5 years</th>
-              </tr>
-              <tr>
-                <th class="table-icon-c"><i class="fa-solid fa-spa"></i></th>
-                <th class="table-text-c">Cockapoo</th>
-              </tr>
-              <tr>
-                <th class="table-icon-c"><i class="fa-solid fa-bolt"></i></th>
-                <th class="table-text-c">High</th>
-              </tr>
-              <tr>
-                <th class="table-icon-c"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></th>
-                <th class="table-text-c">Medium</th>
-              </tr>
-            </table>
+        <% @owner.pets.each do |pet| %>
+          <div class="pets-card">
+            <div class="pets-card-header">
+              <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar" %>
+              <h3><%= pet.name %></h3>
+            </div>
+            <div class="pets-card-content">
+              <table>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-seedling"></i></th>
+                  <th class="table-text-c"><%= pet.age %> years</th>
+                </tr>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-spa"></i></th>
+                  <th class="table-text-c"><%= pet.breed %></th>
+                </tr>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></th>
+                  <th class="table-text-c"><%= pet.size %></th>
+                </tr>
+                <tr>
+                  <th class="table-icon-c"><i class="fa-solid fa-bolt"></i></th>
+                  <th class="table-text-c"><%= pet.activity_needs %></th>
+                </tr>
+              </table>
 
-            <div class="pets-characteristics">
-              <div><i class="fa-solid fa-venus" data-toggle="tooltip" data-placement="top" title="Female"></i> <i class="fa-solid fa-heart-circle-check"></i></div>
-              <div><i class="fa-solid fa-dog"><i class="fa-solid fa-cat"></i></i><i class="fa-solid fa-child"></i></div>
-              <div><i class="fa-solid fa-box-tissue"></i></div>
+              <!-- Initiates tooltip controller on all pet characteristics (see _pet_characteristics.html.erb for tooltips) -->
+              <div class="pets-characteristics" data-controller="tooltip">
+                <%= render 'pets/pet_characteristics', pet: pet %>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
 
@@ -85,35 +78,7 @@
         <% end %>
         <% sorted_appointments = appointments.sort_by { |appointment| appointment.start_date } %> <!-- Sorts appointments based on start_date -->
         <% sorted_appointments.each do |appointment| %>
-          <div class="appointment-card">
-            <div class="appointment-card-header">
-              <h3><%= appointment.pet.name %> - Confirmed</h3>
-            </div>
-            <div class="appointment-card-content">
-              <table>
-                <tr>
-                  <th class="table-icon-c"><i class="fa-solid fa-hourglass-start"></i></th>
-                  <th class="table-text-c">
-                    <%= appointment.start_date.strftime('%d %B %Y at %H:%M') %>
-                  </th>
-                </tr>
-                <tr>
-                  <th class="table-icon-c"><i class="fa-solid fa-hourglass-end"></i></th>
-                  <th class="table-text-c">
-                    <%= appointment.end_date.strftime('%d %B %Y at %H:%M') %>
-                  </th>
-                </tr>
-                <tr>
-                  <th class="table-icon-c"><i class="fa-solid fa-map-pin"></i></th>
-                  <th class="table-text-c">Park</th>
-                </tr>
-                <tr>
-                  <th class="table-icon-c"><i class="fa-solid fa-person-walking"></i></th>
-                  <th class="table-text-c">Walk</th>
-                </tr>
-              </table>
-            </div>
-          </div>
+          <%= render 'appointments/card_owner', appointment: appointment %>
         <% end %>
       </div>
     </div>
@@ -126,7 +91,7 @@
     <!-- Modal - Other pets (not shown by default) -->
     <div class="modal-custom" data-modals-target="newPet">
   <% end %>
-      <div class="inner">
+      <div class="inner pets">
         <div class="modal-head">
           <h1>Add your pet</h1>
           <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeNewPet"></i></span>

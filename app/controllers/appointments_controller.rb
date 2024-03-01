@@ -10,9 +10,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new( start_date:, end_date:,
                                     location: appointment_params['location'],
                                     looking_for: appointment_params['looking_for'],
-                                    pet_id: appointment_params['pet_id']
-    )
-    # @appointment.user = @owner
+                                    pet_id: appointment_params['pet_id'])
 
     if @appointment.save
       redirect_to user_profile_path
@@ -21,10 +19,21 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def update
+    @appointment = Appointment.find(params[:id])
+    respond_to do |format|
+      if @appointment.update(appointment_params)
+        format.json { render json: @appointment, status: :ok }
+      else
+        format.json { render json: @appointment.errors.full_messages, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def appointment_params
-    params.require(:appointment).permit(:start_date, :end_date, :location, :looking_for, :user_id, :pet_id)
+    params.require(:appointment).permit(:start_date, :end_date, :location, :looking_for, :user_id, :pet_id, :pending_helper)
   end
 
   def date_range_params
