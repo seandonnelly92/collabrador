@@ -1,0 +1,5 @@
+<% if helper.profile_picture.key %>
+  <%= cl_image_tag helper.profile_picture.key, class: "avatar" %>
+<% else %>
+  <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar" %>
+<% end %>
