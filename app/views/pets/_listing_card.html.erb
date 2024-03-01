@@ -2,6 +2,8 @@
 <div class="listing-card">
   <h2>Click on the listing below to help <%= @pet.name %>!</h2>
   <% @pet.appointments.each do |appointment| %>
-    <%= render 'appointments/card_helper', appointment: appointment %>
+    <% unless appointment.user_id %>
+      <%= render 'appointments/card_helper', appointment: appointment %>
+    <% end %>
   <% end %>
 </div>
