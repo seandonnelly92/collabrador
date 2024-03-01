@@ -1,0 +1,31 @@
+<!-- Will check if the start and end are on the same day to format card accordingly -->
+<% start_date = appointment.start_date %>
+<% end_date = appointment.end_date %>
+
+<% if start_date.year == end_date.year && start_date.month == end_date.month && start_date.day == end_date.day %>
+  <tr>
+    <th class="table-icon-c"><i class="fa-regular fa-calendar"></i></th>
+    <th class="table-text-c">
+      <%= appointment.start_date.strftime('%d %B %Y') %>
+    </th>
+  </tr>
+  <tr>
+    <th class="table-icon-c"><i class="fa-solid fa-clock"></i></th>
+    <th class="table-text-c">
+      <%= appointment.start_date.strftime('%H:%M') %> - <%= appointment.end_date.strftime('%H:%M') %>
+    </th>
+  </tr>
+<% else %>
+  <tr>
+    <th class="table-icon-c"><i class="fa-solid fa-hourglass-start"></i></th>
+    <th class="table-text-c">
+      <%= appointment.start_date.strftime('%d %B %Y %H:%M') %>
+    </th>
+  </tr>
+  <tr>
+    <th class="table-icon-c"><i class="fa-solid fa-hourglass-end"></i></th>
+    <th class="table-text-c">
+      <%= appointment.end_date.strftime('%d %B %Y %H:%M') %>
+    </th>
+  </tr>
+<% end %>

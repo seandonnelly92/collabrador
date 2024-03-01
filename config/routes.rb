@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :appointments, only: [:new, :create]
   end
 
-  resources :appointments, except: [:new, :create] do
+  resources :appointments, except: [:new] do
     resources :reviews, only: [:create]
   end
 

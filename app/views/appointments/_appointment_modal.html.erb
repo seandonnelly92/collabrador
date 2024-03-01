@@ -1,0 +1,14 @@
+<div class="modal-custom" data-modals-target="appointment">
+  <div class="inner">
+    <div class="modal-head">
+      <% if appointment.new_record? %>
+        <h1>Add new appointment</h1>
+      <% else %>
+        <h1>Update your appointment</h1>
+      <% end %>
+      <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeAppointment"></i></span>
+    </div>
+    <h2>Your appointment will allow other collaboradors to help you out!</h2>
+    <%= render "appointments/appointment_form", appointment: appointment %>
+  </div>
+</div>

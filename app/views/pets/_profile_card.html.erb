@@ -1,21 +1,13 @@
-            <div class="pet-profile-card">
-              <img class="pet-img" src="<%= pet.dog_image %>" alt="Picture of pet">
-              <div class="pet-card-content">
-                <div class="pet-content-titles">
-                  <h5 class="pc-title"><%= owner.first_name %> & <%= pet.name %></h5>
-                  <p class="pc-title"><%= owner.postcode %></p>
-                </div>
-                <div class="pet-desc">
-                  <p class="pet-card-text">Description of the dog and all the wonderful things this dog is</p>
-                  <ul class="testim-list">
-                    <li><i class="fa-solid fa-calendar">  </i><%= pet.age %> y/o</li>
-                    <li><i class="fa-solid fa-venus-mars"></i>  <%= pet.sex %></li>
-                    <li><i class="fa-solid fa-up-right-and-down-left-from-center"></i>  <%= pet.size %></li>
-                    <li><i class="fa-solid fa-bolt"></i>  <%= pet.activity_needs %> energy</li>
-                  </ul>
-                </div>
-              </div>
-              <%# <button class="pet-card-btn"></button> %>
-              <%= link_to 'Profile', pet_path(pet), class: "pet-card-btn" %>
-              <img class="avatar" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww" alt="your profile picture">
-            </div>
+<%= link_to pet_path(pet), class: "pet-card-btn" do %>
+  <div class="pet-profile-card">
+    <img class="pet-img" src="<%= pet.dog_image %>" alt="Picture of pet">
+    <div class="pet-card-content">
+      <div class="pet-content-titles">
+        <h5 class="pc-title"><%= owner.first_name %> & <%= pet.name %></h5>
+        <p class="pc-title"><%= owner.postcode %></p>
+      </div>
+    <%# <button class="pet-card-btn"></button> %>
+    </div>
+      <img class="avatar" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww" alt="your profile picture">
+  </div>
+<% end %>

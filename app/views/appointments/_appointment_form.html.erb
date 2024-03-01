@@ -1,0 +1,19 @@
+<!-- Note: form-split and form-gap can be found in the modals.scss file -->
+<%= simple_form_for(appointment) do |f| %>
+
+  <%= f.input :start_date,
+            as: :string,
+            label: "Appointment slot",
+            input_html: { data: { controller: "datepicker" } } %>
+
+  <%= f.input :location %>
+  <%= f.input :looking_for %>
+
+   <%= f.input :pet_id, collection: current_user.pets, label_method: :name, value_method: :id, prompt: "Select pet" %>
+
+  <div class="form-actions"> <!-- Note: form-actions can be found in the modals.scss file -->
+    <%= button_tag(type: 'submit', class: "btn btn-primary", id: "btn-new-appointment") do %>
+      <span>Appointment</span>
+    <% end %>
+  </div>
+<% end %>
