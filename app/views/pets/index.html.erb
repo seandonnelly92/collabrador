@@ -4,8 +4,8 @@
       <div class="row m-2 justify-content-around" style="height: 300px">
         <div class="col-5 d-flex flex-column justify-content-center">
           <h1>Find fellow pet owners in your area</h1>
-            <div data-controller="postcode">
-             <form data-action="submit->postcode#search class="form-landing mt-4">
+          <div data-controller="postcode">
+             <form data-action="submit->postcode#search" class="form-landing mt-4">
                 <input data-postcode-target="postcodeInput" class="form-landing-search" type="text" placeholder="e.g D0G5 4US">
                 <button class="form-landing-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
               </form>
@@ -31,8 +31,8 @@
         </div>
 
 
-      <div class="col-4">
-         <div id ="map" data-controller="map" style="width: 100%; height: 600px;" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" class ="map-eg-img"></div>
+      <div class="col-6">
+          <div id ="map" data-controller="map" style="width: 100%; height: 600px;" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" class ="map-eg-img"></div>
       </div>
     </div>
    </div>
