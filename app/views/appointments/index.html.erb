@@ -1,1 +1,73 @@
-<h1>All appointments here</h1>
+<div class="container my-5">
+  <% @owner && if @owner.pets.length > 0 %>
+    <div class="profile-section">
+      <div class="profile-image">
+        <% if @owner.profile_picture.key %>
+          <%= cl_image_tag @owner.profile_picture.key, class: "avatar-profile" %>
+        <% elsif @owner.picture_url %>
+          <%= image_tag @owner.picture_url, class: "avatar-profile" %>
+        <% else %>
+          <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar-profile" %>
+        <% end %>
+      </div>
+      <div class="profile-welcome">
+        <h1> <%= @owner.first_name %>'s Collabs!</h1>
+      </div>
+
+    </div>
+
+    <div class="profile-appointments">
+      <div class="profile-header">
+        <h2>Your Own Collabs</h2>
+        <button class="btn btn-primary" data-action="click->modals#openAppointment"><i class="fa-solid fa-calendar-days"></i> Add appointment</button>
+      </div>
+      <div class="profile-appointments-grid">
+        <% appointments = [] %>
+        <% @owner.pets.each do |pet| %>
+          <% pet.appointments.each{|appointment| appointments.push(appointment)} %>
+        <% end %>
+        <% sorted_appointments = appointments.sort_by { |appointment| appointment.start_date } %> <!-- Sorts appointments based on start_date -->
+        <% sorted_appointments.each do |appointment| %>
+          <%= render 'appointments/card_owner', appointment: appointment %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="profile-appointments">
+      <div class="profile-header">
+        <h2>Your Offers to Help</h2>
+      </div>
+      <div class="profile-appointments-grid">
+        <% appointments = @help_appointments %>
+        <% sorted_appointments = appointments.sort_by { |appointment| appointment.start_date } %> <!-- Sorts appointments based on start_date -->
+        <% sorted_appointments.each do |appointment| %>
+          <%= render 'appointments/card_helper', appointment: appointment %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @owner && @owner.pets.length.zero? %>
+    <!-- Modal - First pet -->
+    <div class="modal-custom show" data-modals-target="newPet">
+  <% else %>
+    <!-- Modal - Other pets (not shown by default) -->
+    <div class="modal-custom" data-modals-target="newPet">
+  <% end %>
+      <div class="inner pets">
+        <div class="modal-head">
+          <h1>Add your pet</h1>
+          <span><i class="fa-solid fa-circle-xmark" data-modals-target="closeBtn" data-action="click->modals#closeNewPet"></i></span>
+        </div>
+        <h2>Other collabradors would love to meet your furry friend!</h2>
+        <% new_pet = Pet.new %>
+        <%= render "pets/pet_form", pet: new_pet %>
+      </div>
+    </div> <!-- Note: This is the div-closing for the div-opening in the if-statement -->
+
+  <% if @owner %>
+    <% new_appointment = Appointment.new %>
+    <%= render "appointments/appointment_modal", appointment: new_appointment %>
+  <% end %>
+
+</div>

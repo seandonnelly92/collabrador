@@ -1,6 +1,8 @@
 class AppointmentsController < ApplicationController
   def index
     @appointments = Appointment.all
+    @owner = current_user
+    @help_appointments = Appointment.where(pending_helper: @owner.id)
   end
 
   def create

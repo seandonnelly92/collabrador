@@ -1,5 +1,7 @@
 <% if helper.profile_picture.key %>
-  <%= cl_image_tag helper.profile_picture.key, class: "avatar" %>
+  <%= cl_image_tag helper.profile_picture.key, class: "avatar-profile" %>
+<% elsif @owner.picture_url %>
+  <%= image_tag helper.picture_url, class: "avatar-profile" %>
 <% else %>
-  <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar" %>
+  <%= image_tag 'profile_picture_dog_placeholder.png', class: "avatar-profile" %>
 <% end %>
