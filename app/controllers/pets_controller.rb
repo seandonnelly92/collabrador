@@ -20,14 +20,13 @@ class PetsController < ApplicationController
     @owner = @pet.user
     @users = User.geocoded
     @appointments = @pet.appointments
-    @markers = @users.map do |user|
-      @pet_marker = Pet.find_by(user_id: user.id)
-      {
+    user = @users.find_by(id: @owner)
+    @pet_marker = Pet.find_by(user_id: user)
+    @markers =  [{
         lat: user.latitude,
         lng: user.longitude,
         map_marker_html: render_to_string(partial: "map_marker", locals: {pet: @pet_marker})
-      }
-    end
+      }]
   end
 
   def create
