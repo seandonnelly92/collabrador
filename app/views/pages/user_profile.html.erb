@@ -29,7 +29,7 @@
     <div class="profile-pets">
       <div class="profile-header">
         <h2>Your Pets</h2>
-        <button class="btn btn-primary" data-action="click->modals#openNewPet"><i class="fa-solid fa-paw"></i> Add pet</button>
+        <button class="btn-action" data-action="click->modals#openNewPet"><i class="fa-solid fa-paw"></i> Add pet</button>
       </div>
       <div class="profile-pets-grid">
         <% @owner.pets.each do |pet| %>
@@ -70,8 +70,8 @@
 
     <div class="profile-appointments">
       <div class="profile-header">
-        <h2>Your Appointments</h2>
-        <button class="btn btn-primary" data-action="click->modals#openAppointment"><i class="fa-solid fa-calendar-days"></i> Add appointment</button>
+        <h2>Your Collabs</h2>
+        <button class="btn-action" data-action="click->modals#openAppointment"><i class="fa-solid fa-calendar-days"></i> Add Collab</button>
       </div>
       <div class="profile-appointments-grid">
         <% appointments = [] %>
