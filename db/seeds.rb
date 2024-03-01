@@ -22,6 +22,9 @@ Pet.destroy_all
 puts "destroying all users..."
 User.destroy_all
 
+# User 1
+new_user = User.new(first_name: "Jasper")
+
 ## Randomly generated Users
 puts "Seeding users..."
 users = {
