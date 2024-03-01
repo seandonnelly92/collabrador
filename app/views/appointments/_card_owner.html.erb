@@ -1,0 +1,22 @@
+<div class="appointment-card" data-controller="appointments"
+  data-appointments-appointmentid-value="<%= appointment.id %>"
+  data-appointments-helperid-value="<%= appointment.pending_helper %>"
+  data-appointments-pet-value="<%= appointment.pet.name %>">
+  <%= render 'appointments/card_header', appointment: appointment %>
+  <div class="appointment-card-content">
+    <table>
+      <%= render 'appointments/appointment_slot', appointment: appointment %>
+      <tr>
+        <th class="table-icon-c"><i class="fa-solid fa-map-pin"></i></th>
+        <th class="table-text-c"><%= appointment.location %></th>
+      </tr>
+      <tr>
+        <th class="table-icon-c"><i class="fa-solid fa-person-walking"></i></th>
+        <th class="table-text-c"><%= appointment.looking_for %></th>
+      </tr>
+    </table>
+    <div class="appointment-details" data-appointments-target="details">
+      <%= render 'appointments/card_button_owner', appointment: appointment %>
+    </div>
+  </div>
+</div>

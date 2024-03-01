@@ -1,14 +1,14 @@
 // <div class="pet-profile-card">
-// <img class="pet-img" src="..." alt="Your pet!">
-// <div class="pet-card-content">
-//   <div class="pet-content-titles">
-//     <h5 class="pc-title">Owner & Pet</h5>
-//     <p class="pc-title">Location</p>
+//   <img class="pet-img" src="<%= pet.dog_image %>" alt="Picture of pet">
+//   <div class="pet-card-content">
+//     <div class="pet-content-titles">
+//       <h5 class="pc-title"><%= owner.first_name %> & <%= pet.name %></h5>
+//       <p class="pc-title"><%= owner.postcode %></p>
+//     </div>
+//   <%# <button class="pet-card-btn"></button> %>
+//     <%= link_to '->', pet_path(pet), class: "pet-card-btn" %>
+//     <img class="avatar" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww" alt="your profile picture">
 //   </div>
-//     <p class="pet-card-text">DOG description</p>
-//     <a href="#" class="card-btnn btn btn-primary">Go somewhere</a>
-//   </div>
-
 // </div>
 
 // ==========================
@@ -21,33 +21,74 @@
 // $light-gray: #F4F4F4;
 
 
-.pet-profile-card {
-  background: white;
-  border-radius: 5px;
-}
+// .pet-profile-card {
+//   background: white;
+//   border-radius: 5px;
+//   &:hover {
+//     background-color: #f4c167;
+//   }
+// }
+
+// .pet-card-btn {
+//   text-decoration: none;
+//   color: black;
+//   padding: 5px;
+//   border-radius: 50%;
+//   display: inline-block;
+//   cursor: pointer;
+//   box-shadow: inset 0 0 0 0 #f4c167;
+//   -webkit-transition: ease-out 0.4s;
+//   -moz-transition: ease-out 0.4s;
+//   transition: ease-out 0.4s;
+//   &:hover {
+//     box-shadow: inset 400px 0 0 0 #f4c167;
+//   }
+// }
 
 .pet-img {
   align-self: flex-start;
   object-fit: cover;
   width: 100%;
-  border-radius: 5px 20px;
+  border-radius: 30px 30px;
   height: 150px;
 }
 
 .pet-profile-card {
-  display: block;
-
-  width: 280px;
-  height: 360px;
-  border-radius: 5px 20px;
-  background-color: white;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  // display: inline-block;
+  // width: 280px;
+  // height: 200px;
+  border-radius: 30px 30px 10px 10px;
+  background-color: rgba(138, 191, 159, .25);
+  backdrop-filter: blur(5px);
+  // box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   position: relative;
+
+  box-shadow: inset 0 0 0 0 #f4c167;
+  -webkit-transition: ease-out 0.1s;
+  -moz-transition: ease-out 0.1s;
+  transition: ease-out 0.1s;
+  &:hover {
+    box-shadow: inset 400px 0 0 0 #f4c167;
+  }
+
+}
+
+// .pet-card.btn::before {
+//   content: ' ';
+//   cursor: pointer;
+//   position: absolute;
+//   top: 0px;
+//   right: 0px;
+//   bottom: 0px;
+//   left: 0px;
+// }
+
+.pc-title {
+  text-decoration: none !important;
 }
 
 .pet-content-titles > h2 {
   font-size: 16px;
-  margin: 0px;
 }
 
 .pet-content-titles > p {
@@ -58,39 +99,48 @@
   max-width: 280px;
   display: flex;
   justify-content: space-between;
-  margin: 0;
+  align-items: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding: 5px 15px;
 }
 
 .pc-title {
-  max-width: 160px;
+  margin: 0;
+  color: black;
 }
 
+
 .pet-card-text {
-  height: 60px;
+  height: 30px;
   max-width: 90%;
   word-wrap: break-word;
   hyphens: auto;
   text-overflow: ellipsis;
 }
 
+// .pet-card-btn {
+//   text-decoration: none;
+//   border: none;
+//   background-color: $blue;
+//   display: flex-end;
+//   align-self: flex-end;
+//   color: white;
+//   padding: 5px;
+//   border-radius: 5px;
+
+//   position: absolute;
+//   bottom: 5%;
+//   right: 5%;
+// }
+
+// .pet-desc {
+//   overflow: scroll;
+//   height: 90px;
+// }
+
 .pet-card-btn {
-  text-decoration: none;
-  border: none;
-  background-color: $blue;
-  display: flex-end;
-  align-self: flex-end;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-}
-
-.pet-desc {
-  overflow: scroll;
-  height: 90px;
+  text-decoration: none !important;
 }
 
 
@@ -98,10 +148,10 @@
   // display: flex;
   // align-items: flex-end;
   // justify-content: space-between;
-  margin-top: 10px;
-  padding: 16px;
+  margin-top: 5px;
+  padding: 5px 15px;
 	width: 100%;
-  height: 200px;
+  height: 100%;
 	// white-space: nowrap;
 	overflow: hidden;
 }
@@ -113,9 +163,9 @@
   object-fit: contain;
   border-radius: 50%;
   // box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 2px solid;
+  // border: whitesmoke 2px solid;
 
   position: absolute;
-  bottom: 55%;
-  left: 10%;
+  top: 10px;
+  left: 10px;
 }

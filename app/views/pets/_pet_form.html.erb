@@ -1,0 +1,41 @@
+<!-- Note: form-split and form-gap can be found in the modals.scss file -->
+<%= simple_form_for(pet) do |f| %>
+  <div class="form-split">
+    <%= f.input :name %>
+    <div id="form-gap"></div>
+    <%= f.input :age %>
+  </div>
+  <div class="form-split">
+    <%= f.input :animal_type %>
+    <div id="form-gap"></div>
+    <%= f.input :breed %>
+    <div id="form-gap"></div>
+    <%= f.input :pet_photos, as: :file, input_html: { multiple: true } %>
+  </div>
+
+  <div class="form-split">
+    <%= f.input :sex, as: :radio_buttons, collection: [['Female', 'female'], ['Male', 'male']], item_wrapper_tag: false, boolean_style: :inline %>
+    <div id="form-gap"></div>
+    <%= f.input :size, as: :radio_buttons, collection: [['Small', 'small'], ['Medium', 'medium'], ['Large', 'large']], item_wrapper_tag: false, boolean_style: :inline %>
+  </div>
+
+  <%= f.input :activity_needs, as: :radio_buttons, collection: [['Low', 'low'], ['Medium', 'medium'], ['High', 'high']], item_wrapper_tag: false, boolean_style: :inline %>
+
+  <div id="pet-characteristics">
+    <%= f.label :neutered_spayed, "Additional Details", id: "additional_details" %>
+    <div class="pet-chars-grid">
+      <%= f.input :neutered_spayed, as: :boolean, class: "col-3" %>
+      <%= f.input :child_friendly, as: :boolean, class: "col-3" %>
+      <%= f.input :dog_friendly, as: :boolean, class: "col-3" %>
+      <%= f.input :cat_friendly, as: :boolean, class: "col-3" %>
+      <%= f.input :hypoallergenic, as: :boolean, class: "col-3" %>
+    </div>
+  </div>
+
+
+  <div class="form-actions"> <!-- Note: form-actions can be found in the modals.scss file -->
+      <%= button_tag(type: 'submit', class: "btn btn-primary", id: "btn-new-pet") do %>
+        <span><i class="fa-solid fa-paw"></i> Add pet</span>
+      <% end %>
+  </div>
+<% end %>
