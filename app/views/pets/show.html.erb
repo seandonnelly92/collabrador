@@ -62,7 +62,7 @@
       <h4 class="pb-3">About <%= @pet.name %> </h4>
       </div>
         <div id="attributes" class="d-flex justify-content-evenly col-12 px-5">
-          <% case @pet.animal_type %>
+          <% case @pet.animal_type.downcase %>
           <% when "dog" || "Dog" %>
             <p><i class="fa-solid fa-dog"></i> <%= @pet.breed.capitalize if @pet.breed %></p>
           <% when "cat" || "Cat" %>
