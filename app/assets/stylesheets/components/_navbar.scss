@@ -23,6 +23,14 @@
   }
 }
 
+// removing stickiness for small screens
+
+.navbar {
+  @media only screen and (max-width: 768px) {
+    position: static;
+  }
+}
+
 #navbar-menu {
   flex-grow: 1;
   display: flex;
