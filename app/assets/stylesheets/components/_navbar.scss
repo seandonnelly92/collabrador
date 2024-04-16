@@ -28,6 +28,19 @@
 .navbar {
   @media only screen and (max-width: 768px) {
     position: static;
+
+    #navbar-menu a {
+      font-size: 12px;
+    }
+
+    #signout-link {
+      font-size: 12px;
+    }
+
+    .nav-btn-signout {
+      margin-right: 20px;
+    }
+
   }
 }
 
