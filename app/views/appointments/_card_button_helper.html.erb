@@ -1,3 +1,7 @@
 <% unless appointment.pending_helper %>
-  <div id="appointment-help" data-action="click->appointments#addPendingHelper"><i class="fa-solid fa-paw"></i><p>Help out</p></div>
+  <% if current_user %>
+    <div id="appointment-help" data-action="click->appointments#addPendingHelper"><i class="fa-solid fa-paw"></i><p>Help out</p></div>
+  <% else %>
+    <div id="appointment-help" class="inactive"><i class="fa-solid fa-paw"></i><p>Sign up to help out</p></div>
+  <% end %>
 <% end %>

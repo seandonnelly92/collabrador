@@ -33,11 +33,13 @@
           <li class="list-item"> <%= link_to root_path do %></li>
             <i class="fa-solid fa-magnifying-glass"></i> Explore
           <% end %>
-          <li class="list-item"> <%= link_to appointments_path do %></li>
-            <i class="fa-regular fa-calendar-check"></i> Collabs
-          <% end %>
-          <li class="list-item"> <%= link_to user_profile_path do %></li>
-            <i class="fa-solid fa-user"></i> Profile
+          <% if current_user %>
+            <li class="list-item"> <%= link_to appointments_path do %></li>
+              <i class="fa-regular fa-calendar-check"></i> Collabs
+            <% end %>
+            <li class="list-item"> <%= link_to user_profile_path do %></li>
+              <i class="fa-solid fa-user"></i> Profile
+            <% end %>
           <% end %>
         </ul>
         <div class="">
