@@ -4,18 +4,22 @@
 @import "pages/appointment";
 @import "user_profile";
 
-// change font size on small
+  @media (max-width: 768px) {
+    .footer-bg h2 {
+     font-size: 12px;
+    }
+    .footer-bg p {
+      font-size: 10px; /* Set your desired smaller font size */
+    }
 
-@media only screen and (max-width: 768px) {
-  // #welcome-message {
-  //   font-size: 12.5px;
-  // }
+    .testim-bg {
+      padding: 0px;
+    }
+  }
 
-  // #text-small {
-  //   padding: 0px;
-  // }
-
-}
+  .testim-bg {
+    padding: 5px;
+  }
 
 .index-grid {
   max-height: 500px;
