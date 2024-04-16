@@ -4,6 +4,13 @@
 @import "pages/appointment";
 @import "user_profile";
 
+// change font size on small
+
+@media only screen and (max-width: 768px) {
+  #welcome-message {
+      font-size: 12.5px;
+  }
+}
 
 .index-grid {
   max-height: 500px;
