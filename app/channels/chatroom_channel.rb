@@ -1,6 +1,9 @@
 class ChatroomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "general"
+    chatroom = Chatroom.find(params[:id])
+    # stream_for chatroom makes a unique string for each ID, for the chatroom related to the page your on
+    stream_for chatroom
+
   end
 
   def unsubscribed
