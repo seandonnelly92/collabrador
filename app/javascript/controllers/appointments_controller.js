@@ -49,10 +49,16 @@ export default class extends Controller {
 
       button.classList.add('d-none');
     })
-    .catch(error => {
-      console.error("Error:", error);
-    });
-  }
+    .then(response => response.json())
+    .then(data => {
+      if (data.errors) {
+        this.handleErrors(data.errors);
+      } else {
+        // Handle success
+      }
+    })
+
+    }
 
   confirmHelper(e) {
     const appointmentButtons = this.appointmentButtonsTarget;

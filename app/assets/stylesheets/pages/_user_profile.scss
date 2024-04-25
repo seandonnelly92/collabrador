@@ -326,6 +326,15 @@
   }
 }
 
+#appointment-help.inactive {
+  cursor: default;
+  background-color: rgb(184, 184, 184);
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.1em;
+}
+
 #appointment_pet_id {
   font-size: 12px;
 }
