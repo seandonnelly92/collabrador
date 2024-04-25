@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
 
+  resources :chatrooms, only: [:show] do
+    resources :messages, only: [:create] 
+  end
+
   get "user_profile", to: "pages#user_profile"
   get '/maps/search', to: 'maps#search', as: 'maps_search'
 

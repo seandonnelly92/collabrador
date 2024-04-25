@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :pets
   has_many :reviews
   has_many :appointments
+  has_many :messages
 
   has_one_attached :profile_picture
 end
