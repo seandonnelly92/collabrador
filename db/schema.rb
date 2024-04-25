@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_01_130304) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_25_103212) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_130304) do
     t.bigint "pending_helper"
     t.index ["pet_id"], name: "index_appointments_on_pet_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -111,6 +127,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_130304) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "appointments", "pets"
   add_foreign_key "appointments", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "pets", "users"
   add_foreign_key "reviews", "appointments"
   add_foreign_key "reviews", "users"
