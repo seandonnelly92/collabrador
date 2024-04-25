@@ -18,7 +18,6 @@ export default class extends Controller {
     this.channel.unsubscribe()
   }
 
-
   resetForm(event) {
     const form = event.target
     form.reset()

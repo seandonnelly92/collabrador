@@ -1305,11 +1305,6 @@
   "resolved" "https://registry.npmjs.org/acorn/-/acorn-8.11.3.tgz"
   "version" "8.11.3"
 
-"actioncable@^5.2.8-1":
-  "integrity" "sha512-p/a9jeFs3KB3SWZ9w/T5HLyztooYSufOG++Uhau9YzprdBNyjFfsqrtN1roVVEzNDBGZJVr/2SSWwofvavPL1w=="
-  "resolved" "https://registry.npmjs.org/actioncable/-/actioncable-5.2.8-1.tgz"
-  "version" "5.2.8-1"
-
 "aggregate-error@^3.0.0":
   "integrity" "sha512-4I7Td01quW/RpocfNayFdFVk1qSuoh0E7JrbRJ16nH01HhKFQ88INq9Sd+nd72zqRySlr9BmDA8xlEJ6vJMrYA=="
   "resolved" "https://registry.npmjs.org/aggregate-error/-/aggregate-error-3.1.0.tgz"
